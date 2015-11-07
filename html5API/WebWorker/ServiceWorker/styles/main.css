@@ -1,0 +1,236 @@
+.wrapper {
+    width: 350px;
+    height: 200px;
+    background-color: #ddd;
+    position: relative;
+    /*为了计算待居中元素距离父元素的距离方便 offsetTop是距离最近relative元素的top值*/
+}
+
+i {
+    width: 50px;
+    background-color: pink;
+}
+/*首先看看font-size不为0 发生的情况*/
+
+.wrapper.font-size1 {
+    line-height: 200px;
+}
+
+.wrapper.font-size0 {
+    font-size: 0;
+    line-height: 200px;
+}
+/*方案1 inline & inline block================================*/
+
+.wrapper.inline {
+    line-height: 200px;
+    /*width:20px;*/
+    /*方案1只能控制一行文字居中*/
+}
+
+.wrapper.inline span {
+    word-break: break-all;
+}
+/*方案1 行高自适应版 这同时也是终极方案的原理 */
+
+.wrapper.inline1 {
+    height: 30px;
+}
+
+.wrapper.inline1:after {
+    content: '';
+    height: 100%;
+    /* inlineblock是为了高度 */
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.wrapper.inline1 span {
+    /* 待居中元素可以是inline 也可以是inlineblock */
+    /* display: inline-block; */
+
+    vertical-align: middle;
+}
+/*方案1 改进(最常用且好记)=================================*/
+
+.wrapper.InlineBlock {
+    width: 350px;
+    font-size: 0;
+    /*为了去掉inline inline-block img元素之间的间距 但是显示不了文字 因此子元素要再次设置*/
+
+    line-height: 200px;
+    /*line-height 和 height 同高*/
+    /*其实和第一种同理 */
+}
+
+.wrapper.InlineBlock i,
+.wrapper.InlineBlock span,
+.wrapper.InlineBlock a,
+.wrapper.InlineBlock img {
+    display: inline-block;
+    width: 50px;
+    background-color: pink;
+    vertical-align: middle;
+    /*line-height是撑起来了 但是默认垂直摆放方式是baseline 所以需要重新设置vertical-align方式*/
+
+    word-break: break-all;
+    /*强制单词换行*/
+
+    font-size: 16px;
+    line-height: normal;
+    /*因为Line-height是继承的 所以要重写 使得待居中元素的内容行高变为默认高度*/
+}
+
+.wrapper.InlineBlock i:nth-child(1) {
+    background-color: green;
+}
+/*inline-block 终极版================================*/
+
+.wrapper.Final {
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+    /* 消除inline-block ... 之间的间距*/
+}
+
+.wrapper.Final:after {
+    display: inline-block;
+    /*主要是为了设置高度*/
+
+    height: 100%;
+    content: '';
+    vertical-align: middle;
+    *display: inline;
+    *zoom: 1;
+}
+
+.wrapper.Final i,
+.wrapper.Final span,
+.wrapper.Final img,
+.wrapper.Final a {
+    display: inline-block;
+    width: 50px;
+    background-color: pink;
+    vertical-align: middle;
+    font-size: 12px;
+    *display: inline;
+    *zoom: 1;
+}
+/*关于 font */
+
+.wrapper.font1,
+.wrapper.font0 {
+    height: 100px;
+}
+
+.wrapper.font1:after,
+.wrapper.font0:after {
+    display: inline-block;
+    content: '';
+    height: 100%;
+    vertical-align: middle;
+}
+
+.wrapper.font0 {
+    font-size: 0;
+}
+
+.wrapper.font0 i,
+.wrapper.font1 i {
+    display: inline-block;
+    height: 50px;
+    vertical-align: middle;
+}
+/*方案3 table-cell*/
+
+.wrapper.TableCell {
+    display: table-cell;
+    background-color: #ccc;
+    vertical-align: middle;
+    /*vertical-align应该和table-cell元素在一起*/
+}
+
+.wrapper.TableCell .sub {
+    width: 30px;
+    background-color: pink;
+}
+
+.wrapper.TableCell i.sub {
+    display: inline-block;
+    display: block;
+    /*2种都行*/
+}
+/*方案4 绝对定位====================*/
+
+.wrapper.Absolute {
+    position: relative;
+    width: 100px;
+    height: 100px;
+}
+
+.wrapper.Absolute i {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.wrapper.Absolute .ab1 {
+    top: 50%;
+    margin-top: -25px;
+}
+
+.wrapper.Absolute .ab2 {
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.wrapper.Absolute .ab22 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.wrapper.Absolute .ab3 {
+    top: 50%;
+    height: auto;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+/*方案 padding &　margin */
+
+.wrapper.padding {
+    padding: 20px;
+    height: auto;
+}
+
+.wrapper.padding i {
+    display: block;
+    width: 50px;
+}
+
+.wrapper.margin {
+    overflow: hidden;
+    height: auto;
+    *zoom: 1;
+}
+
+.wrapper.margin i {
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.middlepic {
+    width: 500px;
+    height: 500px;
+    border: 1px solid #f00;
+    background: #B9D6FF url(http://images.cnblogs.com/cnblogs_com/rubylouvre/205314/r_iebug.jpg) no-repeat center center;
+    text-align: center;
+    line-height: 500px;
+}
+

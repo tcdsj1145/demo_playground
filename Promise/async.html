@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="node_modules/async/lib/async.js"></script>
+</head>
+
+<body>
+    <script>
+    function ajax1(callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'story.json');
+        xhr.send(null);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200 || xhr.status == 304) {
+                    callback(null, xhr.responseText);
+                }
+            }
+        }
+    }
+    function ajax2(rs, callback){
+        console.log(rs);
+        get('story2.json', callback);
+    }
+    function get(url, callback) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.send(null);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200 || xhr.status == 304) {
+                    callback(null, xhr.responseText);
+                }
+            }
+        }
+    }
+
+    async.waterfall([ajax1, ajax2], function done(err, result) {
+        console.log(result);
+    })
+    </script>
+</body>
+
+</html>

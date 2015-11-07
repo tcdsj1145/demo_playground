@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Underscore</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no"/>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+</head>
+
+<body>
+</body>
+</html>
+
+<!--ace-template demo-->
+    <script id="t2" type="text/template">
+        <%=foo.person%>
+    </script>
+
+<!--数据 -->
+    <script>
+    $(function(){
+
+
+        var datas = [
+            {
+                title: "一九四二",
+                url: "http://www.baidu.com",
+                film:"电影1"
+            },
+            {
+                title: "少年派的漂流",
+                url: "http://www.baidu.com",
+                film:"电影2"
+            },
+            {
+                title: "教父",
+                url: "http://www.baidu.com",
+                film:"电影3"
+            },
+            {
+                title: "肖申克的救赎",
+                url: "http://www.baidu.com",
+                film:"电影4"
+            },
+            {
+                title: "3d2012",
+                url: "http://www.baidu.com",
+                film:"电影5"
+            }
+        ];
+            var temp = _.template('<p><%= text %></p>');
+            var rs = temp({text: 'foo'});
+            temp = _.template('I love <%= foo.person %>.', null ,{variable: 'foo'});
+            rs = temp({person: 'you'});
+
+
+        $("body").html(
+           // _.template($('#t2').html(), {person: 'you'}, {variable: 'foo'})
+         );
+    });
+    </script>
+
+<!--点击下拉事件-->
+    <script type="text/javascript">
+            $('.ul').hide();
+            $('.ul>li:last-child').addClass('last-li');
+            $('body>div:first-child>ul').show();
+            $('.title').click(function(){
+                $(this).siblings().toggle();
+                $(this).parent().siblings().children('.bbs-nav-ul').hide();
+            })            $('.title').hover(function(){
+                $(this).toggleClass('hover');
+            })
+            $('.ul>li').hover(function(){
+                $(this).toggleClass('hover');
+            })
+    </script>

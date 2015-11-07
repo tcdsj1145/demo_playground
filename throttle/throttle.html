@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    html,
+    body {
+        height: 100%;
+    }
+    </style>
+    <script src="jqueryDev.js"></script>
+</head>
+
+<body>
+    <script>
+    //throttle 基本思想
+    function throttleMe(cb){
+        console.log('move');
+        var start = +new Date();
+        return function(){
+            var now = new Date();
+            console.log('now' + now + 'pre' + start);
+            if(now - start > 100){
+                start  = now;
+                cb();
+            }
+        }
+    }
+    // $(window).on('mousemove', throttleMe(function(){
+    //     console.log('timer');
+    // }));
+    // 对于持续不断的触发(超过1S) 可以控制每个触发间隔大于100 但是假如这个不断触发的时间只持续了50ms呢
+    // 那样的话这个cb 就没机会执行了
+
+    //所以再完善一下
+    function throttleMe2(cb, wait){
+        console.log('move');
+        var start = +new Date();
+        var timer = null;
+        var rs ;
+        return function(){
+            var now = +new Date();
+            if(now - start > wait){
+                start =  +new Date();
+
+
+                // clearTimeout(timer);
+                // timer = null;
+
+
+                console.log('<<<<<<<<<<<<');
+                rs = cb();
+            }else { // 间隔太短 还不够执行的时候
+                if(!timer){
+                    console.log(now - start);
+                    timer = setTimeout(function(){
+                        console.log('timeout !!!!!!!');
+                        rs = cb();
+                        // timer = null;
+                        start = +new Date();
+                    }, wait - (now - start));
+                }
+            }
+            return rs;
+        }
+    }
+    // $(window).on('mousemove', throttleMe2(function(){
+    //     console.log('timer---------====------------------------------------' + +new Date());
+    // }, 500));
+
+
+
+    //高级程序设计是这么描述的
+    //个人不理解  这里没有体现节流阀的核心 --- 间隔
+    // var resizeTimer = null;
+    // $(window).on('mousemove', function(e) {
+    //     console.log('move');
+    //     /* 第一次调用，不存在 resizeTimer，跳过这里 第二次进入就会取消上次的timer 这个逻辑挺奇怪的*/
+    //     if (resizeTimer) {
+    //         clearTimeout(resizeTimer);
+    //     }
+    //     /* 第一次访问，赋值给 resizeTimer，绑定的函数 400ms 后调用 */
+    //     resizeTimer = setTimeout(function() {
+    //         console.log("move timer" );
+    //     }, 40); //实际中并不是40ms调用一次
+    // });
+
+
+    function throttle(func, wait) {
+        var context, args, timeout, result;
+        var previous = 0;
+
+        return function() {
+            var now = +new Date();
+            var remaining = wait - (now - previous); //距离下次执行剩余时间
+            context = this;
+            args = arguments;
+            // console.log('remaining'+remaining + 'now'+ now);
+            if (remaining <= 0) { //已经间隔了规定时间  开始执行
+                console.log('<0<0<0<<<<<<<<<<<<<<<<<<<<<');
+                clearTimeout(timeout);
+                timeout = null;
+                previous = now;
+                result = func.apply(context, args);
+            } else if (!timeout) {
+                console.log('set time out!!!!!!!!!!!!!!!!!!! ' + remaining);
+                timeout = setTimeout(function(){
+                    previous = +new Date();
+                    timeout = null;
+                    result = func.apply(context, args);
+                }, remaining);
+            }
+            return result;
+        };
+    }
+
+
+    function debounce(fn, threshhold, scope) {
+        threshhold || (threshhold = 250);
+        var last,
+            deferTimer;
+        return function() {
+            // 这个函数是mousemove事件处理的函数
+            var context = scope || this;
+            var now = +new Date,
+                args = arguments;
+            if (last && now < last + threshhold) {
+                // hold on to it
+                clearTimeout(deferTimer);
+                deferTimer = setTimeout(function() {
+                    last = now;
+                    fn.apply(context, args);
+                }, threshhold);
+            } else {
+                last = now;
+                fn.apply(context, args);
+            }
+        };
+    }
+    // $(window).on('mousemove', function(){
+    //     console.log('move');
+    // })
+    // $(window).on('mousemove', throttle(function(e) {
+    //     console.log('move throttle timer=========================================' + +new Date());
+    // }, 500));
+    // $('body').on('mousemove', debounce(function(event) {
+    //     console.log('move debounce');
+    // }, 1000));
+    </script>
+</body>
+
+</html>

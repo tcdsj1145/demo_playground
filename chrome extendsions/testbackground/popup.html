@@ -1,0 +1,42 @@
+﻿<head>
+<style>
+tr {
+  white-space: nowrap;
+}
+.results {
+  text-align: right;
+  min-width: 6em;
+  color: black;
+}
+</style>
+<script src="popup.js"></script>
+</head>
+<body>
+<table>
+
+  <tr>
+    <td colspan=2>
+      <textarea cols=30 rows=10 class="csstext"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td><button id="applyCss">Apply Css</button></td>
+    <td id="applyCssMsg" class="results">(results)</td>
+<!--     <td><button id="testConnect">Measure postMessage</button></td>
+    <td id="resultsConnect" class="results">(results)</td> -->
+  </tr>
+  <tr>
+    <td><button id="popToBG">Send Msg to BG</button></td>
+    <td id="popToBG_msg" class="results">(results)</td>
+  </tr>
+  <tr>
+    <td><button id="popToBGPort">Send To bg PORT</button></td>
+    <td id="popToBG_msg" class="results">(results)</td>
+  </tr>
+  <tr>
+    <td><button id="popToContentPort">Send To Content PORT</button></td>
+    <td id="popToContentPortMsg" class="results">(results)</td>
+  </tr>      
+</table>
+<div id="msg"></div>
+</body>

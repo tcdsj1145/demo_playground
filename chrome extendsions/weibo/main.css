@@ -1,0 +1,45 @@
+html,
+body {
+    margin: 0;
+    font-size: 20px;
+}
+
+body {
+    height: 800px;
+    width: 800px;
+}
+
+/*weibo======================*/
+.user{
+    height: 2rem;
+    display: flex;
+}
+.userimage, .username, .timeinfo{
+    /*flex: 1 0 0;*/
+}
+.userimage{
+    margin: 0.1rem;
+    width: 1.8rem;
+    height: 100%;
+}
+.username, .timeinfo{
+    padding: 0 0.1rem;
+    line-height: 2rem;
+}
+.picList{
+    width:80%;
+}
+.picList:after{
+    content: ' ';
+    clear:both;
+    display: table;
+}
+.picList .pic{
+    display: inline-block;
+    width: 20%;
+    padding-bottom: 20%;
+}
+
+.retweet{
+    margin-left: 2rem;
+}

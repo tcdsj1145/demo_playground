@@ -1,0 +1,7 @@
+{
+    "heading": "<h1>TXT A story about something</h1>",
+    "chapterUrls": [
+        "chapter-1.json",
+        "chapter-2.json"
+    ]
+}

@@ -1,0 +1,66 @@
+p {
+	float: left;
+	margin: 20px;
+	font-size: 14px
+}
+
+/*style for iSimulateSelect*/
+.i_selectbox {
+	margin-top: 20px;
+	height: 32px;
+	position: relative;
+	font-size: 14px;
+	display: inline;
+}
+.i_selectbox .i_currentselected {
+	width: 52px;
+	height: 32px;
+	background: #fff url(bg-select.gif) right top no-repeat;
+	border: 1px solid #555;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-indent: 1px;
+	line-height: 32px;
+	cursor: pointer;
+	display:inline-block
+}
+.i_selectbox .i_selectoption {
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: absolute;
+	left: -5px;
+	top: 6px;
+	padding: 5px;
+	background-color: #fff;
+	background: rgba(255,255,255,.9);
+	-webkit-box-shadow: -2px 3px 5px rgba(0,0,0,.3);
+	-moz-box-shadow: -2px 3px 5px rgba(0,0,0,.3);
+	box-shadow: -2px 3px 5px rgba(0,0,0,.3);
+	border-radius: 5px;
+	border-right: 1px solid #eee
+}
+.i_selectbox .i_selectoption dt {
+	height: 24px;
+	background-color: #eee;
+	text-indent: 5px;
+	font-style: italic;
+	color: #555;
+	line-height: 24px;
+}
+.i_selectbox .i_selectoption dd {
+	height: 30px;
+	border-bottom: 1px dashed #ccc;
+	cursor: pointer;
+	text-indent: 1px;
+	line-height: 28px;
+	-webkit-margin-start: 5px;
+}
+.i_selectbox .i_selectoption dd:hover {
+	background-color: #888;
+	color: #fff
+}
+.i_selectbox .i_selectoption dd.selected {
+	background-color: #555;
+	color: #fff
+}

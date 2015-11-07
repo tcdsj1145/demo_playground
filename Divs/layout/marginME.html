@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .aside{
+        float: left;
+        width:200px;
+        background-color: pink;
+    }
+    .content{
+        margin-left: 200px;
+        background-color: wheat;
+    }
+    .clear{
+        clear: both;
+    }
+    </style>
+</head>
+<body>
+<div class="inner-center">
+    <div class="aside">
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+        </div>
+    </div>
+    <div class="content clear">
+        如果定宽的content使用了clear both 就会破坏布局
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

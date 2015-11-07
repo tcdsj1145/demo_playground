@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .container{
+
+    }
+    .inner{
+        float: left;
+    }
+    .clear:after{
+        content: ' ';
+        display: table;
+        clear: both;
+    }
+    </style>
+</head>
+<body>
+<div class="container clear">
+    <div class="inner">XX</div>
+    <div class="inner">VV</div>
+    <div class="inner">WW</div>
+</div>
+</body>
+</html>

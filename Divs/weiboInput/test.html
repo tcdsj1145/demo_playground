@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		.test span{
+			background-color: red;
+			display: inline-block;
+			width: 8px;
+			height: 18px;
+			line-height: 18px;
+		}
+		.test i{
+			display: inline-block;
+			width: 8px;
+			height: 12px;
+			vertical-align: middle;
+			background-color: green;
+		}
+
+ .pageFlip{
+	position: absolute;
+	left: 325px;
+	top: 0px;
+}
+ .pageFlip span{
+	display: inline-block;
+	padding: 0px 6px 0px 6px;
+	height: 18px;
+	line-height: 18px;
+	width: 8px;
+	border: 1px solid #d9d9d9;
+	background-color: #f2f2f2;
+
+}
+ .pageFlip span i{
+	display: inline-block;
+	width: 8px;
+	height: 12px;
+	vertical-align: middle;
+	background-image: url("http://img.t.sinajs.cn/t5/style/images/common/icon.gif?id=201404081745");
+}		
+ .pageFlip span.pagePre i{
+	background-position: -104px -327px;
+}
+
+ .pageFlip span.pageNext i{
+	background-position: -104px -352px;	
+}
+
+
+	</style>
+</head>
+<body>
+	<div class='test'>
+		<span> <i></i>
+		</span>
+	</div>
+
+	<div class="pageFlip">
+		<span class="pagePre"> <i></i>
+		</span>
+		<span class="pageNext">
+			<i></i>
+		</span>
+	</div>
+</body>
+</html>

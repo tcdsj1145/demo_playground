@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<iframe src="localhost:1234/inner.html" frameborder="0"></iframe>
+<script>
+
+window.addEventListener('message', function(e){
+    console.log(e);
+},false);
+
+</script>
+</body>
+</html>

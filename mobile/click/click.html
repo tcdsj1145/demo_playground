@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh_cmn">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .input-wrapper{
+        margin: 20px;
+        position: relative;
+        height: 100px;
+        text-align: center;
+    }
+    input{
+    }
+    .abs{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background: pink;
+        opacity: 0.5;
+        top:0;
+        bottom: 0;
+    }
+    </style>
+</head>
+<body>
+<div class="input-wrapper">
+    <textarea rows="5"></textarea>
+    <div class="abs"></div>
+</div>
+<script src="zepto.js"></script>
+<script src="touch.js"></script>
+<script>
+    console.log($('.abs'));
+    // $('.abs').tap(function(){
+    //     $('.abs').hide();
+    // });
+    document.querySelector('.abs').addEventListener('tap', function(){
+        console.log(this);
+    }, false);
+</script>
+</body>
+</html>

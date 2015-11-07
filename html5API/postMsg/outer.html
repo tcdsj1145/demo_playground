@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<iframe src="http://localhost:3000/inner.html" frameborder="0"></iframe>
+<script>
+
+function receiveMessage(event)
+{
+    console.log(event.data);
+}
+window.addEventListener("message", receiveMessage, false);
+
+</script>
+</body>
+</html>

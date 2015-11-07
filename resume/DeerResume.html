@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://raku.digitcv.com/#/resume -->
+<html ng-app="deerResume" class="ng-scope">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+    @charset "UTF-8";
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak,
+    .ng-hide {
+        display: none !important;
+    }
+
+    ng\:form {
+        display: block;
+    }
+
+    .ng-animate-block-transitions {
+        transition: 0s all!important;
+        -webkit-transition: 0s all!important;
+    }
+
+    .ng-hide-add-active,
+    .ng-hide-remove {
+        display: block!important;
+    }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeerResume</title>
+    <link href="http://raku.digitcv.com/image/browser.png" rel="shortcut icon">
+    <link rel="stylesheet" href="http://raku.digitcv.com/css/normalize.css">
+    <link rel="stylesheet" href="http://raku.digitcv.com/css/yue.css">
+    <link rel="stylesheet" href="http://raku.digitcv.com/css/style.css">
+    <link rel="stylesheet" href="http://raku.digitcv.com/bower/components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://raku.digitcv.com/bower/components/ng-notify/dist/ng-notify.min.css">
+</head>
+
+<body>
+    <div ng-view="" id="resume_body" class="ng-scope">
+        <div class="content yue ng-binding ng-scope" id="cvcontent" ng-bind-html="resume.content | wizMarkdownFltr" ng-show="resume.show==1">
+            <h3>个人信息</h3>
+            <ul>
+                <li>罗楠/男</li>
+                <li>期望职位：前端开发工程师</li>
+                <li>硕士在读/华中科技大学软件工程学院 </li>
+                <li>手机：18064126926</li>
+                <li>Email：cart55free99@163.com </li>
+                <li>
+                    <p>QQ/微信号：1483442417/raku23</p>
+                </li>
+                <li>
+                    <p>技术博客：http://www.cnblogs.com/cart55free99/</p>
+                </li>
+                <li>Github: http://github.com/lumixraku</li>
+                <li>Demos: http://lumixraku.github.io/demos/</li>
+            </ul>
+            <hr>
+            <h3>个人经历</h3>
+            <p>大四开始接触前端, 做了一个新浪微博站内应用, 主要用于批量管理微博和选点签到。研一时学习了下Chrome插件，做了一个单词翻译和公交到站提示的插件。</p>
+            <h3>实习经历</h3>
+            <h4>腾讯公司 （ 2015年5月 ~ 2015年8月 ）</h4>
+            <ul>
+                <li>在线教育管理后台
+                    <br> 一个使用ExtJS的管理后台, 我在此项目负责基本的需求和一些公共组件的优化</li>
+            </ul>
+            <h4>百度公司 （ 2015年1月 ~ 2015年4月 ）</h4>
+            <ul>
+                <li>HQC质量管理 一个使用AngularJS的质量报告系统, 我在此项目负责了图表展示</li>
+            </ul>
+            <h4>百纳信息公司 （ 2014年6月 ~ 2014年12月 ）</h4>
+            <ul>
+                <li>移动端多语言网址导航</li>
+                <li>主题商城(手机版)</li>
+                <li>视频中心/音乐中心(手机版)</li>
+                <li>浏览器性能测试报告 一个使用Node.js + mongo 的性能测试记录平台</li>
+            </ul>
+            <hr>
+            <h3>个人技能</h3>
+            <ul>
+                <li>会用jQuery实现网页的交互</li>
+                <li>知道RequireJs、SeaJs基本使用</li>
+                <li>会用JSP、.NET、PHP进行开发,</li>
+                <li>用过VB,Python,NodeJS,Gulp,Grunt,MongoDB,Browserify</li>
+                <li>知道AngularJS的基本用法</li>
+                <li>比较熟悉chrome DevTools 调试</li>
+                <li>知道Git基本操作流程</li>
+            </ul>
+        </div>
+        <div class="content passbox ng-scope ng-hide" ng-show="resume.show==0">
+            <center>
+                <p>本简历受密码保护，请输入阅读密码后继续</p>
+                <div class="input-group passinput">
+                    <input type="password" class="form-control ng-pristine ng-valid" name="vpass" ng-model="vpass">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default " type="button" ng-click="password(vpass)">确定</button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </center>
+        </div>
+        <div class="action-bar hidden-xs ng-scope">
+            <a href="https://github.com/geekcompany/DeerResume">
+                <img src="./DeerResume_files/home.png">
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="http://raku.digitcv.com/#" onclick="makepdf()" title="PDF格式">
+                <img src="./DeerResume_files/book.png">
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a ng-href="#/admin" href="http://raku.digitcv.com/#/admin">
+                <img src="./DeerResume_files/cog.png">
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

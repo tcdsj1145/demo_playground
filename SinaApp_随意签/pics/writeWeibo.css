@@ -1,0 +1,109 @@
+html {
+	height: 100%
+}
+
+#map_canvas {
+	height: 100%
+}
+#map {
+	min-height: 500px;
+	width: 100%
+}
+#inputDiv {
+	margin-top: 10px;
+	padding: 10px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	background-color: #EEEEEE;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(.6,#c4c4c4),to(#d8d8d8));
+	border-bottom: 10px solid #666;
+	border-color: #e5e5e5;
+	/*阴影*/
+	box-shadow: 3px 3px 4px #898989;
+	-moz-box-shadow: 3px 3px 4px #898989;
+	-webkit-box-shadow: 0px 2px 6px 2px #898989;
+}
+
+/*微博发布器 按钮===========================================*/
+.faWeibo {
+	font-family: Arial;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 10px;
+	text-decoration: none;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+	-webkit-box-shadow: 0px 1px 3px #666666;
+	-moz-box-shadow: 0px 1px 3px #666666;
+	box-shadow: 0px 1px 3px #666666;
+	text-shadow: 1px 1px 3px #666666;
+	border: solid #400a22 2px;
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f50e0e),
+	to(#faa05f) );
+	background: -moz-linear-gradient(top, #f50e0e, #faa05f);
+	-ms-filter: progid :     DXImageTransform.Microsoft.gradient (
+	startColorStr =     #f50e0e, endColorStr =     #faa05f );
+	filter: progid :     DXImageTransform.Microsoft.gradient (
+	startColorStr =
+	#f50e0e, endColorStr =     #faa05f );
+	display: inline-block; /* IE is so silly */
+}
+
+.faWeibo:hover {
+	background: #ff0000;
+}
+
+.uploadDiv {
+	/*圆角*/
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	/*阴影*/
+	-webkit-box-shadow: 0px 1px 3px #666666;
+	-moz-box-shadow: 0px 1px 3px #666666;
+	box-shadow: 0px 1px 3px #666666;
+	width: 45px;
+	height: 45px;
+	overflow: hidden;
+	position: relative;
+	/*margin: 5px auto;*/
+	background: url(upload4545.png);
+}
+.upload-input {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	height: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	cursor: pointer;
+	font-size: 26px;
+}
+
+.titleArea {
+	/*圆角*/
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	/*textArea样式  来自于微博	*/
+	margin: 1px 0px 0px;
+	padding: 15px;
+	/*border-style: none;*/
+	border-width: 3px;
+	border-color: orange;
+	font-size: 14px;
+	font-family: Tahoma, 宋体;
+	word-wrap: break-word;
+	line-height: 18px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	outline: none;
+	resize: none;
+}
+
+#map {
+	box-shadow: 3px 3px 4px #898989;
+	-moz-box-shadow: 3px 3px 4px #898989;
+	-webkit-box-shadow: 0px 2px 6px 2px #898989;
+}

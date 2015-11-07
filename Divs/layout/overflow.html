@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .inner-center{
+            background-color: wheat;
+        }
+        .aside{
+            float: left;/*right;*/
+            width: 300px;
+            border: 1px solid black;
+
+        }
+        .content{
+            overflow: hidden;/*没有的话 content  aside会重叠*/
+            border: 1px solid black;
+        }
+        .placeholder{
+            margin:10px;
+        }
+    </style>
+</head>
+<body>
+<div class="inner-center">
+    <div class="aside">
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+
+        </div>
+
+    </div>
+    <div class="content">
+
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

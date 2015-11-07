@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+str = '<img alt="" src="https://www.google.com.hk/images/srpr/logo11w.png" style="height:20px; width:20px">一个vahniou _____  acsiuhuhac ____ 胡<img alt="" src="https://www.google.com.k/images/srpr/logo11w.jpg" style="height:20px; width:20px">asdva!!!!南湖adacdscasdc<img alt="" src="https://www.google.com.k/images/srpr/logo11w.jpg" style="height:20px; width:20px">!!  <p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="movie" value="http://ketang.oa.com/static/temp/cfs/course/1000008738/388973641_class_1.dat1438177801_1.mp4"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://ketang.oa.com/static/temp/cfs/course/1000008738/388973641_class_1.dat1438177801_1.mp4" type="application/x-shockwave-flash"></embed></object>hvaipvhi<img alt="" src="https://www.google.com.hk/images/srpr/logo11w.png" style="height:20px; width:20px">hvaipvhi</p><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="movie" value="http://v.qq.com/cover/3/3luybxqnx1icoxq.html?vid=y0161qf7sz3"><embed pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://v.qq.com/cover/3/3luybxqnx1icoxq.html?vid=y0161qf7sz3" type="application/x-shockwave-flash"></embed></object>';
+
+str = '<img alt="" src="https://www.google.com.hk/images/srpr/logo11w.png" style="height:20px; width:20px"> kkk<img alt="" src="https://www.google.com.hk/images/srpr/logo11w.png" style="height:20px; width:20px"> 好机构id不是 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" height="20" width="20"><param name="movie" value="http://v.qq.com/cover/u/uxnui6p3ikcej3b.html?vid=r00170n33cm" /><embed height="20" pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://v.qq.com/cover/u/uxnui6p3ikcej3b.html?vid=r00170n33cm" type="application/x-shockwave-flash" width="20"></embed></object>';
+
+
+str = 'And ____ roid<img src="http://p.qpic.cn/qqconadmin/0/ba6d47957e594af18d392513afbe81d8/0" style="height:20px; width:20px" />应用程<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" height="20" width="20"><param name="movie" value="http://10.121.115.70/vcloud.tc.qq.com/1016_47de9541adba4c30a61b04fc4e34b644.f0.mp3?A6E3A6BC6E8629EC6CDF9062674289E768251DF259D41482B1ABCAD17F1B7DD8401B74B196D97084" /><embed height="20" pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://10.121.115.70/vcloud.tc.qq.com/1016_47de9541adba4c30a61b04fc4e34b644.f0.mp3?A6E3A6BC6E8629EC6CDF9062674289E768251DF259D41482B1ABCAD17F1B7DD8401B74B196D97084" type="application/x-shockwave-flash" width="20"></embed></object>序的入<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" height="20" width="20"><param name="movie" value="http://v.qq.com/cover/6/6bpttcnvcd37s6h.html?vid=t0017sql977" /><embed height="20" pluginspage="http://www.macromedia.com/go/getflashplayer" src="http://v.qq.com/cover/6/6bpttcnvcd37s6h.html?vid=t0017sql977" type="application/x-shockwave-flash" width="20"></embed></object>口点是<img src="http://p.qpic.cn/qqconadmin/0/ba6d47957e594af18d392513afbe81d8/0" style="height:20px; width:20px" />'
+
+var ele = document.createElement('div');
+ele.innerHTML = str;
+console.log(ele.innerText);
+        var res_list = [];
+        var idx = 0; //资源index
+        // 占位符都是$#id$#，id跟res_list中的id相对应，res_list中有个type字段，type=1,2,3,4,5,分别表示：1图片，2音频，3视频，4换行，5填空
+        //替换换行
+        str = str.replace(/<p>(.*?)<\/p>/gi, function(match, p1){
+            res_list.push({
+                rid: idx,
+                type: 4,
+                src: ''
+            });
+            return p1 + ' $#' + (idx++) + '$# ';
+        });
+        str = str.replace(/\s_+\s/gi, function(match, p1){
+            res_list.push({
+                rid: idx,
+                type: 5,
+                src: ''
+            });
+            return ' $#' + (idx++) + '$# ';
+        });
+
+        str = str.replace(/<(img).*?src=[\'\"](.*?)[\'\"].*?[\/]?>|<object.*?src=[\'\"](.*?(\.mp4|\.mp3|vid\=.+?).*?)[\'\"].*?object>/gi, function(match, p1, p2, p3,p4){
+            console.log(p1 || p3);
+            var ptype = p1 || p4;
+            var type ;
+            if(ptype == 'img' || ptype == '.mp4' || ptype == '.mp3'){
+                switch(ptype){
+                    case 'img':
+                        type = 1;
+                        break;
+                    case '.mp3':
+                        type = 2;
+                        break;
+                    case '.mp4':
+                        type = 3;
+                        break;
+                }
+            }else if(ptype.match(/vid\=.+?/)){
+                console.log(p3);
+                var rs = p3.match(/.+?vid=(.+)/);
+                rs.length == 2 ? p3 = rs[1] : p3 = '';
+                type = 3;
+            }
+            res_list.push({
+                rid: idx,
+                type: type,
+                res: p2||p3
+            })
+            return ' $#' + (idx++) + '$# ';
+        });
+
+
+</script>
+</body>
+</html>

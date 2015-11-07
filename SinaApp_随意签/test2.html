@@ -1,0 +1,20 @@
+<html>
+	<head>
+        <script  src="scripts/jquery-latest.js"></script>
+		<script>
+		$(function(){
+        var url="http://api.map.baidu.com/location/ip?ak=3580afe5e4838f2f974d85c72d7300b0&ip=202.198.16.3";
+//		url="ForTestJson.php";
+        $.getJSON( //使用getJSON方法取得JSON数据
+        url,
+        function(data){ //处理数据 data指向的是返回来的JSON数据
+			//alert(data.content.point.y);                
+			alert(data.address);
+        }
+        );
+        
+    });
+		</script>
+	</head>
+
+</html>

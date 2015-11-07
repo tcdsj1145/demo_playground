@@ -1,0 +1,26 @@
+/*翻页按钮上一页下一页样式  */
+.nui-btn-icon {
+	/*border-radius: 100%;*/
+	background-image: url(pre_nextIconBG.png);
+	padding: 8px;
+	border-radius: 100%;
+	margin-top: 5px;
+}
+/*链接样式*/
+.nui-ico-next {
+	-webkit-background-origin: padding-box;
+	background-image: url(nextIcon.png);
+	display: inline-block;
+	height: 12px;
+	text-align: center;
+	width: 12px;
+}
+
+.nui-ico-pre {
+	-webkit-background-origin: padding-box;
+	background-image: url(preIcon.png);
+	display: inline-block;
+	height: 12px;
+	text-align: center;
+	width: 12px;
+}

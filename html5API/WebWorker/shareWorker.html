@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shared worker example: how to use shared worker in HTML5</title>
+</head>
+
+<body onload=''>
+    <output id='response_from_worker'>
+        --------Shared worker example: how to use shared worker in HTML5--------
+    </output>
+
+    <input type="text" autofocus oninput="postMessage(this);return false;">
+    </input>
+    <script>
+        var log = document.getElementById('response_from_worker');
+        var worker = new SharedWorker('sharedWorker.js');//
+        //两者几乎一致  区别就在于 onclick 和 addEventListener('click')
+        //xx.onclick 相当于属性 会被覆盖
+        //还有一个区别就是 如果使用到了 addEventListener 来接受来自[[共享]]线程的消息，
+        //那么就要使用 worker.port.start() 方法来启动这个端口
+        //否则接不到消息
+        // worker.port.onmessage = function(e){
+        //    log.textContent = e.data;
+        //     console.log(e.data);
+        // };
+        worker.port.addEventListener('message', function(e) {
+            //log the response data in web page
+            log.textContent = e.data;
+        }, false);
+
+        worker.port.start();
+        worker.port.postMessage('ping from user web page..');
+
+        //following method will send user input to sharedworker
+        function postMessage(input) {
+            //define a json object to construct the request
+            var instructions = {
+                instruction: input.value
+            };
+            worker.port.postMessage(instructions);
+        }
+
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .btn {
+        padding: 20px;
+        background: orange;
+    }
+    </style>
+</head>
+
+<body>
+    IIIII
+    <div class="btn">SEND</div>
+    <script type="text/javascript">
+    var btn = document.querySelector('.btn');
+    btn.addEventListener('click', function(){
+        window.parent.postMessage('hhhh');
+    },false);
+    </script>
+</body>
+
+</html>

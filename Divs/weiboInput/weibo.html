@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Contentfont-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="expires" content="0"/>
+    <meta charset="UTF-8"/>
+    <title>Untitled Document</title>
+    <link rel="stylesheet" type="text/css" href="weibo.css">
+    <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+    <script type="text/javascript" src="weibo.js"></script>
+</head>
+
+<body>
+    <div class='writeWeibo_area'>
+        <div class='hotWeibo_layout'>
+            <div class="whatsnew">
+                <span>What's new with you</span>
+            </div>
+            <div class="hotWeibo">
+                <span>
+                    <a href="">神造句#你饿不饿啊#，驴说"我打滚给你吃"</a>
+                </span>
+                <span>
+                    <a href="">热门微博</a>
+                </span>
+
+            </div>
+            <div class="words_count">
+                <span>
+                    Comply with guidelines
+                    <span class="wordNum">140</span>
+                    &nbsp;Characters Remaining
+                </span>
+            </div>
+        </div>
+        <div class='textArea_layout'>
+            <textarea name="" id="" class="text"></textarea>
+        </div>
+        <div class='function_layout'>
+            <div class="emotionBtn_wrapper"> <i class='emotion'></i>
+                <span>emotion</span>
+            </div>
+            <div class="photoBtn_wrapper"> <i class='photo'></i>
+                <span>photo</span>
+            </div>
+            <div class="videoBtn_wrapper">
+                <i class='video'></i>
+                <span>video</span>
+            </div>
+            <div class="topicBtn_wrapper">
+                <i class='topic'></i>
+                <span>topic</span>
+            </div>
+            <div class="blogBtn_wrapper">
+                <i class='blog'></i>
+                <span>blog</span>
+            </div>
+            <div class="moreBtn_wrapper">
+                <i class='divide'>|</i>
+                <span>More</span>
+                <i class='triangle down'><div>◆</div></i>
+                <div class='moreMenu'>
+                    <div class="menuItem">
+                        <i class='timer'></i>
+                        <span>timer</span>
+                    </div>
+                    <div class="menuItem">
+                        <i class="music"></i>
+                        <span>Music</span>
+                    </div>
+                    <div class="menuItem">
+                        <i class="toupiao"></i>
+                        <span>投票</span>
+                    </div>
+                    <div class="menuItem">
+                        <i class="charity"></i>
+                        <span>Charity</span>
+                    </div>
+                    <div class="menuItem">
+                        <i class="uploadFiles"></i>
+                        <span>UploadFiles</span>
+                    </div>
+                </div> 
+            </div>
+            <!-- float right -->
+            <div class="weiboBtn_wrapper">
+                <button class='weiboBtn grey'>Weibo</button>
+            </div>
+            <div class="publicBtn_wrapper">
+                <span>public</span>
+                <i class='triangle down'><div>◆</div></i> 
+            </div>
+        </div>
+        <div class="triangle_layout"></div>
+        <div class="main_popout">
+            <div class="main_popout_title">
+                <span class="title">Emotion</span>
+                <a href="javascript:void(0);" class="closepopout"></a>
+            </div>
+            <div class="main_popout_content"></div>
+        </div>
+    </div>
+    <div class='msg'></div>
+    <div class="popcontentWrapper">
+        <div class="emotionList_wrapper">
+            <div class="emotion_category_wrapper">
+                <ul class="emotion_category current">
+                    <li class="categoryItem default current">
+                        <span class="category_name">default</span>
+                    </li>
+                    <li class="categoryItem langxiaohua">
+                        <span class="category_name">浪小花</span>
+                    </li>
+                    <li class="categoryItem baozoumanhua">
+                        <span class="category_name">暴走漫画</span>
+                    </li>
+                    <li class="categoryItem xiaokonglong">
+                        <span class="category_name">小恐龙</span>
+                    </li>
+                    <li class="categoryItem lengtu">
+                        <span class="category_name">冷兔</span>
+                    </li>
+                </ul>
+                <ul class="emotion_category">
+                    <li class="categoryItem guosite">
+                        <span class="category_name">郭斯特</span>
+                    </li>
+                    <li class="categoryItem diandang">
+                        <span class="category_name">癫当</span>
+                    </li>
+                    <li class="categoryItem ali">
+                        <span class="category_name">阿狸</span>
+                    </li>
+                    <li class="categoryItem bubuhetoto">
+                        <span class="category_name">BOBO和TOTO</span>
+                    </li>
+                    <li class="categoryItem gaoguai">
+                        <span class="category_name">搞怪</span>
+                    </li>
+                </ul>
+                <ul class="emotion_category">
+                    <li class="categoryItem xiaoxinxiaolang">
+                        <span class="category_name">小新小浪</span>
+                    </li>
+                    <li class="categoryItem kukuxiong">
+                        <span class="category_name">酷酷熊</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="pageFlip">
+                <span class="pagePre">
+                    <i></i>
+                </span>
+                <span class="pageNext">
+                    <i></i>
+                </span>
+            </div>
+            <div class="emotionList default">
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/dc/earth1r_thumb.gif" alt="地球一小时" title="地球一小时"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/87/lxhxuyuan_thumb.gif" alt="许愿" title="许愿"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/64/lxhtongku_thumb.gif" alt="泪流满面" title="泪流满面"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/30/madaochenggong_thumb.gif" alt="马到成功" title="马到成功"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/67/gangnamstyle_thumb.gif" alt="江南style" title="江南style"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fa/lxhtouxiao_thumb.gif" alt="偷乐" title="偷乐"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d4/lxhdeyidixiao_thumb.gif" alt="得意地笑" title="得意地笑"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f4/zhaji_thumb.gif" alt="炸鸡和啤酒" title="炸鸡和啤酒"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f4/xklzhuanquan_thumb.gif" alt="xkl转圈" title="xkl转圈"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/73/ltqiekenao_thumb.gif" alt="lt切克闹" title="lt切克闹"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/dd/dintuizhuang_thumb.gif" alt="din推撞" title="din推撞"></div>
+                <div class="emotionItem">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/92/fan.gif" alt="风扇" title="风扇"></div>
+                <div class='emotion_default_divide'></div>
+                <div class="emotionItem" action-data="text=[草泥马]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7a/shenshou_thumb.gif" alt="草泥马" title="草泥马"></div>
+                <div class="emotionItem" action-data="text=[神马]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/60/horse2_thumb.gif" alt="神马" title="神马"></div>
+                <div class="emotionItem" action-data="text=[浮云]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/bc/fuyun_thumb.gif" alt="浮云" title="浮云"></div>
+                <div class="emotionItem" action-data="text=[给力]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c9/geili_thumb.gif" alt="给力" title="给力"></div>
+                <div class="emotionItem" action-data="text=[围观]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f2/wg_thumb.gif" alt="围观" title="围观"></div>
+                <div class="emotionItem" action-data="text=[威武]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/70/vw_thumb.gif" alt="威武" title="威武"></div>
+                <div class="emotionItem" action-data="text=[熊猫]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/panda_thumb.gif" alt="熊猫" title="熊猫"></div>
+                <div class="emotionItem" action-data="text=[兔子]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/81/rabbit_thumb.gif" alt="兔子" title="兔子"></div>
+                <div class="emotionItem" action-data="text=[奥特曼]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/bc/otm_thumb.gif" alt="奥特曼" title="奥特曼"></div>
+                <div class="emotionItem" action-data="text=[囧]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/15/j_thumb.gif" alt="囧" title="囧"></div>
+                <div class="emotionItem" action-data="text=[互粉]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/89/hufen_thumb.gif" alt="互粉" title="互粉"></div>
+                <div class="emotionItem" action-data="text=[礼物]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c4/liwu_thumb.gif" alt="礼物" title="礼物"></div>
+                <div class="emotionItem" action-data="text=[呵呵]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ac/smilea_thumb.gif" alt="呵呵" title="呵呵"></div>
+                <div class="emotionItem" action-data="text=[嘻嘻]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0b/tootha_thumb.gif" alt="嘻嘻" title="嘻嘻"></div>
+                <div class="emotionItem" action-data="text=[哈哈]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6a/laugh.gif" alt="哈哈" title="哈哈"></div>
+                <div class="emotionItem" action-data="text=[可爱]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/14/tza_thumb.gif" alt="可爱" title="可爱"></div>
+                <div class="emotionItem" action-data="text=[可怜]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/af/kl_thumb.gif" alt="可怜" title="可怜"></div>
+                <div class="emotionItem" action-data="text=[挖鼻屎]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a0/kbsa_thumb.gif" alt="挖鼻屎" title="挖鼻屎"></div>
+                <div class="emotionItem" action-data="text=[吃惊]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f4/cj_thumb.gif" alt="吃惊" title="吃惊"></div>
+                <div class="emotionItem" action-data="text=[害羞]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6e/shamea_thumb.gif" alt="害羞" title="害羞"></div>
+                <div class="emotionItem" action-data="text=[挤眼]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c3/zy_thumb.gif" alt="挤眼" title="挤眼"></div>
+                <div class="emotionItem" action-data="text=[闭嘴]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/29/bz_thumb.gif" alt="闭嘴" title="闭嘴"></div>
+                <div class="emotionItem" action-data="text=[鄙视]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/71/bs2_thumb.gif" alt="鄙视" title="鄙视"></div>
+                <div class="emotionItem" action-data="text=[爱你]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/lovea_thumb.gif" alt="爱你" title="爱你"></div>
+                <div class="emotionItem" action-data="text=[泪]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9d/sada_thumb.gif" alt="泪" title="泪"></div>
+                <div class="emotionItem" action-data="text=[偷笑]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/19/heia_thumb.gif" alt="偷笑" title="偷笑"></div>
+                <div class="emotionItem" action-data="text=[亲亲]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8f/qq_thumb.gif" alt="亲亲" title="亲亲"></div>
+                <div class="emotionItem" action-data="text=[生病]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b6/sb_thumb.gif" alt="生病" title="生病"></div>
+                <div class="emotionItem" action-data="text=[太开心]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/58/mb_thumb.gif" alt="太开心" title="太开心"></div>
+                <div class="emotionItem" action-data="text=[懒得理你]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/17/ldln_thumb.gif" alt="懒得理你" title="懒得理你"></div>
+                <div class="emotionItem" action-data="text=[右哼哼]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/98/yhh_thumb.gif" alt="右哼哼" title="右哼哼"></div>
+                <div class="emotionItem" action-data="text=[左哼哼]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/zhh_thumb.gif" alt="左哼哼" title="左哼哼"></div>
+                <div class="emotionItem" action-data="text=[嘘]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a6/x_thumb.gif" alt="嘘" title="嘘"></div>
+                <div class="emotionItem" action-data="text=[衰]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/af/cry.gif" alt="衰" title="衰"></div>
+                <div class="emotionItem" action-data="text=[委屈]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/73/wq_thumb.gif" alt="委屈" title="委屈"></div>
+                <div class="emotionItem" action-data="text=[吐]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9e/t_thumb.gif" alt="吐" title="吐"></div>
+                <div class="emotionItem" action-data="text=[打哈欠]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f3/k_thumb.gif" alt="打哈欠" title="打哈欠"></div>
+                <div class="emotionItem" action-data="text=[抱抱]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/27/bba_thumb.gif" alt="抱抱" title="抱抱"></div>
+                <div class="emotionItem" action-data="text=[怒]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7c/angrya_thumb.gif" alt="怒" title="怒"></div>
+                <div class="emotionItem" action-data="text=[疑问]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5c/yw_thumb.gif" alt="疑问" title="疑问"></div>
+                <div class="emotionItem" action-data="text=[馋嘴]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a5/cza_thumb.gif" alt="馋嘴" title="馋嘴"></div>
+                <div class="emotionItem" action-data="text=[拜拜]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/70/88_thumb.gif" alt="拜拜" title="拜拜"></div>
+                <div class="emotionItem" action-data="text=[思考]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e9/sk_thumb.gif" alt="思考" title="思考"></div>
+                <div class="emotionItem" action-data="text=[汗]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/24/sweata_thumb.gif" alt="汗" title="汗"></div>
+                <div class="emotionItem" action-data="text=[困]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7f/sleepya_thumb.gif" alt="困" title="困"></div>
+                <div class="emotionItem" action-data="text=[睡觉]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6b/sleepa_thumb.gif" alt="睡觉" title="睡觉"></div>
+                <div class="emotionItem" action-data="text=[钱]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/90/money_thumb.gif" alt="钱" title="钱"></div>
+                <div class="emotionItem" action-data="text=[失望]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/0c/sw_thumb.gif" alt="失望" title="失望"></div>
+                <div class="emotionItem" action-data="text=[酷]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/cool_thumb.gif" alt="酷" title="酷"></div>
+                <div class="emotionItem" action-data="text=[花心]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8c/hsa_thumb.gif" alt="花心" title="花心"></div>
+                <div class="emotionItem" action-data="text=[哼]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/49/hatea_thumb.gif" alt="哼" title="哼"></div>
+                <div class="emotionItem" action-data="text=[鼓掌]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/36/gza_thumb.gif" alt="鼓掌" title="鼓掌"></div>
+                <div class="emotionItem" action-data="text=[晕]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/dizzya_thumb.gif" alt="晕" title="晕"></div>
+                <div class="emotionItem" action-data="text=[悲伤]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/1a/bs_thumb.gif" alt="悲伤" title="悲伤"></div>
+                <div class="emotionItem" action-data="text=[抓狂]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/62/crazya_thumb.gif" alt="抓狂" title="抓狂"></div>
+                <div class="emotionItem" action-data="text=[黑线]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/91/h_thumb.gif" alt="黑线" title="黑线"></div>
+                <div class="emotionItem" action-data="text=[阴险]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6d/yx_thumb.gif" alt="阴险" title="阴险"></div>
+                <div class="emotionItem" action-data="text=[怒骂]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/89/nm_thumb.gif" alt="怒骂" title="怒骂"></div>
+                <div class="emotionItem" action-data="text=[心]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/hearta_thumb.gif" alt="心" title="心"></div>
+                <div class="emotionItem" action-data="text=[伤心]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ea/unheart.gif" alt="伤心" title="伤心"></div>
+                <div class="emotionItem" action-data="text=[猪头]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/58/pig.gif" alt="猪头" title="猪头"></div>
+                <div class="emotionItem" action-data="text=[ok]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d6/ok_thumb.gif" alt="ok" title="ok"></div>
+                <div class="emotionItem" action-data="text=[耶]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d9/ye_thumb.gif" alt="耶" title="耶"></div>
+                <div class="emotionItem" action-data="text=[good]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d8/good_thumb.gif" alt="good" title="good"></div>
+                <div class="emotionItem" action-data="text=[不要]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c7/no_thumb.gif" alt="不要" title="不要"></div>
+                <div class="emotionItem" action-data="text=[赞]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d0/z2_thumb.gif" alt="赞" title="赞"></div>
+                <div class="emotionItem" action-data="text=[来]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/40/come_thumb.gif" alt="来" title="来"></div>
+                <div class="emotionItem" action-data="text=[弱]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d8/sad_thumb.gif" alt="弱" title="弱"></div>
+                <div class="emotionItem" action-data="text=[蜡烛]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/91/lazu_thumb.gif" alt="蜡烛" title="蜡烛"></div>
+                <div class="emotionItem" action-data="text=[钟]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d3/clock_thumb.gif" alt="钟" title="钟"></div>
+                <div class="emotionItem" action-data="text=[话筒]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/1b/m_thumb.gif" alt="话筒" title="话筒"></div>
+                <div class="emotionItem" action-data="text=[蛋糕]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6a/cake.gif" alt="蛋糕" title="蛋糕"></div>
+            </div>
+            <div class="emotionList langxiaohua">
+                <div class='emotionItem'   action-data="text=[转发]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/02/lxhzhuanfa_thumb.gif" alt="转发" title="转发"></div>
+                <div class='emotionItem'   action-data="text=[笑哈哈]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/32/lxhwahaha_thumb.gif" alt="笑哈哈" title="笑哈哈"></div>
+                <div class='emotionItem'   action-data="text=[得意地笑]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d4/lxhdeyidixiao_thumb.gif" alt="得意地笑" title="得意地笑"></div>
+                <div class='emotionItem'   action-data="text=[噢耶]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3b/lxhxixi_thumb.gif" alt="噢耶" title="噢耶"></div>
+                <div class='emotionItem'   action-data="text=[偷乐]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/fa/lxhtouxiao_thumb.gif" alt="偷乐" title="偷乐"></div>
+                <div class='emotionItem'   action-data="text=[泪流满面]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/64/lxhtongku_thumb.gif" alt="泪流满面" title="泪流满面"></div>
+                <div class='emotionItem'   action-data="text=[巨汗]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f6/lxhjuhan_thumb.gif" alt="巨汗" title="巨汗"></div>
+                <div class='emotionItem'   action-data="text=[抠鼻屎]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/48/lxhkoubishi_thumb.gif" alt="抠鼻屎" title="抠鼻屎"></div>
+                <div class='emotionItem'   action-data="text=[求关注]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ac/lxhqiuguanzhu_thumb.gif" alt="求关注" title="求关注"></div>
+                <div class='emotionItem'   action-data="text=[真V5]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3a/lxhv5_thumb.gif" alt="真V5" title="真V5"></div>
+                <div class='emotionItem'   action-data="text=[群体围观]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a8/lxhweiguan_thumb.gif" alt="群体围观" title="群体围观"></div>
+                <div class='emotionItem'   action-data="text=[hold住]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/05/lxhholdzhu_thumb.gif" alt="hold住" title="hold住"></div>
+                <div class='emotionItem'   action-data="text=[羞嗒嗒]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/df/lxhxiudada_thumb.gif" alt="羞嗒嗒" title="羞嗒嗒"></div>
+                <div class='emotionItem'   action-data="text=[非常汗]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/42/lxhpubuhan_thumb.gif" alt="非常汗" title="非常汗"></div>
+                <div class='emotionItem'   action-data="text=[许愿]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/87/lxhxuyuan_thumb.gif" alt="许愿" title="许愿"></div>
+                <div class='emotionItem'   action-data="text=[崩溃]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c7/lxhzhuakuang_thumb.gif" alt="崩溃" title="崩溃"></div>
+                <div class='emotionItem'   action-data="text=[好囧]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/96/lxhhaojiong_thumb.gif" alt="好囧" title="好囧"></div>
+                <div class='emotionItem'   action-data="text=[震惊]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e7/lxhchijing_thumb.gif" alt="震惊" title="震惊"></div>
+                <div class='emotionItem'   action-data="text=[别烦我]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/22/lxhbiefanwo_thumb.gif" alt="别烦我" title="别烦我"></div>
+                <div class='emotionItem'   action-data="text=[不好意思]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b4/lxhbuhaoyisi_thumb.gif" alt="不好意思" title="不好意思"></div>
+                <div class='emotionItem'   action-data="text=[纠结]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/1f/lxhjiujie_thumb.gif" alt="纠结" title="纠结"></div>
+                <div class='emotionItem'   action-data="text=[拍手]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e3/lxhguzhang_thumb.gif" alt="拍手" title="拍手"></div>
+                <div class='emotionItem'   action-data="text=[给劲]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a5/lxhgeili_thumb.gif" alt="给劲" title="给劲"></div>
+                <div class='emotionItem'   action-data="text=[好喜欢]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d6/lxhlike_thumb.gif" alt="好喜欢" title="好喜欢"></div>
+                <div class='emotionItem'   action-data="text=[好爱哦]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/74/lxhainio_thumb.gif" alt="好爱哦" title="好爱哦"></div>
+                <div class='emotionItem'   action-data="text=[路过这儿]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ac/lxhluguo_thumb.gif" alt="路过这儿" title="路过这儿"></div>
+                <div class='emotionItem'   action-data="text=[悲催]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/43/lxhbeicui_thumb.gif" alt="悲催" title="悲催"></div>
+                <div class='emotionItem'   action-data="text=[不想上班]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/6b/lxhbuxiangshangban_thumb.gif" alt="不想上班" title="不想上班"></div>
+                <div class='emotionItem'   action-data="text=[躁狂症]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ca/lxhzaokuangzheng_thumb.gif" alt="躁狂症" title="躁狂症"></div>
+                <div class='emotionItem'   action-data="text=[甩甩手]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a6/lxhshuaishuaishou_thumb.gif" alt="甩甩手" title="甩甩手"></div>
+                <div class='emotionItem'   action-data="text=[瞧瞧]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8b/lxhqiaoqiao_thumb.gif" alt="瞧瞧" title="瞧瞧"></div>
+                <div class='emotionItem'   action-data="text=[同意]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/14/lxhtongyi_thumb.gif" alt="同意" title="同意"></div>
+                <div class='emotionItem'   action-data="text=[喝多了]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/a7/lxhheduole_thumb.gif" alt="喝多了" title="喝多了"></div>
+                <div class='emotionItem'   action-data="text=[啦啦啦啦]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3d/lxhlalalala_thumb.gif" alt="啦啦啦啦" title="啦啦啦啦"></div>
+                <div class='emotionItem'   action-data="text=[杰克逊]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e5/lxhjiekexun_thumb.gif" alt="杰克逊" title="杰克逊"></div>
+                <div class='emotionItem'   action-data="text=[雷锋]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7a/lxhleifeng_thumb.gif" alt="雷锋" title="雷锋"></div>
+                <div class='emotionItem'   action-data="text=[带感]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d2/lxhdaigan_thumb.gif" alt="带感" title="带感"></div>
+                <div class='emotionItem'   action-data="text=[亲一口]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/88/lxhqinyikou_thumb.gif" alt="亲一口" title="亲一口"></div>
+                <div class='emotionItem'   action-data="text=[飞个吻]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8a/lxhblowakiss_thumb.gif" alt="飞个吻" title="飞个吻"></div>
+                <div class='emotionItem'   action-data="text=[加油啊]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/03/lxhjiayou_thumb.gif" alt="加油啊" title="加油啊"></div>
+                <div class='emotionItem'   action-data="text=[七夕]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/9a/lxhqixi_thumb.gif" alt="七夕" title="七夕"></div>
+                <div class='emotionItem'   action-data="text=[困死了]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/00/lxhkunsile_thumb.gif" alt="困死了" title="困死了"></div>
+                <div class='emotionItem'   action-data="text=[有鸭梨]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/7e/lxhyouyali_thumb.gif" alt="有鸭梨" title="有鸭梨"></div>
+                <div class='emotionItem'   action-data="text=[右边亮了]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ae/lxhliangle_thumb.gif" alt="右边亮了" title="右边亮了"></div>
+                <div class='emotionItem'   action-data="text=[撒花]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/b3/lxhfangjiala_thumb.gif" alt="撒花" title="撒花"></div>
+                <div class='emotionItem'   action-data="text=[好棒]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3e/lxhhaobang_thumb.gif" alt="好棒" title="好棒"></div>
+                <div class='emotionItem'   action-data="text=[想一想]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e9/lxhxiangyixiang_thumb.gif" alt="想一想" title="想一想"></div>
+                <div class='emotionItem'   action-data="text=[下班]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f2/lxhxiaban_thumb.gif" alt="下班" title="下班"></div>
+                <div class='emotionItem'   action-data="text=[最右]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/c8/lxhzuiyou_thumb.gif" alt="最右" title="最右"></div>
+                <div class='emotionItem'   action-data="text=[丘比特]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/35/lxhqiubite_thumb.gif" alt="丘比特" title="丘比特"></div>
+                <div class='emotionItem'   action-data="text=[中箭]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/81/lxhzhongjian_thumb.gif" alt="中箭" title="中箭"></div>
+                <div class='emotionItem'   action-data="text=[互相膜拜]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3c/lxhhuxiangmobai_thumb.gif" alt="互相膜拜" title="互相膜拜"></div>
+                <div class='emotionItem'   action-data="text=[膜拜了]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/52/lxhmobai_thumb.gif" alt="膜拜了" title="膜拜了"></div>
+                <div class='emotionItem'   action-data="text=[放电抛媚]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/d0/lxhfangdianpaomei_thumb.gif" alt="放电抛媚" title="放电抛媚"></div>
+                <div class='emotionItem'   action-data="text=[霹雳]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/41/lxhshandian_thumb.gif" alt="霹雳" title="霹雳"></div>
+                <div class='emotionItem'   action-data="text=[被电]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ed/lxhbeidian_thumb.gif" alt="被电" title="被电"></div>
+                <div class='emotionItem'   action-data="text=[拍砖]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3b/lxhpaizhuan_thumb.gif" alt="拍砖" title="拍砖"></div>
+                <div class='emotionItem'   action-data="text=[互相拍砖]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5b/lxhhuxiangpaizhuan_thumb.gif" alt="互相拍砖" title="互相拍砖"></div>
+                <div class='emotionItem'   action-data="text=[采访]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/8b/lxhcaifang_thumb.gif" alt="采访" title="采访"></div>
+                <div class='emotionItem'   action-data="text=[发表言论]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f1/lxhfabiaoyanlun_thumb.gif" alt="发表言论" title="发表言论"></div>
+                <div class='emotionItem'   action-data="text=[江南style]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/67/gangnamstyle_thumb.gif" alt="江南style" title="江南style"></div>
+                <div class='emotionItem'   action-data="text=[牛]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/24/lxhniu_thumb.gif" alt="牛" title="牛"></div>
+                <div class='emotionItem'   action-data="text=[玫瑰]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f6/lxhrose_thumb.gif" alt="玫瑰" title="玫瑰"></div>
+                <div class='emotionItem'   action-data="text=[赞啊]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/00/lxhzan_thumb.gif" alt="赞啊" title="赞啊"></div>
+                <div class='emotionItem'   action-data="text=[推荐]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/e9/lxhtuijian_thumb.gif" alt="推荐" title="推荐"></div>
+                <div class='emotionItem'   action-data="text=[放假啦]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/37/lxhfangjiale_thumb.gif" alt="放假啦" title="放假啦"></div>
+                <div class='emotionItem'   action-data="text=[萌翻]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/99/lxhmengfan_thumb.gif" alt="萌翻" title="萌翻"></div>
+                <div class='emotionItem'   action-data="text=[吃货]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ba/lxhgreedy_thumb.gif" alt="吃货" title="吃货"></div>
+                <div class='emotionItem'   action-data="text=[大南瓜]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/4d/lxhpumpkin_thumb.gif" alt="大南瓜" title="大南瓜"></div>
+                <div class='emotionItem'   action-data="text=[立志青年]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/f9/lxhlizhiqingnian_thumb.gif" alt="立志青年" title="立志青年"></div>
+                <div class='emotionItem'   action-data="text=[得瑟]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/ca/lxhdese_thumb.gif" alt="得瑟" title="得瑟"></div>
+                <div class='emotionItem'   action-data="text=[月儿圆]">
+                    <img src="http://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/3d/lxhyueeryuan_thumb.gif" alt="月儿圆" title="月儿圆"></div>
+            </div>
+            <div class="emotionList baozoumanhua"></div>
+            <div class="emotionList xiaokonglong"></div>
+            <divdiv class="emotionList lengtu"></divdiv>
+        </div>
+        <div class="photo_wrapper">
+            <div class="buttonList_wrapper">
+                <div class="addPics">
+                    <div class="bgGrey">
+                    <i class="addPics"></i>
+                    <span class="text">添加图片/多图</span>
+                    </div>
+                </div>
+                <div class="upload1">
+                    <div class="bgGrey">
+                    <i class="upload1"></i>
+                    <span class="text">Upload</span>
+                    </div>
+                </div>
+                <div class="upload2">
+                    <div class="bgGrey">
+                    <i class="upload2"></i>
+                    <span class="text">Upload</span>
+                    </div>
+                </div>
+                <div class="upload3">
+                    <div class="bgGrey">
+                    <i class="upload3"></i>
+                    <span class="text">Upload</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

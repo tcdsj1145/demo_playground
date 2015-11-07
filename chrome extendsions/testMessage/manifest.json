@@ -1,0 +1,39 @@
+﻿{
+    "name": "Message",
+    "version": "2.0",
+    "description": "double click to fanyi words ",
+    "minimum_chrome_version": "17",
+    "permissions": ["http://*/*","https://*/*","tabs","bookmarks", "contextMenus"],
+    "content_scripts" : [
+        {
+            "matches" : ["http://*/*","https://*/*"],
+            "js" : ["jquery-1.9.1.js","notifIt.js","appCss.js","words.js"],
+            "css":["zzsc.css"]
+            //"js" : ["appCss.js","words.js"]
+        }
+        // ,
+        // {
+        //     "matches":["https://developer.chrome.com/*"],
+        //     "js":["page2.js"]
+        // }
+    ],
+    "background" : {
+        // "scripts": ["jquery-1.9.1.js","bg.js"]
+        "page":"background.html"
+    },
+    "icons":{
+        "16": "images/128.png",
+        "48": "images/128.png",
+        "128": "images/128.png"
+     },
+    "browser_action":{
+        "default_title":"Message",
+        "default_icon": "images/128.png",
+        "default_popup":"popup.html"
+    },
+    "web_accessible_resources": [
+        "images/*.png",
+        "zzsc.css"
+    ],
+    "manifest_version": 2
+}

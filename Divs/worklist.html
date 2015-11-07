@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Untitled Document</title>
+        <style type="text/css">
+        a{
+         text-decoration: none;
+
+        }
+        .body_content{
+        	margin: 10px;
+        	padding: 10px;
+        	background-color: grey;
+        }
+
+        .list_wrapper{
+        	background-color: white;
+        	padding: 5px;
+        }
+        .list{
+
+        }
+        .list:after{
+        	clear: both;
+        	content: ',';
+        	display: block;
+        	visibility: none;
+        	height: 0px;
+        }
+        .item_wrapper{
+        	float: left;
+        }
+        .item{
+        	width: 300px;
+        	height: 200px;
+        	margin: 5px;
+        	border-radius: 5px;
+        	overflow: hidden;
+            /*cursor: pointer;*/
+            -moz-box-shadow:2px 1px 5px #333333; -webkit-box-shadow:2px 1px 5px #333333; box-shadow:2px 1px 5px #333333;
+        }
+
+        .item_title{
+        	background: #C1CEE9;
+        	height: 30px;
+        	line-height: 30px;
+        	text-align: center;
+        }
+        span.title{
+        	
+        }
+        .content{
+        	position: relative;
+        }
+        .pic_place{
+        	height: 170px;
+        	overflow: hidden;
+        }
+        .desc{
+        	position: absolute;
+        	bottom: 0px;
+        	width: 100%;
+        	background-color: rgba(0,0,0,0.5);
+            padding:10px 20px 10px 20px; 
+            transition: opacity 0.5s ease-out 0s;
+            opacity: 0;
+        }
+        .item:hover .desc{
+            transition: opacity 0.5s ease-out 0s;
+            opacity: 1;
+        }
+        .desc span{
+            color: white;
+        }
+
+        </style>
+    </head>
+    
+    <body>
+    	<div class='body_content'>
+    		<div class='list_wrapper'>
+    			<div class='list'>
+    				<div class='item_wrapper'>
+    					<div class='item'>
+    						<div class='item_title'>
+    							<a href="http://lumixraku.github.io/repo/DivTest/Hover/MeituanHover.html">
+                                    <span class='title'>团购列表</span>
+                                </a>
+    						</div>
+    						<div class='content'>
+    							<div class='pic_place'>
+    								<img src="http://lumixraku.github.io/repo/DivTest/Hover/ScreenShot.png"/>
+    							</div>
+    							<div class='desc'>
+    								<span>模仿美团团购列表</span>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    				<div class='item_wrapper'>
+                        <div class='item'>
+                            <div class='item_title'>
+                                <a href="http://lumixraku.github.io/repo/DivTest/smile/smile.html">
+                                    <span class='title'>css3 smile</span>
+                                </a>
+                            </div>
+                            <div class='content'>
+                                <div class='pic_place'>
+                                    <img src="http://lumixraku.github.io/repo/DivTest/smile/ScreenShot.png"/>
+                                </div>
+                                <div class='desc'>
+                                    <span>CSS3和JS实现的笑脸</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='item_wrapper'>
+                        <div class='item'>
+                            <div class='item_title'>
+                                <a href="http://lumixraku.github.io/repo/DivTest/VNav/VNav.html">
+                                    <span class='title'>CSS3 Navigation</span>
+                                </a>
+                            </div>
+                            <div class='content'>
+                                <div class='pic_place'>
+                                    <img src="http://lumixraku.github.io/repo/DivTest/VNav/ScreenShot.png"/>
+                                </div>
+                                <div class='desc'>
+                                    <span>CSS3动画效果的导航</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='item_wrapper'>
+                        <div class='item'>
+                            <div class='item_title'>
+                                <a href="http://lumixraku.github.io/repo/DivTest/weiboInput/weibo.html">
+                                    <span class='title'>Weibo input</span>
+                                </a>
+                            </div>
+                            <div class='content'>
+                                <div class='pic_place'>
+                                    <img src="weiboInput/weiboInput.png"/>
+                                </div>
+                                <div class='desc'>
+                                    <span>模仿微博输入框</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+    			</div>
+    		</div>
+    	</div>
+    </body>
+</html>

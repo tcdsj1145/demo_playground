@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    #textarea{
+        height: 300px;
+        border: 1px solid black;
+    }
+    </style>
+</head>
+<div id="textarea" contentEditable="true">
+
+</div>
+<body>
+    <script>
+    document.onpaste = function(event) {
+        var items = (event.clipboardData || event.originalEvent.clipboardData).items;
+        console.log(JSON.stringify(items)); // will give you the mime types
+        for (index in items) {
+            var item = items[index];
+            if (item.type && item.type.indexOf("image") != -1 ) {
+                var img = insertIMG();
+                var blob = item.getAsFile();
+                var time = new Date();
+                var reader = new FileReader();
+                var formData = new FormData();
+                var loadPromise ;
+                blob.originalFilename = 'blob' + time + '.png';
+                blob.lastModifiedDate = time;
+
+                reader.onload = function(event) {
+                    console.log(event.target.result);
+                    img.src = event.target.result;
+
+                }; // data url!
+
+                reader.readAsDataURL(blob);
+
+                //upload============================
+                formData.append('files', blob);
+                loadPromise = uploading(formData);
+                loadPromise.then(function(data){
+                    img.src = data.files[0].fileName;
+                    console.log('success');
+                });
+
+            }
+        }
+    }
+
+    function uploading(formData) {
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            var data = {};
+            // 为确保正常执行，必须在调用open()方法之前添加onprogress事件处理程序
+            xhr.onloadstart = function(e) {
+                console.log(e.lengthComputable);
+            }
+            xhr.open("post", "/upload");
+            xhr.onload = function(e) {
+                console.log('completed' + JSON.stringify(e));
+                try{
+                    data = JSON.parse(xhr.responseText);
+                }catch(e){
+
+                }
+                resolve(data);
+            }
+            xhr.send(formData);
+        });
+    }
+
+    function insertIMG(){
+        var textarea = document.querySelector('#textarea');
+        var img = document.createElement('img');
+        img.className = 'img last-img';
+        img.height = 100;
+        img.width = 100;
+        textarea.appendChild(img);
+        return img;
+    }
+    </script>
+</body>
+
+</html>

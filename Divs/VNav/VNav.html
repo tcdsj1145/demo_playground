@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js'></script>
+    <script type="text/javascript" src='VNav.js'></script>
+    <style type="text/css">
+            .VNav{
+                width: 200px;
+                /*overflow: hidden;*/
+                /*border: 1px solid black;*/
+            }
+            .item{
+                position: relative;
+                
+            }
+            .menu{
+                width: 200px;
+                overflow: hidden;
+            } 
+            .menuDiv{
+                position: relative;
+                z-index: 2;
+            }   
+            .subMenuDiv{
+                position: absolute;
+                display: none;
+                left: 0px;
+                top: 0px;
+                z-index: 1; /*z-index设为负值表示隐藏了*/
+                width: 200px;
+                overflow: hidden;
+                /*height: */
+            }                  
+            .menuItemWrapper{
+                width: 400px;
+                -webkit-transition: -webkit-transform 232ms; 
+                transition:  transform 232ms;
+            }
+            .menuItemWrapper:after{
+                content: '.';
+                clear: both;
+                display: block;
+                height: 0px;
+                visibility: hidden;
+
+            }
+            .menuItemWrapper:hover{
+                /*margin-left:-200px;*/
+                -webkit-transform: translate(-200px, 0);
+
+            }
+            .menuItem{
+                width: 200px;
+                height: 50px;
+                float: left;
+                color: white;
+            }
+
+            .menuItem.first{
+                background-color: black;
+            }
+            .menuItem.second{
+                background-color: #f42;
+            }
+            .itemContent{
+                padding: 10px 10px 10px 10px;
+                line-height: 30px;
+            }
+            .verticalMenuDiv{
+
+            
+            }
+
+            .verticalMenuDiv:after{
+                clear: both;
+                content: '.';
+                visibility: hidden;
+                height: 0px;
+                display: block;
+            }
+            .vMenu{
+                width: 50px;
+                height: 50px;
+                float: left;
+                overflow: hidden;
+            }
+            .v_menuItemWrapper{    
+                -webkit-transition: -webkit-transform 232ms; 
+                transition:  transform 232ms;   
+            }
+            .v_menuItem{
+                /*width: 50px;*/
+                height: 50px;
+                /*padding-left: 17px;
+                padding-right: 17px;*/
+                color: white;
+            }
+            .v_menuItemWrapper:hover{
+                -webkit-transform: translate(0, -50px); /*第一个值是x轴 后面是y轴*/
+            }            
+            .v_menuItem.first{
+                background-color: black;
+            }
+            .v_menuItem.second{
+                background-color: #f42;
+            }
+            .v_menuItem .vmIcon{
+                display: block;
+                height: 50px;
+                background-position: center center;  /*使小图居中*/              
+            }
+            .v_menuItem .vmIcon.icon1{
+                background-image: url(http://www.creativetier.com/products/modern-menu-3/modern-menu/images/theme1/facebook.png);
+                background-repeat: no-repeat;
+            }
+
+        </style>
+</head>
+
+<body>
+    <div class='VNav'>
+        <div class='itemList'>
+            <div class='item'>
+                <div class='menuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='subMenuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>sss1</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                        
+                </div>
+            </div>
+            <div class='item'>
+                <div class='menuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='subMenuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>sss1</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                        
+                </div>
+            </div>
+            <div class='item'>
+                <div class='menuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='subMenuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>sss1</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss1</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>    
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>ss3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                        
+                </div>
+            </div>
+            <div class='item'>
+                <div class='menuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='item'>
+                <div class='menuDiv'>
+                    <div class='menu'>
+                        <div class='menuItemWrapper'>
+                            <div class='menuItem first'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                            <div class='menuItem second'>
+                                <div class='itemContent'>
+                                    <span>MENU</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='item'>
+                <div class='verticalMenuDiv'>
+                    <div class='vMenu'>
+                        <div class='v_menuItemWrapper'>
+                            <div class='v_menuItem first'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                            <div class='v_menuItem second'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='vMenu'>
+                        <div class='v_menuItemWrapper'>
+                            <div class='v_menuItem first'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                            <div class='v_menuItem second'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='vMenu'>
+                        <div class='v_menuItemWrapper'>
+                            <div class='v_menuItem first'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                            <div class='v_menuItem second'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='vMenu'>
+                        <div class='v_menuItemWrapper'>
+                            <div class='v_menuItem first'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                            <div class='v_menuItem second'>
+                                <span class='vmIcon icon1'></span>
+                            </div>
+                        </div>
+                    </div>                                                                            
+                </div>
+            </div>                                            
+        </div>
+</body>
+    </html>

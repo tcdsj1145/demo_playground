@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  .container {
+    width: 960px;
+    margin: 0 auto;
+    color: #fff;
+  }
+
+  #header .container {
+    background-color: #f36;
+    min-height: 50px;
+    padding: 20px;
+    margin-bottom: 10px;
+  }
+  /*#page .container {
+        margin-bottom: 10px;
+        overflow: hidden;
+        display: flex;
+    }
+
+    .aside {
+        width: 220px;
+        float: left;
+        margin-right: 20px;
+        padding: 5px 15px;
+        border: 1px solid black;
+    }
+
+    .content {
+        flex: 1;
+        float: left;
+        padding: 5px 15px;
+        height: 500px;
+        border: 1px solid black;
+    }*/
+
+  #page .container {
+    position: relative;
+  }
+
+  #page .container:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .aside {
+    width: 220px;
+    float: left;
+    margin-right: 20px;
+    padding: 5px 15px;
+    min-height: 200px;
+  }
+
+  .content {
+    width: 720px;
+    float: left;
+    min-height: 400px;
+    padding: 5px 15px;
+  }
+
+  .aside:before,
+  .content:before {
+    content: "";
+    position: absolute;
+    /*也可以通过这样的方式设置absolute块的高度
+    /*  top:0;
+    /* bottom:0;*/
+    height: 100%;
+    z-index: -1;
+  }
+
+  .aside:before {
+    left: 0;
+    width: 220px;
+    background: #f63;
+  }
+
+  .content:before {
+    width: 720px;
+    background: #c6f;
+    right: 0;
+  }
+
+  #footer .container {
+    background-color: #f36;
+    padding: 20px;
+  }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div id="header">
+    <div class="container">Header ...</div>
+  </div>
+  <div id="page">
+    <div class="container">
+      <aside class="aside">Sidebar ...</aside>
+      <article class="content">Main content ...</article>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">Footer ....</div>
+  </div>
+</body>
+
+</html>

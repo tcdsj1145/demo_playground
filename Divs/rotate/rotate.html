@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .wrapper {
+        background: lightpink;
+        /*overflow: hidden;*/
+        width: 200px;
+        border: 1px solid transparent;
+    }
+
+    .wrapper p {
+        margin: 10px;
+        background-color: wheat;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <p>1111111111</p>
+        <p>2222222222</p>
+        <p>3333333333</p>
+        <p>4444444444</p>
+    </div>
+    <script>
+    var wrapper = document.querySelector('.wrapper');
+    var ps = [].slice.call(document.querySelectorAll('.wrapper p'));
+    //传统做法
+    ps.reverse();
+    ps.forEach(function(i){
+        wrapper.appendChild(i);
+    });
+    //再传统一点
+    var childs = document.querySelectorAll('.wrapper p');
+    for (var i = childs.length-1; i >= 0; i--) {
+        wrapper.appendChild(childs[i]);
+    }
+    //话说下面的其实是一种投机的做法  实际上元素的相对位置并没有真正的改变
+    var promise = new Promise(function(resolve, reject) {
+        var timer = 1;
+        var id ;
+        function loop(elapsedTime) {
+            rotate(wrapper, timer++);
+            id = requestAnimationFrame(loop);
+            if (timer > 180) {
+                cancelAnimationFrame(id);
+                resolve();
+            }
+        }
+        requestAnimationFrame(loop);
+    })
+
+    promise.then(function(msg){
+        var timer =1;
+        var id;
+        function loop(){
+            timer++;
+            ps.forEach(function(i) {
+                rotate(i, timer);
+            });
+            id = requestAnimationFrame(loop);
+            if (timer > 180) {
+                cancelAnimationFrame(id);
+            }
+        }
+        requestAnimationFrame(loop);
+    })
+
+    function rotate(ele, time) {
+        ele.style.cssText = 'transform: rotate(' + time + 'deg)';
+    }
+    </script>
+</body>
+</html

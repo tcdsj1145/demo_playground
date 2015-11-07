@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var iframe = document.createElement('iframe');
+  iframe.id = 'cacheFromServerSuite';
+  document.body.appendChild(iframe);
+  iframe.onload = function() {
+    // iframe.onload = function() {
+    console.log('loaded');
+    // };
+    // document.getElementById('cacheFromServerSuite').contentWindow.window.location.reload();
+  };
+  iframe.src = 'localhost:8000/304page?t=' + Math.random()* 1e16;
+  </script>
+</body>
+
+</html>

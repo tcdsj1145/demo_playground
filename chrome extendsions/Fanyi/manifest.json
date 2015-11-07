@@ -1,0 +1,30 @@
+{
+    "name": "fanyi",
+    "version": "2.0",
+    "description": "double click to fanyi words ",
+    "minimum_chrome_version": "17",
+    "permissions": ["http://*/*", "https://*/*", "contextMenus"],
+    "content_scripts": [{
+        "matches": ["http://*/*", "https://*/*"],
+        "js": ["jquery-1.9.1.js", "notifIt.js", "content.js"],
+        "css": ["zzsc.css"]
+    }],
+    "background": {
+        "scripts": ["jquery-1.9.1.js", "bg.js"]
+    },
+    "icons": {
+        "16": "images/128.png",
+        "48": "images/128.png",
+        "128": "images/128.png"
+    },
+    "browser_action": {
+        "default_title": "fanyiExtension",
+        "default_icon": "images/128.png"
+    },
+    "web_accessible_resources": [
+        "images/*.png",
+        "zzsc.css"
+    ],
+    "manifest_version": 2
+}
+

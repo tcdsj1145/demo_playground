@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="description" content="两列布局 和 三列布局  BFC">
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <link rel="stylesheet" href="BFC.css">
+</head>
+
+<body>
+    <div class="outer">
+        <div class="inner">XX</div>
+        <div class="inner">XX</div>
+        <div class="pd">
+            <div class="inner">XX</div>
+        </div>
+    </div>
+    <p>默认没有触发BFC时 可以看到父元素即使没有设置 padding main的文字xxx也在右边 没有重合</p>
+    <div class="lay">
+        <div class="left">hhh fhhhs sddddddd</div>
+        xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx
+    </div>
+    <p>但是div的话 不设置padding margin div是会重叠的 只是里面的文字不会</p>
+    <div class="lay">
+        <div class="left">hhh fhhhs sddddddd</div>
+        <div style="background:wheat;">
+            xxx xxx xxx xxx xxx xxx xx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx
+        </div>
+    </div>
+    <p>触发BFC以实现左右两栏布局</p>
+    <p>指的是main部分(自适应部分)触发BFC[overflow] 父容器没有改动</p>
+    <p>浮动元素要先写</p>
+    <div class="two-col">
+        <div class="left">hhh fhhhs sddddddd</div>
+        <div class="main"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+    </div>
+    <div class="two-col">
+        <div class="right">hhh fhhhs sddddddd</div>
+        <div class="main"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+    </div>
+
+    <p>使用margin来实现两列布局  右边内容比较复杂出现clear:both情况就会掉下去</p>
+    <div class="two-col2">
+        <div class="left">hhh fhhhs sddddddd</div>
+        <div class="main"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+    </div>
+    <p>使用负margin左右布局 左边自适应</p>
+    <p>比上面多了一层DIV</p>
+    <div class="two-col3">
+        <div class="right">hhh fhhhs sddd</div>
+        <div class="main">
+            <div class="content"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+        </div>
+    </div>
+    <p>建议使用这一种  单飞翼哈哈</p>
+    <div class="two-col4">
+        <div class="main">
+            <div class="content"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx   xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+        </div>
+        <div class="right">hhh fhhhs sddd</div>
+    </div>
+    <p>使用负margin左右布局 右边自适应</p>
+    <p>main本身是左浮动的[加上main宽度是100%]  之前不能再摆左浮动</p>
+    <div class="two-col5">
+        <div class="left">hhh fhhhs sddd</div>
+        <div class="main">
+            <div class="content"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx   xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+        </div>
+    </div>
+    <div class="two-col6">
+        <div class="main">
+            <div class="content"> xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx   xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx </div>
+        </div>
+        <div class="left">hhh fhhhs sddd</div>
+    </div>
+    <div>
+        <p>使用clear margin/padding 的方式来左中右三栏布局</p>
+        <div class="float-layout">
+            <div class="left">uuuu</div>
+            xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd
+            <div class="right">bbbbb</div>
+        </div>
+        <p>这样内容直接放在父容器是不行的 造成右边布局失败</p>
+        <p>.</p>
+        <p>使用margin时 元素的摆放顺序也是有要求的 浮动的元素要先放</p>
+        <div class="float-layout">
+            <div class="left">llll llll</div>
+            <div class="right">rrrr rrrr</div>
+            <div class="content">xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd</div>
+        </div>
+        <p>使用负margin三列布局  对DIV顺序有要求</p>
+        <p>自适应的main如果是left浮动  前面不应该再有left浮动元素</p>
+        <div class="float-layout3">
+            <div class="main">
+                <div class="content">xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd</div>
+            </div>
+            <div class="left">LLLL lll</div>
+            <div class="right">sdsds sd</div>
+        </div>
+        <p>在父容器使用padding 双飞翼  对DIV顺序有要求</p>
+        <div class="float-layout4">
+            <div class="content">xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd xcxcxgd</div>
+            <div class="left">LLLL lll</div>
+            <div class="right">RRRR rrrr</div>
+        </div>
+    </div>
+    <p>.</p>
+    <p>.</p>
+    <p>使用calc来计算main</p>
+    <div class="laycalc">
+        <div class="left"></div>
+        <div class="main">xcxxc
+            <p>xc</p>
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<script type="text/template" id="temp">
+    <p><%=obj.username%></p>
+        <%if(obj.gender==1){%>
+            <p><%=obj.gender%></p>
+        <%}%>
+    <p><%=obj.age%></p>
+</script>
+<script>
+var data = {
+    username: '\<script\>Muhha\<\/script\>',
+    age: 12,
+    gender: 1
+}
+var escape = function(str){
+    str = '' + str;
+    str= str.replace(/&(?!\w+)/g, '&amp;')
+       .replace(/</g, '&lt;')
+       .replace(/>/g, '&gt;')
+       .replace(/"/g, '&quot;')
+       .replace(/'/g, '&#039'); // '&#039' 就是单引号 &apos; 这样写是因为IE不支持 &apos;
+    return str;
+}
+var compile = function(str){
+    tpl = str
+    .replace(/\n/g, '')
+    .replace(/\s/g, '')
+    //替换变量
+    .replace(/<%=([\s\S]+?)%>/gi,function(match, p1){
+        return [
+        '\'+',
+        'escape(' + p1 + ')',
+        '+\''
+        ].join(''); // <%=obj.username%> 变成 ' + obj.username  + '
+    })
+    //替换执行语句
+    .replace(/<%([\s\S]+?)%>/g, function(match, p1){
+        return [
+        '\';',
+        '\n',
+        p1,
+        '\n',
+        'tpl+=\''
+        ].join('');  // if(a){ 变成 ';\n   if(a){  tpl+= '
+    })
+
+    tpl = '\'' +tpl + '\'';
+    //此时tpl
+    // '<p>'+obj.username+'</p>';
+    // if(obj.gender==1){
+    // tpl+='<p>'+obj.gender+'</p>';
+    // }
+    // tpl+='<p>'+obj.age+'</p>'
+
+    tpl = 'var tpl="";\ntpl+=' + tpl;
+    tpl = tpl + ';\nreturn tpl;';
+    return new Function('obj, escape',tpl);
+    //得到
+    //(function(obj, escape
+    // /**/) {
+    // var tpl="";
+    // tpl+='<p>'+escape(obj.username)+'</p>';
+    // if(obj.gender==1){
+    // tpl+='<p>'+escape(obj.gender)+'</p>';
+    // }
+    // tpl+='<p>'+escape(obj.age)+'</p>';
+    // return tpl;
+    // })
+}
+var compiled = compile(document.querySelector('#temp').text);  //script标签有text属性  但是其他标签只能用textContent  innerText
+var rs = compiled(data, escape); // <p>&lt;script&gt;Muhha&lt;/script&gt;</p><p>1</p><p>12</p>
+
+
+
+
+</script>
+</body>
+</html>

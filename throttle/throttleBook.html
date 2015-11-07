@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script src="jquery.js"></script>
+<script>
+
+
+var resizeTimer=null;
+$(window).on('resize',function(){
+       if(resizeTimer){
+           clearTimeout(resizeTimer)
+       }
+       resizeTimer=setTimeout(function(){
+           console.log("window resize");
+       },500);
+   }
+);
+</script>
+</body>
+</html>

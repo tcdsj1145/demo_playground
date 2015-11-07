@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>JavaScript 图片3D展示空间</title>
+<script src="CJL.0.1.min.js"></script>
+<script src="Image3D.js"></script>
+</head>
+<body>
+<style>
+#idContainer{ width:600px; height:300px; border:1px solid #000;}
+</style>
+<div id="idContainer"> </div>
+<select id="idMode">
+	<option value="">默认模式</option>
+	<option value="css3">css3</option>
+	<option value="zoom">zoom</option>
+	<option value="base">base</option>
+</select>
+<select id="idRadian">
+	<option value="">不旋转</option>
+	<option value="30">30度</option>
+	<option value="-30">-30度</option>
+</select>
+<input id="idEdit" type="button" value="换图" />
+<input id="idFixed" type="button" value="远点固定" />
+<input id="idReset" type="button" value="重置" />
+<div id="t"></div>
+<script>
+(function(){
+
+var imgs, i3D, mode, support, src = "http://images.cnblogs.com/cnblogs_com/cloudgamer/169629/o_n1.jpg";
+
+function create(){
+	support = true;
+	var options = {
+		mzMin: -2000, mzMax: 2000,
+		mrMinX: -300, mrMaxX: 300, mrMinY: -150, mrMaxY: 150,
+		r: $$("idRadian").value * Math.PI/180,
+		onError: function(err){ alert(err); support = false; }
+	};
+	mode && (options.mode = mode);
+	i3D && i3D.dispose();
+	i3D = new Image3D( "idContainer", options );
+	imgs = [];
+	if ( support ) {
+		for(var z = -1000; z < 2000; z+=100){
+			add(z,-300,300);	add(z,0,300);	add(z,300,300);
+			add(z,-300,150);	add(z,0,150);	add(z,300,150);
+			add(z,-300,0);		add(z,0,0);		add(z,300,0);
+		}
+	}
+}
+function add(z,x,y){ imgs.push(i3D.add(src,{z:z,x:x,y:y})); }
+
+$$("idMode").onchange = function(){
+	mode = this.value; create();
+}
+
+$$("idRadian").onchange = function(){
+	i3D._r = this.value * Math.PI/180; i3D.show();
+}
+
+$$("idEdit").onclick = function(){
+	src = src == "http://images.cnblogs.com/cnblogs_com/cloudgamer/169629/o_n1.jpg" ? "http://images.cnblogs.com/cnblogs_com/cloudgamer/169629/o_loading.gif" : "http://images.cnblogs.com/cnblogs_com/cloudgamer/169629/o_n1.jpg";
+	$$A.forEach(imgs,function(img){ img.src = src; img.show(); });
+}
+
+$$("idFixed").onclick = function(){
+	if(!i3D.fixedFar){
+		i3D.fixedFar = true;	this.value = "近点固定";
+	}else{
+		i3D.fixedFar = false;	this.value = "远点固定";
+	}
+	i3D.show();
+}
+
+$$("idReset").onclick = function(){ i3D.reset(); }
+
+create();
+
+})()
+</script>
+<br><br>
+<style>
+#idContainer2{ width:600px; height:500px;background: #111;}
+</style>
+3DRoom
+<div id="idContainer2"> </div>
+<script>
+(function(){
+
+var i3D = new Image3D( "idContainer2", {
+	mode: "base", fixedFar: true, getScale: function(z){ return 1/(1+z/300); }
+});
+
+add("Bush2.gif",{z:-200,x:-300});
+add("Bush2.gif",{z:-200,x:300});
+add("Bush2.gif",{z:-600,x:-300});
+add("Bush2.gif",{z:-600,x:300});
+add("Bush2.gif",{z:-1000,x:-300});
+add("Bush2.gif",{z:-1000,x:300});
+add("bim.jpg",{z:1020,scaleW:9,scaleH:.5,y:20});
+add("r13.gif",{z:900});
+add("r46a.gif",{z:800,x:900,y:220});
+add("r8.gif",{z:800,x:-600});
+add("r22.gif",{z:600});
+add("r24.gif",{z:400});
+add("r62.gif",{z:800,y:700});
+add("r5.gif",{z:600,x:-1200,y:300});
+add("r6.gif",{z:600,x:1200,y:300});
+add("r54.gif",{z:100});
+add("r38.gif",{z:350,x:-900});
+add("r50a.gif",{z:300,x:-550});
+add("r41.gif",{z:1000,x:600,y:200});
+add("r48.gif",{z:300,x:900});
+add("r58b.gif",{z:740,x:900,y:-20});
+add("r58b.gif",{z:250,x:900,y:-20});
+add("r63.gif",{z:300,x:-1000});
+add("r63.gif",{z:320,x:650});
+add("r63.gif",{z:980,x:1000});
+
+function add(src,options){
+	var img = i3D.add( "http://images.cnblogs.com/cnblogs_com/cloudgamer/262206/o_"+src, options ).img;
+	img.onclick = function(){
+		i3D._z = -options.z | 0;
+		i3D._x = -options.x | 0;
+		i3D._y = options.y | 0;
+		i3D.show();
+	}
+	img.onmouseover = function(){ this.style.margin = "-1px"; this.style.border = "1px solid #666"; }
+	img.onmouseout = function(){ this.style.margin = "0"; this.style.border = "0"; }
+}
+
+})()
+</script>
+</body>
+</html>

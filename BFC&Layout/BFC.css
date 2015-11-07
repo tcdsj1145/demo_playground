@@ -1,0 +1,301 @@
+li,
+ul {
+    margin: 0;
+}
+
+.outer {
+    /*   父子元素margin重叠
+    解决办法有三个 父元素设置padding 或者 border
+    再或者父元素创建BFC: float或者overflow或fiexed absolute */
+    /* border: 1px solid black; */
+    /* padding: 1px; */
+
+    overflow: hidden;
+    /* position: absolute;
+    width:100%; */
+
+    background: #000;
+}
+
+.inner {
+    background: red;
+    margin: 20px;
+}
+/*在同一个BFC里面 垂直方向的margin是会重叠的*/
+/*解决方法就是 包裹一个层padding 或者 border 即要在子元素之间创造间隔*/
+
+.pd {
+    /* padding: 1px;  */
+
+    border: 1px solid black;
+}
+/*左右两栏布局*********************/
+
+.two-col {
+    background-color: pink;
+}
+
+.two-col .left {
+    float: left;
+    width: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.two-col .right {
+    float: right;
+    width: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.two-col .main {
+    box-sizing: border-box;
+    border: 1px solid black;
+    background: wheat;
+    overflow: hidden;
+    /*没有这个就会发生重叠*/
+    /* display: flex; */
+    /*触发BFC 的新方式*/
+}
+/*margin左右布局*/
+.two-col2 .left{
+    float: left;
+    width: 50px;
+    background: pink;
+}
+.two-col2 .main{
+    margin-left: 50px;
+    background-color: wheat;
+    /*clear: both;*/ /*这种的缺点就是clear both 会乱布局*/
+}
+.two-col2:after{
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+/*负margin左右布局*/
+.two-col3:after{
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+.two-col3 .right{
+    float: right;
+    position: relative;
+    width: 50px;
+    margin-left: -50px;
+    background: pink;
+}
+.two-col3 .main{
+    float: left;
+    width: 100%;
+}
+.two-col3 .main .content{
+    margin-right: 50px;
+    background: wheat;
+    clear: both; /*即使clear both也不会乱*/
+}
+/*负margin左右布局*/
+.two-col4:after{
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+.two-col4 .right{
+    float: right;
+    position: relative;
+    width: 50px;
+    margin-right: -100%; /*这里浮动的计算是需要根据实际元素顺序来计算的*/
+    background: pink;
+}
+.two-col4 .main{
+    float: right;
+    width: 100%;
+}
+.two-col4 .main .content{
+    margin-right: 50px;
+    background: wheat;
+    clear: both; /*即使clear both也不会乱*/
+}
+/*负margin左右布局*/
+.two-col5:after{
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+.two-col5 .left{
+    float: left;
+    position: relative;
+    width: 50px;
+    background: pink;
+}
+.two-col5 .main{
+    float: left; /*因为这次left元素在前面  所以这里float left right都可以*/
+    width: 100%;
+    margin-left: -50px;
+}
+.two-col5 .main .content{
+    margin-left: 50px;
+    background: wheat;
+    clear: both; /*即使clear both也不会乱*/
+}
+.two-col6:after{
+    content: '.';
+    clear: both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+.two-col6 .left{
+    float: left;
+    position: relative;
+    width: 50px;
+    margin-left: -100%;
+    background: pink;
+}
+.two-col6 .main{
+    float: left;
+    width: 100%;
+}
+.two-col6 .main .content{
+    margin-left: 50px;
+    background: wheat;
+    clear: both; /*即使clear both也不会乱*/
+}
+
+
+
+.float-layout {
+    background-color: pink;
+}
+.float-layout:after{
+    content: '.';
+    clear: both;
+    visibility:hidden;
+    display: block;
+    height: 0
+}
+
+.float-layout .left {
+    float: left;
+    width: 50px;
+
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.float-layout .right {
+    float: right;
+    width: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.float-layout .content {
+    margin-left: 50px;
+    margin-right: 50px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    /*clear:both;*/   /*用了这个属性会导致布局混乱*/
+}
+/*负margin  三列*/
+.float-layout3{
+    border: 1px solid black;
+}
+.float-layout3:after{
+    content: '.';
+    clear:both;
+    visibility: hidden;
+    display: block;
+    height: 0
+}
+.float-layout3 .main{
+    width: 100%;
+    float: left;
+}
+.float-layout3 .main .content{
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: pink;
+    clear: both; /*使用负margin 多加一层  clear both无影响*/
+}
+.float-layout3 .left{
+    float: left;
+    width: 50px;
+    margin-left: -100%;
+    background-color: wheat;
+}
+.float-layout3 .right{
+    float: right;/*right也OK  反正已经是最后一个元素了*/
+    width: 50px;
+    margin-left: -50px;
+    background-color: wheat;
+}
+
+
+/*使用padding  也就是双飞翼*/
+.float-layout4 {
+    padding: 0 50px;
+}
+
+.float-layout4 .left {
+    position: relative;
+    float: left;
+    left: -50px;
+    margin-left: -100%;
+    background-color: wheat;
+    width: 50px;
+    /*使用负margin是为了让它和content能够在同一行  否则就会挤到下一行去*/
+}
+
+.float-layout4 .right {
+    position: relative;
+    float: right;/*left 也OK 反正也是最后一个元素了*/
+    right: -50px;
+    margin-left: -50px;
+    background-color: wheat;
+    width: 50px;
+    /*使用负margin是为了让它和content能够在同一行*/
+}
+
+.float-layout4 .content {
+    margin: 0;
+    background: pink;
+    float: left;
+    clear: both; /*也是Ok的*/
+}
+
+.laycalc .left {
+    float: left;
+    width: 50px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.laycalc .right {
+    float: right;
+    width: 50px;
+    height: 30px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+.laycalc .main {
+    overflow: hidden;
+    float: left;
+    width: calc(100% - 100px);
+    height: 100px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+function closure(){
+    var a = 1;
+    return function(){
+        return ++a;
+    }
+}
+fun = closure();
+console.log(fun());//2
+console.log(fun());//3
+console.log(fun());//4
+
+</script>
+</body>
+</html>

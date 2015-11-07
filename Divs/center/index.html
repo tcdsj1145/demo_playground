@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .parent1 {
+        height: 100px;
+        line-height: 100px;
+    }
+
+    .child1 {
+    }
+    .parent2{
+        display: table;
+        height: 100px;
+        width: 100%; /*table需要手动指定宽度*/
+        background-color: pink;
+    }
+    .child2{
+        display: table-cell;
+        vertical-align: middle;
+    }
+    .parent3{
+        height: 100px;
+        background-color: pink;
+
+    }
+    .parent3:after{
+        content: " ";
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+    }
+    .child3{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .parent4{
+        position: relative;
+        height: 100px;
+        background-color: pink;
+    }
+    .child4{
+        position: absolute;
+        height: 40px;
+        background-color: wheat;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .parent5{
+        position: relative;
+        height: 100px;
+        background-color: pink;
+    }
+    .child5{
+        position: absolute;
+        height: 40px;
+        background-color: wheat;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 40px;
+        margin: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>行内元素</h1>
+    单行文字垂直居中
+    <div class="parent1">
+        <span class="child1">Text here</span>XXXX
+    </div>
+    多行文字垂直居中 table-cell
+    <div class="parent2">
+        <span class="child2">Text <br>here</span>
+    </div>
+    多行文字居中 inline-block
+    伪元素和待居中元素都需要vertical-align：middle
+    伪元素的middle是改变了所在行的基线
+    而默认元素是baseline和基线对齐
+    所以待居中元素也要有middle
+http://blog.sina.com.cn/s/blog_51048da701018490.html
+    <div class="parent3">
+        <span class="child3">Text <br>here</span>
+    </div>
+    <h1>块元素</h1>
+    <div class="parent4">
+        <div class="child4">Text <br>here</div>
+    </div>
+    不用css3
+    <div class="parent5">
+        <div class="child5">Text <br>here</div>
+    </div>
+</body>
+
+</html>

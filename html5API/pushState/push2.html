@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <a href="http://localhost/repo/html5API/pushState/push2.html/123" class="" onclick="return false;">123</a>
+        <a href="http://localhost/repo/html5API/pushState/push2.html/456" class="" onclick="return false;">456</a>
+        <a href="http://localhost/repo/html5API/pushState/push2.html/789" class="" onclick="return false;">789</a>
+    </div>
+    <script>
+    function anchorClick(link) {　　　　
+        var linkSplit = link.split('/').pop();
+        console.log(linkSplit);
+        // $.get('api/' + linkSplit, function(data) {　　　　　　
+        //     $('#content').html(data);　　　　
+        // });　　
+    }　　
+    $('.container').on('click', 'a', function(e) {　　　　
+        window.history.pushState({data: 'kuuma'}, null, $(this).attr('href'));　　　　
+        anchorClick($(this).attr('href'));　　　　
+        e.preventDefault();　　
+    });　　　　
+    window.addEventListener('popstate', function(e) {　
+        console.log(e.state);　　　
+        anchorClick(location.pathname);　　
+    });
+    </script>
+</body>
+</html>

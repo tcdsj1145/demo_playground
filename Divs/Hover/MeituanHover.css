@@ -1,0 +1,314 @@
+body, p, h1, h2, h3, h4, table, td {
+    font-family: verdana,helvetica,arial,sans-serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    height: 100%;
+}
+.root{
+    width: 90%;
+    margin: 0 auto;
+}
+.content{
+    padding: 40px;
+    background-color: white;        
+}
+.listWrapper{
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(243,243,243);
+    margin: 0 auto;
+}
+.listWrapper:after{
+    clear: both;
+    display: block;
+    visibility: hidden;
+    content: '.';
+    height: 0;
+}
+.itemPos{
+    float: left;
+    /*border: 1px solid black;innerinner*/
+}
+.itemWrapper{
+    padding: 15px;
+}
+.item{
+    border: 0px solid white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    /*height: 430px;*/
+    width: 460px;
+    background-color: white;
+}
+.item .title{
+    height: 50px;
+    line-height: 50px;
+    background-color: #6297E7;
+    color: white;
+}
+.item .item_content{
+    /*height: 357px;*/
+    background-color: white;
+    /*padding-bottom: 10px;*/
+}
+.contentImg{
+    position: relative;
+    height: 300px;
+    /*background-color: rgb(228, 192, 192);*/
+    overflow: hidden;
+}
+
+.showCover{
+    position: absolute;
+    /*bottom: -100px;*/
+    /*height: 100px;*/
+    bottom: 0px;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 30px;
+    background-color: rgba(10,10,10,0.6);
+    opacity: 0;
+    z-index: 2;
+}
+.showCover:hover{
+    transition: opacity 0.5s ease-out 0s;
+    opacity: 1;
+}
+
+.showCover span{
+    color: silver;
+}
+.tableWrapper{
+    height: 300px;
+    width: 480px;
+    display: table-cell;
+    vertical-align: middle;
+    /*注意 使用了table-cell之后 div会width不再是撑满父元素而是包裹内容*/
+}
+.imgVWrapper{
+
+}
+.imgVWrapper:after{
+    content: '.';
+    display:block;
+    visibility: hidden;
+    clear: both;
+    height: 0px;
+
+}
+.imgHWrapper{
+    position: relative;
+    left: 50%;
+    float: left;
+    /*top: 50%;*/
+}
+
+.dealPos{
+    position: absolute;
+    left: 15px;
+    top: -4px;
+    z-index: 2;
+}
+
+.deal1{
+    background-image: url(http://s1.meituan.net/www/css/i/sp-header-new.vefe0f047.png);
+    background-position: -44px -150px; 
+    width: 43px;
+    height: 40px;  
+}
+
+.imgInner{
+    position: relative;
+    left: -50%;
+    /*bottom: 50%;*/
+    float: left;
+}
+.imgWrapper img{
+    
+}
+.contentIntro{
+    padding: 5px;
+    padding-bottom: 15px;
+}
+.contentIntro .intro1{
+}
+.contentIntro .intro1 span{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.contentIntro .intro2 span{
+    color: silver;
+}
+.contentIntro .intro3{
+    height: 20px;
+    padding-top: 10px;
+}
+
+.contentIntro .intro3:after{
+    clear: both;
+    visibility: hidden;
+    height: 0px;
+    display: block;
+    content: '.';
+}
+.contentIntro .intro3 .star{
+    height: 37px;
+    width: 80px;
+    padding-top: 3px;
+    padding-right: 20px;
+    /*star内部的两个元素都是absolute 脱离文档流  不占位了 所以本身还是要设置高宽*/
+    position: relative;
+}
+
+.contentIntro .intro3 .starGreyWrapper{
+    position: absolute;
+}
+.contentIntro .intro3 .starLightWrapper{
+    position: absolute;
+    overflow: hidden;
+}
+
+.starGreyWrapper{
+    width: 80px;
+    height: 16px;
+    background-image: url(http://s0.meituan.net/www/css/i/sp-rate-stars-16x16.v75b255b7.png);
+    background-position: left bottom;
+}
+
+.starLightWrapper{
+    width: 55%;
+    height: 16px;
+    background-image: url(http://s0.meituan.net/www/css/i/sp-rate-stars-16x16.v75b255b7.png);
+    background-position: left top;
+    background-repeat: repeat-x;
+}
+
+
+.contentBot{
+    border-top: 1px solid silver;
+    height: 80px;
+    position: relative;
+    background-color: #FAFAFA;
+}
+
+.showCover .child_center{
+    width: 100%;
+    height: 100%;
+}
+
+.buy_btn{
+    width: 156px;
+    height: 44px;
+    background-image: url(http://s1.meituan.net/www/css/si/deal-firstscreen.vce3669d7.png);
+    background-position: 0px -480px;
+}
+.priceWrapper{
+
+}
+.priceWrapper:after{
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0px;
+    visibility: hidden;
+}
+.price1,.price2{
+    float: left;
+    height: 80px;
+    line-height: 80px;
+}
+.price_deal{
+    float: right;
+    height: 80px;
+}
+.dealWrapper{
+    width: 200px;
+    height: 100%;
+}
+
+.price1 span{
+    font-size: 2em;
+    color:orange;
+}
+
+.price2{
+    margin-left: 50px;
+}
+
+.price2 span{
+    color: silver;
+}
+span.deltext{
+    text-decoration:line-through;
+}
+/***********common*************/
+ul{
+    list-style: none;
+    margin:0px; /*ul默认存在margin*/
+}
+.btn{
+    border: none;
+}
+input[type='button']{
+    border: none;
+}
+input[type='button']:hover{
+    cursor: pointer;
+}
+.floatL{
+    float: left;
+}
+
+.floatR{
+    float: right;
+}
+
+.toHCenter{
+    margin: 0 auto;
+}
+.child_center{
+    width: 100%;
+    height: 100%;    
+    /* Firefox */
+    display:-moz-box;
+    -moz-box-pack:center;
+    -moz-box-align:center;
+    /* Safari,Opera,and Chrome */
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:center;
+    /* W3C */
+    display:box;
+    box-pack:center;
+    box-align:center;
+}
+
+.shadow{
+/*    -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    -webkit-box-shadow: 3px 3px 3px 3px #ccc;
+    box-shadow:         3px 3px 3px 3px #ccc;    */  
+    -webkit-box-shadow: 0px 2px 0px 1px #EDEDED;       
+}
+i.geoIcon{
+    background-image: url(http://s0.meituan.net/www/css/i/sp-icons-24.v93f4adf7.png);
+    height: 13px;
+    width: 13px;
+    display: inline-block;
+    background-position: left top;
+}
+.textSilver{
+    color: silver;
+}
+.textOrange{
+    color: orange;
+}
+
+/***********conmmon************/
+.ullist li{
+    line-height: 1.5;
+    font:1.5em;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    var i =0;
+    var timer = setTimeout(function(){
+        console.log('xxx');
+        i++;
+        if(i == 10){
+            clearTimeout(timer);
+        }
+        timer();
+    })
+
+    </script>
+</body>
+</html>

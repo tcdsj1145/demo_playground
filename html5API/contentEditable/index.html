@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  /*  body style {
+    display: block;
+    height: 300px;
+  }*/
+
+  .content {
+    height: 300px;
+    font-family: monospace;
+    overflow: scroll;
+  }
+  </style>
+  <style id="style-tag"></style>
+</head>
+
+<body>
+  <div class="content" contenteditable>
+  </div>
+  <script>
+  var sty = document.querySelector('#style-tag')
+  var editor = document.querySelector('.content');
+  sty.innerText = '';
+  var txt = ['* {\n',
+  '  -webkit-transition: all 1s;\n',
+  '}\n',
+  'html {\n',
+  '  background: rgb(63, 82, 99);\n',
+  '}'].join('');
+
+  // sty.appendChild(document.createTextNode(txt));
+  editor.addEventListener('keyup', function() {
+    var txt = this.innerText;
+    console.log(txt);
+    txt = txt.replace(/(&nbsp;|\s)+/g, ' ').replace(/(\{)/g,'$1\n').replace(/(})/,'\n$1');
+    sty.innerText = '';
+    sty.appendChild(document.createTextNode(txt));
+  }, false);
+  </script>
+
+
+<pre contenteditable="" id="style-text"><span class="comment">/**
+ *
+ * Hey. My name's Samuel Reed. I'm CTO of BitMEX.com and an occasional
+ * freelance contractor.
+ *
+ * I build interactive websites.
+ *
+ * How about some live coding?
+ */</span>
+
+<span class="comment">/**
+ * Let's begin. We start by animating... well, everything.
+ */</span>
+
+<span class="selector">* </span>{<span class="key">
+  -webkit-transition</span>:<span class="value"> all 1s</span>;
+}
+
+<span class="comment">/**
+ * That didn't do much. But you'll see.
+ *
+ * Black on white is really boring,
+ * so let's do something about it.
+ */</span>
+
+<span class="selector">html </span>{<span class="key">
+  background</span>:<span class="value"> rgb(63, 82, 99)</span>;
+}
+
+<span class="comment">/***
+ * Hold on...
+ */</span>
+
+<span class="selector">pre, a </span>{<span class="key">
+  color</span>:<span class="value"> white</span>;
+}
+
+<span class="comment">/**
+ * That's better. Sorry about your eyes.
+ *
+ * Working in this big empty space is tough.
+ *
+ * I'm going to make a nice area for us to work in.
+ */</span><span class="key">
+
+<span class="selector">pre</span>:not(<span class="key"></span>:empty) </span>{<span class="key">
+  overflow</span>:<span class="value"> auto</span>;<span class="key">
+  background</span>:<span class="value"> rgb(48, 48, 48)</span>;<span class="key">
+  border</span>:<span class="value"> 1<span class="value px">px</span> solid #ccc</span>;<span class="key">
+  max-height</span>:<span class="value"> 44.6%</span>;<span class="key">
+  width</span>:<span class="value"> 49%</span>;<span class="key">
+  font-size</span>:<span class="value"> 14<span class="value px">px</span></span>;<span class="key">
+  font-family</span>:<span class="value"> monospace</span>;<span class="key">
+  padding</span>:<span class="value"> 10<span class="value px">px</span> 10<span class="value px">px</span> 20<span class="value px">px</span></span>;<span class="key">
+  box-shadow</span>:<span class="value"> -4<span class="value px">px</span> 4<span class="value px">px</span> 2<span class="value px">px</span> 0 rgba(0,0,0,0.3)</span>;<span class="key">
+  white-space</span>:<span class="value"> pre-wrap</span>;<span class="key">
+  outline</span>:<span class="value"> 0</span>;
+}
+
+<span class="comment">/**
+ * Okay. We're going to start filling up the screen.
+ * Let's get ready to do some work.
+ */</span>
+
+<span class="selector">#style-text </span>{<span class="key">
+  -webkit-transform</span>:<span class="value"> translateX(95%)</span>;<span class="key">
+  position</span>:<span class="value"> absolute</span>;
+}
+
+<span class="comment">/**
+ * This is good, but all the text is white!
+ * Let's make it even more readable.
+ */</span>
+
+<span class="selector">.comment       </span>{<span class="key"> color</span>:<span class="value"> #857F6B</span>;<span class="key"> font-style</span>:<span class="value"> italic</span>; }
+<span class="selector">.selector      </span>{<span class="key"> color</span>:<span class="value"> #E69F0F</span>; }
+<span class="selector">.selector .key </span>{<span class="key"> color</span>:<span class="value"> #64D5EA</span>; }
+<span class="selector">.key           </span>{<span class="key"> color</span>:<span class="value"> #64D5EA</span>; }
+<span class="selector">.value         </span>{<span class="key"> color</span>:<span class="value"> #BE84F2</span>; }
+<span class="selector">.value.px      </span>{<span class="key"> color</span>:<span class="value"> #F92772</span>; }
+
+<span class="comment">/**
+ * Now we're getting somewhere.
+ * Time to get a little perspective.
+ */</span>
+
+<span class="selector">body </span>{<span class="key">
+  -webkit-perspective</span>:<span class="value"> 1000<span class="value px">px</span></span>;
+}
+
+<span class="selector">#style-text </span>{<span class="key">
+  -webkit-transform</span>:<span class="value"> translateX(98.5%) rotateY(-10deg)</span>;<span class="key">
+  -webkit-transform-origin</span>:<span class="value"> right</span>;<span class="key">
+  max-height</span>:<span class="value"> 94.5%</span>;
+}
+
+<span class="comment">/**
+ * So, let's talk projects. That's why you're here, right?
+ * I can't imagine you'd come just to see the pretty colors.
+ */</span><span class="key">
+
+<span class="selector">pre</span>:not(#style-text) </span>{<span class="key">
+  -webkit-transform</span>:<span class="value"> rotateY(10deg)</span>;<span class="key">
+  -webkit-transform-origin</span>:<span class="value"> left</span>;
+}
+
+
+<span class="comment">/**
+ * That markdown on the left doesn't look great. Let's render it.
+ */</span>
+
+<span class="selector">#work-text.flipped </span>{<span class="key">
+  -webkit-transform</span>:<span class="value"> rotateX(0deg) rotateY(190deg) rotateZ(180deg)</span>;
+}
+
+<span class="selector">#work-text .md </span>{<span class="key">
+  -webkit-transform</span>:<span class="value"> rotateY(190deg) rotateZ(180deg)</span>;<span class="key">
+  margin-top</span>:<span class="value"> 800<span class="value px">px</span></span>;
+}
+
+<span class="comment">/**
+ * Alright. We're ready.
+ *
+ * 3...
+ * 2...
+ * 1...
+ *
+ * .
+ * ....faked you out.
+ *
+ * Okay here we go!
+ *
+ */</span>
+
+
+<span class="comment">/**
+ * The text could use some tweaks.
+ */</span>
+
+<span class="selector">.md </span>{<span class="key">
+  font-family</span>:<span class="value"> "Helvetica Neue", Helvetica, sans-serif</span>;
+}
+
+<span class="selector">.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 </span>{<span class="key">
+  display</span>:<span class="value"> inline-block</span>;<span class="key">
+  color</span>:<span class="value"> #ddd</span>;<span class="key">
+  border-bottom</span>:<span class="value"> 1<span class="value px">px</span> solid #ccc</span>;<span class="key">
+  padding-bottom</span>:<span class="value"> 5<span class="value px">px</span></span>;
+}
+
+<span class="selector">.md li </span>{<span class="key">
+  margin</span>:<span class="value"> 5<span class="value px">px</span> 0</span>;
+}
+
+<span class="selector">.md h1, .md h2, .md h3, .md h4, .md h5, .md h6, .md ul, .md p </span>{<span class="key">
+  margin</span>:<span class="value"> 0<span class="value px">px</span></span>;
+}
+
+<span class="comment">/**
+ * That's better.
+ *
+ * If you want to contact me, use the PGP keys on the left.
+ *
+ * You know, if you're into that sort of thing.
+ */</span>
+
+<span class="selector">#pgp-text </span>{<span class="key">
+  font-size</span>:<span class="value"> 12<span class="value px">px</span></span>;<span class="key">
+  color</span>:<span class="value"> #ada</span>;
+}
+
+
+<span class="comment">/**
+ * We're almost done.
+ */</span><span class="key">
+
+<span class="selector"> pre</span>:hover</span>{<span class="key">
+   box-shadow</span>:<span class="value"> 0<span class="value px">px</span> 0<span class="value px">px</span> 40<span class="value px">px</span> 5<span class="value px">px</span> rgba(255,255,255,0.4)</span>;
+ }
+
+<span class="selector"> #skip-animation, #pause-resume </span>{<span class="key">
+   display</span>:<span class="value"> none</span>;
+ }
+
+<span class="comment">/**
+ * I hope you enjoyed this.
+ *
+ * Thanks to Jake Albaugh, who was the first (that I know of) to do
+ * a page like this. Some of the autotyping and syntax highlighting
+ * code is based off his work.
+ *
+ * See more of Jake's work at http://codepen.io/jakealbaugh/
+ */</span>
+
+<span class="comment">/**
+ * By the way, you can edit this box. Try adding new CSS!
+ *
+ * For example,
+ *
+ * The property 'text-shadow' takes the parameters:
+ * 'x', 'y', 'blur', 'color'.
+ *
+ * So if I wanted to mirror the values,
+ * I could place a shadow 15px under it,
+ * with a little blur for effect:
+ */</span>
+
+<span class="selector">.value </span>{<span class="key">
+  text-shadow</span>:<span class="value"> 0<span class="value px">px</span> 15<span class="value px">px</span> 1<span class="value px">px</span> white</span>;
+}
+
+<span class="comment">/**
+ * Try it out! There's lots you can do.
+ * Try playing with text sizes, shadows, animations, or just
+ * break the page. I won't hold it against you.
+ */</span>
+
+
+</pre>
+
+</body>
+
+</html>

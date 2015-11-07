@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var xhr = new XMLHttpRequest();
+xhr.onload = function(){
+    console.log(xhr.responseText);
+}
+xhr.onreadystatechange = function(){
+    if(xhr.state == 4){
+        console.log(xhr.responseText);
+    }
+}
+xhr.open('post','/post', true);
+var formData = new FormData();
+formData.append('key', 'value');
+xhr.setRequestHeader('Content-Type', 'Application/x-www-form-urlencoded');
+xhr.send(formData);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .inner-center{
+            overflow: hidden;
+        }
+        .content{
+            float: left;
+            width: 100%;
+        }
+        .real-content{
+            margin-right: 200px; /*距离右边的距离一定 所以父元素(也就是浮动的宽度为100%的content)宽度改变时它也动*/
+            background-color: wheat;
+        }
+        .aside{
+            float: left;
+            width: 200px;
+            margin-left: -200px; /*原本父容器一行已经摆满 通过负margin的方式挤到第一行去*/
+            background-color: pink;
+        }
+        .content2{
+            float: right;
+            width: 100%;
+        }
+        .real-content2{
+            margin-left: 200px;
+            background-color: wheat;
+        }
+        .aside2{
+            float: right;
+            width: 200px;
+            margin-right: -200px;
+            background-color: pink;
+        }
+        .content3{
+            float: left;
+            width: 100%;
+        }
+        .real-content3{
+            margin-left: 200px;
+            background-color: wheat;
+        }
+        .aside3{
+            float: left;
+            width: 200px;
+            margin-left: -100%;
+            background-color: pink;
+        }
+        .placeholder p{
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div class="inner-center">
+    <div class="content">
+        <div class="real-content">
+            <div class="placeholder">
+                <p>sss</p>
+                <p>sss</p>
+            </div>
+        </div>
+    </div>
+    <div class="aside">
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+        </div>
+    </div>
+</div>
+<div class="inner-center">
+    <div class="content2">
+        <div class="real-content2">
+            <div class="placeholder">
+                <p>sss</p>
+                <p>sss</p>
+            </div>
+        </div>
+    </div>
+    <div class="aside2">
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+        </div>
+    </div>
+</div>
+<div class="inner-center">
+    <div class="content3">
+        <div class="real-content3">
+            <div class="placeholder">
+                <p>sss</p>
+                <p>sss</p>
+            </div>
+        </div>
+    </div>
+    <div class="aside3">
+        <div class="placeholder">
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+            <p>sss</p>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

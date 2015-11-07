@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <style>
+  html,
+  body {
+    font-size: 32px;
+  }
+
+  #nav {
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+
+  .btns {
+    width: 80vw;
+    height: 80vw;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+  }
+
+  .row {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+  }
+
+  .btn {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+    -webkit-justify-content: center;
+    align-items: center;
+    -webkit-align-items: center;
+  }
+
+  .triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  .up .triangle {
+    border-width: 0 1rem 2rem 1rem;
+    border-color: transparent transparent #007bff transparent;
+  }
+
+  .left .triangle {
+    border-width: 1rem 2rem 1rem 0;
+    border-color: transparent #007bff transparent transparent;
+  }
+
+  .right .triangle {
+    border-width: 1rem 0 1rem 2rem;
+    border-color: transparent transparent transparent #007bff;
+  }
+
+  .down .triangle {
+    border-width: 2rem 1rem 0 1rem;
+    border-color: #007bff transparent transparent transparent;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="nav">
+    <div class="btns">
+      <div class="row">
+        <div class="btn"></div>
+        <div class="btn up">
+          <div class="triangle"></div>
+        </div>
+        <div class="btn"></div>
+      </div>
+      <div class="row">
+        <div class="btn left">
+          <div class="triangle"></div>
+        </div>
+        <div class="btn"></div>
+        <div class="btn right">
+          <div class="triangle"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="btn"></div>
+        <div class="btn down">
+          <div class="triangle"></div>
+        </div>
+        <div class="btn"></div>
+      </div>
+    </div>
+  </div>
+  <div id="tag"></div>
+  <script>
+  var websocket = new WebSocket('ws://192.168.199.184:8080', 'echo-protocol');
+  websocket.onopen = function(e) {
+    console.log(e);
+    bindEvents();
+        // setInterval(function(){
+        //     log('sent');
+        //     websocket.send('From Phone');
+        // },2500);
+  }
+  function bindEvents(){
+    document.querySelector('.right').addEventListener('click', function(){
+        websocket.send('right');
+    },false);
+    document.querySelector('.left').addEventListener('click', function(){
+        websocket.send('left');
+    },false);
+
+  }
+
+  websocket.onmessage = function(e) {
+    console.log(e);
+  }
+
+  function log(str) {
+    console.log(str);
+    // tag.innerHTML = tag.innerHTML + str;
+  }
+
+
+
+  </script>
+</body>
+
+</html>

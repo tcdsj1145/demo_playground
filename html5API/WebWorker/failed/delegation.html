@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shared worker example: how to use delegation worker in HTML5</title>
+</head>
+<body onload=''>
+    <output id='response_from_worker'>
+        Shared worker example: how to use delegation worker in HTML5
+    </output>
+    <script>
+    var worker = new Worker('delegationworker.js');
+    var log = document.getElementById('response_from_worker');
+    worker.onmessage = function(event) {
+        //resolve the population from delegation worker
+        var resultdata = event.data;
+        var population = resultdata.total_population;
+        var showtext = 'The total population of the word is ' + population;
+        document.getElementById('response_from_worker').textContent = showtext;
+    };
+
+    </script>
+</body>
+
+</html>
+

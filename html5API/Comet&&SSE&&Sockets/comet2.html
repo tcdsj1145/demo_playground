@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', 'data.php', true);
+    xhr.onreadystatechange = function(){
+        var rs;
+        if(xhr.readyState == 3){
+            console.log('-----------3---------------');
+            console.log(xhr.responseText);
+        }else if(xhr.readyState == 4){
+            console.log('---------4-----------');
+            console.log(xhr.responseText);
+        }
+    }
+    xhr.send();
+
+</script>
+</body>
+</html>

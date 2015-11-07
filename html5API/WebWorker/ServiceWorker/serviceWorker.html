@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script type="text/javascript" src="script/main.js"></script>
+</head>
+<body>
+
+    <img src="image-src.png" srcset="image-src.png 1x, image-2x.png 2x" style="width:400px; height: 400px;"/>
+<script>
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js').then(function(registration) {
+    // Registration was successful
+    console.log('ServiceWorker registration successful with scope: ',    registration.scope);
+  }).catch(function(err) {
+    // registration failed :(
+    console.log('ServiceWorker registration failed: ', err);
+  });
+}
+</script>
+</body>
+</html>
