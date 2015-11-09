@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<!-- <script src="aaronRequire.js"></script> -->
+<script src="requireME.js"></script>
+<!-- <script src="c.js"></script> -->
+<script src="b.js"></script>
+<script src="a.js"></script>
+<script>
+// require('c',function(c){
+//     console.log(c)
+// })
+
+require(['a', 'b'], function(ab){
+  console.log(ab.a.name);
+  console.log(ab.b.name);
+});
+</script>
+
+</body>
+</html>

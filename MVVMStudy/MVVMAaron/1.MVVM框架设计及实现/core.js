@@ -185,6 +185,9 @@
     var attrs = div.attributes;
     var bindings = []; //存储绑定数据
     $.each(attrs, function(index, ele) {
+      //当属性是 ao-css-match时 match的值为["ao-css-width", "css", "width"]
+      //属性是 ao-css-match="w" value是w
+      //属性 ao-click="click"  binding是 name: "ao-click"  param: ""  type: "click"   value: "click"
       var match;
       if (match = ele.name.match(/ao-(\w+)-?(.*)/)) {
         //如果是以指定前缀命名的
@@ -200,7 +203,7 @@
         bindings.push(binding)
       }
     })
-    executeBindings(bindings, VMODELS['box'])
+    executeBindings(bindings, VMODELS['box']) //本例中name是box  VMODELS['box'] 是包含了所有事件处理的对象
 
     //解析文本类型
     executeBindings([{
