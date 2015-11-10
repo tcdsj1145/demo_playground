@@ -6,19 +6,20 @@
 </head>
 <body>
 <!-- <script src="aaronRequire.js"></script> -->
-<script src="requireME.js"></script>
-<!-- <script src="c.js"></script> -->
-<script src="b.js"></script>
+<script src="require.js"></script>
 <script src="a.js"></script>
+<script src="b.js"></script>
+<script src="c.js"></script>
 <script>
-// require('c',function(c){
-//     console.log(c)
-// })
 
-require(['a', 'b'], function(ab){
-  console.log(ab.a.name);
-  console.log(ab.b.name);
-});
+// require(['a', 'b'], function(a,b){
+//   console.log(a.name);
+//   console.log(b.name);
+// });
+
+require('c', function(c){
+  console.log(c.name);
+})
 </script>
 
 </body>

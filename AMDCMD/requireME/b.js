@@ -3,6 +3,7 @@
 // })
 
 define('b', function(){
+  console.log('Mod b has exe');
   return {
     name: 'b'
   }

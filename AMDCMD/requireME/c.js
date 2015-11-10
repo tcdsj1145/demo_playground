@@ -6,3 +6,10 @@ define('c', function(require, exports, module) {
     }
 });
 
+// define('c', ['a', 'b'], function(a, b){
+//   console.log('c get a ' + a.name);
+//   console.log('c get b ' + b.name);
+//   return {
+//     name: 'c'
+//   }
+// });
