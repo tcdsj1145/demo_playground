@@ -1,0 +1,34 @@
+<html>
+<body>
+http://monsur.hossa.in/2012/12/11/benchmarkjs.html
+不过一运行就卡死了
+
+Here's an example of a performance test using benchmark.js. This particular test measures the performance of adding a span element to the page:
+<a href="#" onclick="bench.run({async: true}); return false;">run test</a>
+
+<div id="mydiv"></div>
+<script src="benchmark.js"></script>
+
+<script>
+// Check out the weird scoping in this particular test: mydiv is declared in the setup function, but is referenced in the test function and the teardown function. This works because benchmark.js doesn't call those functions directly.
+var bench = new Benchmark('insertNode',
+
+// The function to test
+function() {
+  mydiv.insertAdjacentHTML('beforeend', '<span></span>');
+},
+
+// Additional options for the test
+{
+  'setup': function() {
+    var mydiv = document.getElementById('mydiv');
+  },
+  'teardown': function() {
+    mydiv.innerHTML = '';
+  }
+});
+console.log(bench);
+</script>
+
+</body>
+</html>

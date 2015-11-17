@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #edit{
+    height: 200px;
+  }
+  </style>
+</head>
+
+<body contentEditable="true">
+<div id="edit" contentEditable="true">
+
+</div>
+  <script>
+  //当前文档  光标一定要focus在edit上
+  document.execCommand('CreateLink', false, 'http://www.51js.com');
+  </script>
+</body>
+
+</html>

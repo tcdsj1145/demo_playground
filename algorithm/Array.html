@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+Array.prototype.and = function(arr2, separator) {
+  separator = separator || ' ';
+
+  var ret = [];
+  for(var j=0; j<arr2.length; j++) {
+    ret = ret.concat(this.map(function(val) {
+      return val + separator + arr2[j];
+    }));
+  }
+
+  return ret;
+};
+
+var arr = [1,2];
+arr.and(arr, ' ');
+
+</script>
+</body>
+</html>
