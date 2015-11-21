@@ -1141,38 +1141,76 @@ where a.address_no = b.address_no;
 })
 </code></pre><br />
 查询的时候则是这样 <code>db.personInfo.find()</code></p>
+<h2 id="23webkit"><a name="user-content-23webkit" href="#23webkit" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3Webkit</h2>
+<p>首先来了解WebKit。广义上来说，WebKit是一个开源的项目，其前身是来源于KDE的KHTML和KJS<a href="http://www.webkit.org/">参考文献</a>。该项目专注于网页内容的展示，开发出一流的网页渲染引擎。它不是浏览器，而且也不想成为浏览器。 该项目包含两个部分，第一是WebCore，其中包含了对HTML，CSS等很多W3C规范的实现；第二部分就是狭义上的WebKit，它主要是各个平台的移植并提供相对应的Web接口，也就是WebView或者类似WebView，这些接口提供操作和显示网页的能力。目前使用WebKit的主流的浏览器或者WebView包括Chrome, Safari, QtWebKit, Android Browser以及众多的移动平台的浏览器。</p>
+<p>WebKit2相对于狭义上的WebKit而言，它不是WebKit简单的第二个版本，它是一个新的API层，其最主要的变化在于将网页的渲染置于单独的进程，而接口层则在另外一个进程，它们之间通过IPC来通讯<a href="http://trac.webkit.org/wiki/WebKit2">参考文献</a>。对于接口的调用者来说，中间的IPC和底下的实现是透明的，这样做的好处有很多，一个很明显的好处是，当网页的渲染出现问题时，不会阻碍Web接口的调用者进程，这会在很大程度上解决或者帮助解决浏览器或者这些调用者的稳定性和安全性等问题。</p>
+<p>Blink<br />
+关注Web和HTML5领域的人最近应该都有了解WebKit项目的重磅消息，那就是Google退出WebKit项目，创建自己的渲染引擎Blink。这其实不能说完全没有先兆，合合分分，纯属正常。其实，之前关于WebKit2，双方的争论就非常的大。Apple希望它可以随便加入和删除代码而无需担心它会破坏其它Ports的代码，这遭到很多人的反对和不满。同时，另一方面，Google有很多新的功能希望加入WebKit中，但是WebKit可能并不认可他们。双方分歧越来越多，终于分道扬镳。</p>
+<p>这里面有个误区，就是Google的Blink是一个全新的引擎。其实不是这样，Blink目前就是从WebKit直接复制出一个版本出来，然后将与chromium无关的Ports全部移除掉，将代码结构重新整理，就目前而言，Blink的渲染和WebKit是一样，但是，以后两者将各自走不同的路。这有点类似于之前WebKit从KHTML中复制出来一样，历史总是惊人的相似。</p>
+<p>Blink从WebKit继承而来，那么未来它会在哪些方面做改变呢？根据chromium官方的说法，目前大概有两个比较大的，后面应该有更多的改变：</p>
+<p>跨进程的iframe(out-of-process iframes)：为iframes内容创建单独的沙箱进程来渲染它们<br />
+将DOM移入JavaScript中，这样JavaScript可以更快的访问DOM<br />
+今后，Blink会和WebKit差别越来越大，对Web标准支持也不尽相同，</p>
 <h2 id="23nodejs"><a name="user-content-23nodejs" href="#23nodejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3NodeJS</h2>
-<h3 id="231-nodejs"><a name="user-content-231-nodejs" href="#231-nodejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.1 NodeJS与服务器</h3>
-<h3 id="232-nodejsandroid"><a name="user-content-232-nodejsandroid" href="#232-nodejsandroid" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.2 NodeJS与Android</h3>
+<h3 id="231nodejs"><a name="user-content-231nodejs" href="#231nodejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.1NodeJS概述</h3>
+<p>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。Node.js 的包管理器 npm，是全球最大的开源库生态系统。</p>
+<p>V8给Chrome浏览器带来了一个强劲的心脏，使得它在浏览器大战中脱颖而出，也使得Ryan Dahl在语言评估中为选择JavaScript增加了一个极大的权重值。这里我们要谈谈Node给JavaScript带来的一个新局面。鉴于Node之前那些不给力的后端JavaScript实现，在性能和编程模型等方面没能达到与其他语言一较高下的程度，这里先撇开不谈，先谈谈Node与浏览器的对比。</p>
+<p>Chrome浏览器和Node的组件构成如图所示。我们知道浏览器中除了V8作为JavaScript引擎外，还有一个WebKit布局引擎。 HTML5在发展过程中定义了更多更丰富的API。在实现上，浏览器提供了越来越多的功能暴露给JavaScript和HTML标签。这个愿景美好，但对于前端浏览器的发展现状而言，HTML5标准统一的过程是相对缓慢的。JavaScript作为一门图灵完备的语言，长久以来却限制在浏览器的沙箱中运行，它的能力取决于浏览器中间层提供的支持有多少。</p>
+<p><img alt="enter image description here" src="http://www.ituring.com.cn/figures/2013/Node.js/05.d01z.01.png" /></p>
+<p>除了HTML、WebKit和显卡这些UI相关技术没有支持外，Node的结构与Chrome十分相似。它们都是基于事件驱动的异步架构，浏览器通过事件驱动来服务界面上的交互，Node通过事件驱动来服务I/O，这个细节将在第3章中详述。在Node中，JavaScript可以随心所欲地访问本地文件，可以搭建WebSocket服务器端，可以连接数据库，可以如Web Workers一样玩转多进程。如今，JavaScript可以运行在不同的地方，不再继续限制在浏览器中与CSS样式表、DOM树打交道。如果HTTP协议栈是水平面，Node就是浏览器在协议栈另一边的倒影。Node不处理UI，但用与浏览器相同的机制和原理运行。Node打破了过去JavaScript只能在浏览器中运行的局面。前后端编程环境统一，可以大大降低前后端转换所需要的上下文交换代价。</p>
+<p>对于前端工程师而言，自己所熟悉的JavaScript如今竟然可以在另一个地方放出异彩，不谈其他原因，仅仅因为好奇，就值得去关注和探究它。</p>
+<p>随着Node的出现，关于JavaScript的想象总是无限的。目前，社区已经出现node-webkit这样的项目，这个项目在2012年的沪JS会议上首次介绍给了公众。如同上文提及的关于浏览器的优势和限制，在node-webkit项目中，它将Node中的事件循环和WebKit的事件循环融合在一起，既可以通过它享受HTML、CSS带来的UI构建，也能通过它访问本地资源，将两者的优势整合到一起。桌面应用程序的开发可以完全通过HTML、CSS、JavaScript完成。</p>
+<h3 id="232node"><a name="user-content-232node" href="#232node" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.2Node的特点</h3>
+<p>作为后端JavaScript的运行平台，Node保留了前端浏览器JavaScript中那些熟悉的接口，没有改写语言本身的任何特性，依旧基于作用域和原型链，区别在于它将前端中广泛运用的思想迁移到了服务器端。下面我们来看看Node相较其他语言的一些特点。<br />
+异步I/O</p>
+<p>关于异步I/O，向前端工程师解释起来或许会容易一些，因为发起Ajax调用对于前端工程师而言是再熟悉不过的场景了。下面的代码用于发起一个Ajax请求：<br />
+<img alt="enter image description here" src="http://www.ituring.com.cn/figures/2013/Node.js/05.d01z.03.png" /></p>
+<p>事件和回调函数<br />
+随着Web 2.0时代的到来，JavaScript在前端担任了更多的职责，事件也得到了广泛的应用。Node不像Rhino那样受Java的影响很大，而是将前端浏览器中应用广泛且成熟的事件引入后端，配合异步I/O，将事件点暴露给业务逻辑。<br />
+相比之下，无论在前端还是后端，事件都是常用的。对于其他语言来说，这种俯拾皆是JavaScript的熟悉感觉是基本不会出现的。<br />
+事件的编程方式具有轻量级、松耦合、只关注事务点等优势，但是在多个异步任务的场景下，事件与事件之间各自独立，如何协作是一个问题。<br />
+从前面可以看到，回调函数无处不在。这是因为在JavaScript中，我们将函数作为第一等公民来对待，可以将函数作为对象传递给方法作为实参进行调用</p>
+<p>单线程<br />
+Node保持了JavaScript在浏览器中单线程的特点。而且在Node中，JavaScript与其余线程是无法共享任何状态的。单线程的最大好处是不用像多线程编程那样处处在意状态的同步问题，这里没有死锁的存在，也没有线程上下文交换所带来的性能上的开销。<br />
+同样，单线程也有它自身的弱点，这些弱点是学习Node的过程中必须要面对的。积极面对这些弱点，可以享受到Node带来的好处，也能避免潜在的问题，使其得以高效利用。单线程的弱点具体有以下3方面。<br />
+- 无法利用多核CPU。<br />
+- 错误会引起整个应用退出，应用的健壮性值得考验。<br />
+- 大量计算占用CPU导致无法继续调用异步I/O。</p>
+<p>跨平台</p>
 <h2 id="24"><a name="user-content-24" href="#24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4前端工程化</h2>
 <h3 id="241"><a name="user-content-241" href="#241" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.1打包工具介绍</h3>
 <h3 id="242"><a name="user-content-242" href="#242" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.2打包工具选择</h3>
 <h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第三章 系统需求分析与设计</h1>
 <h2 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1测试用例设计思想</h2>
 <h3 id="311"><a name="user-content-311" href="#311" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.1浏览器加载资源的过程</h3>
-<p>输入地址<br />
-浏览器查找域名的 IP 地址<br />
-这一步包括 DNS 具体的查找过程，包括：浏览器缓存-&gt;系统缓存-&gt;路由器缓存&hellip;<br />
-浏览器向 web 服务器发送一个 HTTP 请求<br />
-服务器的永久重定向响应（从 <a href="http://example.com">http://example.com</a> 到 <a href="http://www.example.com">http://www.example.com</a>）<br />
-浏览器跟踪重定向地址<br />
-服务器处理请求<br />
-服务器返回一个 HTTP 响应<br />
-浏览器显示 HTML<br />
-浏览器发送请求获取嵌入在 HTML 中的资源（如图片、音频、视频、CSS、JS等等）<br />
-浏览器发送异步请求&rsquo;</p>
+<p>Web页面运行在各种各样的浏览器当中，浏览器载入、渲染页面的速度直接影响着用户体验。简单地说，页面渲染就是浏览器将html代码根据CSS定义的规则显示在浏览器窗口中的这个过程。先来大致了解一下浏览器都是怎么干活的：<br />
+1.用户输入网址（假设是个html页面，并且是第一次访问）<br />
+2.DNS解析: 查找域名的 IP 地址<br />
+这一步包括 DNS 具体的查找过程，包括：浏览器缓存-&gt;系统hosts-&gt;本地DNS缓存-&gt;ISP的DNS服务器&hellip;<br />
+目前各大浏览器默认开启了DNS缓存功能, 如果一个域名在这里命中, 将直接发送请求到对应的服务器上<br />
+下一步操作系统会先检查自己本地的hosts文件是否有这个网址映射关系，如果有，就先调用这个IP地址映射，完成域名解析。<br />
+本地的DNS缓存, 操作系统本身也会对DNS做缓存<br />
+如果hosts与本地DNS解析器缓存都没有相应的网址映射关系，首先会找TCP/ip参数中设置的首选DNS服务器，在此我们叫它本地DNS服务器，此服务器收到查询时，如果要查询的域名，包含在本地配置区域资源中，则返回解析结果给客户机，完成域名解析，此解析具有权威性。<br />
+如果本地DNS服务器本地区域文件与缓存解析都失效，则根据本地DNS服务器的设置（是否设置转发器）进行查询，如果未用转发模式，本地DNS就把请求发至13台根DNS，根DNS服务器收到请求后会判断这个域名(.com)是谁来授权管理，并会返回一个负责该顶级域名服务器的一个IP。本地DNS服务器收到IP信息后，将会联系负责.com域的这台服务器。这台负责.com域的服务器收到请求后，如果自己无法解析，它就会找一个管理.com域的下一级DNS服务器地址(qq.com)给本地DNS服务器。当本地DNS服务器收到这个地址后，就会找qq.com域服务器，重复上面的动作，进行查询，直至找到www.qq.com主机。</p>
+<p>3.在知道IP地址之后, 浏览器就可以向 web 服务器发送一个 HTTP 请求<br />
+如果服务器设置了重定向,服务器的永久重定向响应（从 <a href="http://example.com">http://example.com</a> 到 <a href="http://www.example.com">http://www.example.com</a>）,那么浏览器跟踪重定向地址<br />
+4.服务器处理请求<br />
+5.服务器返回一个 HTTP 响应<br />
+6.浏览器显示解析 HTML<br />
+7.浏览器发送请求获取嵌入在 HTML 中的资源（如图片、音频、视频、CSS、JS等等）<br />
+浏览器发送异步请求</p>
 <h3 id="312"><a name="user-content-312" href="#312" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2页面渲染的过程</h3>
-<p>渲染引擎首先通过网络获得所请求文档的内容，通常以8K分块的方式完成。<br />
-下面是渲染引擎在取得内容之后的基本流程：<br />
-解析html以构建dom树-&gt;构建render树-&gt;布局render树-&gt;绘制render树<br />
-<img alt="Alt text" src="./1447984321547.png" /><br />
-渲染引擎开始解析html，并将标签转化为内容树中的dom节点。接着，它解析外部CSS文件及style标签中的样式信息。这些样式信息以及html中的可见性指令将被用来构建另一棵树——render树。<br />
-Render树由一些包含有颜色和大小等属性的矩形组成，它们将被按照正确的顺序显示到屏幕上。<br />
-Render树构建好了之后，将会执行布局过程，它将确定每个节点在屏幕上的确切坐标。再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。<br />
-值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建和布局render树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。<br />
-<img alt="Alt text" src="./1447984368946.png" /><br />
-<img alt="Alt text" src="./1447984384157.png" /></p>
-<p>从图3和4中可以看出，尽管webkit和Gecko使用的术语稍有不同，他们的主要流程基本相同。Gecko称可见的格式化元素组成的树为frame树，每个元素都是一个frame，webkit则使用render树这个名词来命名由渲染对象组成的树。Webkit中元素的定位称为布局，而Gecko中称为回流。Webkit称利用dom节点及样式信息去构建render树的过程为attachment，Gecko在html和dom树之间附加了一层，这层称为内容接收器，相当制造dom元素的工厂。下面将讨论流程中的各个阶段。</p>
+<p>概述<br />
+渲染引擎的基本功能: 包括网络，资源加载，DOM树，RenderObject树等. 但是，虽然列举出了这些, 仍给人以零乱的感觉，因为没有一个整体的过程描述它们在这个过程中的位置，它们只是整个渲染引擎工作的一个或者多个步骤而已。 渲染引擎的主要目的就是从一个网页的URL开始，经过一系列的复杂处理过程之后，变成一个可视化的结果，这一过程就是这里所说的页面渲染的基本过程。</p>
+<p>所谓的渲染，就是根据描述或者定义构建数学模型，通过模型生成图像的过程。浏览器的渲染引擎就是能够将HTML/CSS/JavaScript转换成图像结果的模块，如下图所示，输入是URL对应的各种资源，输出是可视化的图像。从这里看，非常的简单和容易理解。<br />
+<img alt="enter image description here" src="http://img.blog.csdn.net/20130921092025218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWlsYWRvX25qdQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /></p>
+<p>渲染模块<br />
+那么渲染引擎提供了哪些功能模块来支持页面渲染的呢？下图是一个渲染引擎所包含的基本功能和它们依赖的一些第三方库。<br />
+<img alt="enter image description here" src="http://img.blog.csdn.net/20130921092322593?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWlsYWRvX25qdQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /><br />
+从图中大致可以看出，一个渲染引擎大致包括HTML解释器，CSS解释器，布局和JavaScript引擎。下面依次来描述它们： HTML解释器：解释HTML语言的解释器，本质是将HTML文本解释成DOM（文档对象模型）树。 CSS解释器：解释样式表的解释器，其作用是将DOM中的各个元素对象加上样式信息，从而为计算最后结果的布局提供依据。 布局：DOM之后，需要将其中的元素对象同样式信息结合起来，计算它们的大小位置等布局信息，形成一个能够表示这所有信息的内部表示模型。 JavaScript引擎：JavaScript可以修改网页的内容，也能修改CSS的信息，JavaScript引擎解释JavaScript代码并把代码的逻辑和对DOM和CSS的改动信息应用到布局中去，从而改变渲染的结果。 这些模块依赖很多其他的基础模块，这其中包括网络，存储，2D/3D图形，音频视频和图片解码器等。实际上，渲染引擎中还应该包括如何使用这些依赖模块的部分，这部分的工作其实并不少，因为需要使用它们来高效的渲染网页。例如，利用2D/3D图形库来实现高性能的网页绘制和网页的3D渲染，这个实现非常非常的复杂。最后，当然，在最下面，依然少不了操作系统的支持，例如线程支持，文件支持等等。</p>
+<p>基本过程<br />
+了解模块之后，下面就是这些模块如何组织以达成渲染过程的。一般地，一个典型的渲染过程下图所示，这是渲染引擎的核心过程，一切都是围绕着它来的。 <img alt="enter image description here" src="http://img.blog.csdn.net/20130921092344312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbWlsYWRvX25qdQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" /><br />
+下面逐个从左至右来解释上图中的这一过程。这一过程的先后关系由图中的实线箭头表示。左上角开始，首先是网页内容，送到HTML解释器。HTML解释器在解释它后形成DOM树，中间如果遇到JavaScript代码则交给JavaScript引擎去处理。如果页面包含CSS，则交给CSS解释器去解析。当DOM建立的时候，接受来自CSS解释的样式信息，构建一个新的内部绘图模型。该模型由布局模块计算模型内部的各个元素的位置和大小信息，最后由绘图模块完成从该模型到图像的绘制。 最后解释图中虚线箭头的指向含义。它们表示在渲染过程中，每个阶段可能使用到的其他模块。在网页内容的下载中，需要使用到网络和存储，这个是显而易见地。但计算布局和绘图的时候，需要使用2D/3D的图形模块，同时因为要生成最后的可视化结果，这时候需要开始解码音频视频和图片，同其它内容一起绘制到最后的图像中。 在渲染完成之后，用户可能需要跟渲染的结果进行交互，或者网页自身有动画，一般而言，这会持续的重新渲染过程。这个过程跟上面类似，不再赘述。</p>
 <h3 id="312_1"><a name="user-content-312_1" href="#312_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2浏览器性能测试角度</h3>
 <h3 id="312_2"><a name="user-content-312_2" href="#312_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2测试用例框架设计</h3>
 <h2 id="32css"><a name="user-content-32css" href="#32css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2CSS兼容性测试原理</h2>
@@ -1241,7 +1279,8 @@ HTML5测试，并不试图去测试所有HTML5提供的新功能，也没有试�
    13 在响应报文中，X-Powered-By头部域表示服务器端使用到的技术名称，例如X-Powered-By: ASP.NET</p>
 <h2 id="42html5"><a name="user-content-42html5" href="#42html5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.2html5兼容性测试实现</h2>
 <h2 id="43css3"><a name="user-content-43css3" href="#43css3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3CSS3测试实现</h2>
-<h2 id="43"><a name="user-content-43" href="#43" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3异步问题解决</h2>
+<h2 id="43"><a name="user-content-43" href="#43" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3跨域问题</h2>
+<h2 id="43_1"><a name="user-content-43_1" href="#43_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3异步问题解决</h2>
 <h2 id="44"><a name="user-content-44" href="#44" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.4浏览器嗅探</h2>
 <h2 id="44_1"><a name="user-content-44_1" href="#44_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.4数据库处理</h2>
 <h2 id="45"><a name="user-content-45" href="#45" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.5定时任务</h2>
