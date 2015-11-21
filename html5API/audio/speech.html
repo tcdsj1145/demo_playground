@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+      var YES = 1, NO =0, PREFIX = '';
+      var speechSynthesis = window.speechSynthesis || window.webkitSpeechSynthesis || window.mozSpeechSynthesis || window.oSpeechSynthesis || window.msSpeechSynthesis;
+      var available = 'speechSynthesis' in window ? YES : 'webkitSpeechSynthesis' in window || 'mozSpeechSynthesis' in window || 'oSpeechSynthesis' in window || 'msSpeechSynthesis' in window ? YES | PREFIX : NO;
+      var voices = 0;
+
+      if (speechSynthesis && !voices) {
+        if (speechSynthesis.addEventListener) {
+
+
+          speechSynthesis.addEventListener("voiceschanged", function() {
+            voices = speechSynthesis.getVoices().length;
+
+          });
+        }
+      }
+
+</script>
+</body>
+</html>

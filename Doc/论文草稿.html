@@ -1,0 +1,1254 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>论文草稿</title></head><body><article class="markdown-body"><h1 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>论文一种性浏览器能自动化测试平台</h1>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>摘要</h2>
+<p>现在， 智能手机越来越普遍了，智能手机从传统的一种简单的人与人之间的通信工具变成了一种多用途设备。随着安卓只能手机的到来，使用智能手机访问互联网的人的数量将会高速增长。因此手机浏览器在为用户提供良好的浏览体验中扮演了重要的角色。<br />
+本文的目标是分析安卓平台上几个主要的手机浏览器的性能。在本文中，展示了几个常见和手机功能相关的参数测试后的结果。通过这个测试，可以发现浏览器最大的不足和缺陷用以提升用户体验。<br />
+目前Web浏览器再手持设备上(例如智能手机)可算是一个杀手级的应用了。可惜的是，在手机上web浏览器的体验却不是那么令人满意。尤其是页面加载时间较长， 缓存机制被认为是一个关键性因素。但是， 现有的被动评估研究并不能完成的定义Web Cache的表现。例如很多研究都是放在客户端的实现而不是服务端的配置。而用户的行为非常难以预料，因此很难研究没有被缓存的资源。本文着重强调了这个问题。提出了一个主动型的来全面评估web cache表现的方法。这个方案的关键思想是在一定周期时间内主动的爬下数以百计网站的资源。这样我们就可以发现网站的资源更新历史并且知道网站服务端的Cache配置。</p>
+<p>关键字：安卓，浏览器，性能</p>
+<h2 id="abstract"><a name="user-content-abstract" href="#abstract" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ABSTRACT</h2>
+<p>Nowadays, smart phones are fast becoming ubiquitous. They have evolved from their traditional use of solely being a device for communication between people to a multipurpose device. With the advent of Android smart phones, the number of people accessing the Internet through their mobile phones is on a steep rise. Hence, web browsers play a major role in providing an excellent browsing experience for its users. As such, the objective of this paper is to analyse the performance of five major mobile web browsers available in the android platform. In this paper, we present the results of a study conducted based on several parameters that assess these mobile browsers’ functionalities. Based on this evaluation, we also propose the best among these browsers to further enrich user experience of mobile web browsing along with utmost performance.</p>
+<p>Keywords<br />
+Android, Browsers, Performance, Mobile, Dolphin, Mozilla Firefox, Skyfire, Opera Mini</p>
+<h1 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第一章 绪论</h1>
+<h2 id="11"><a name="user-content-11" href="#11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.1课题背景和来源</h2>
+<p>最近几年， 使用手机浏览网页的用户正在爆发性增长。随着手机智能化的到来，移动端浏览用户的增加是由于市面上有了越来越多的完整功能移动浏览器。 2011年手机销量出现了显著增长。在IDC主导的一个调查中， 2011年全年出货的手机中， 有31.8%是智能手机。现代典型的智能手机一般都有较高解析度的触摸屏幕和一个能够呈现标准网页的浏览器,而不仅仅是智能渲染针对移动端优化过的网页。同时还具备通过Wi-Fi或3G4G高速访问网络的能力，根据SataCounter的报告，在2012年1月，8.49%的网页访问来自于移动设备。</p>
+<p>手机浏览器是运行在手机上的浏览器，可以通过GPRS进行上网浏览互联网内容。手机浏览器是一种用户在手机终端上通过无线通讯网络进行互联网内容浏览的移动互联网工具，其最主要的应用为网页浏览，同时也可以聚集大量的应用，如导航、社区、多媒体影音、天气、股市等，为用户提供全方位的移动互联网服务。<br />
+近年来，我国移动互联网发展势头迅猛，手机浏览器战略地位凸显，众多实力雄厚的互联网企业纷纷加大在手机浏览器市场的布局，投入大量的资金和人力，抢占手机浏览器用户入口。<br />
+从手机浏览器市场的发展阶段来看，2009年，中国手机浏览器市场处于市场探索初期，手机浏览器厂商通常采用面向用户免费的策略，以此抢占用户市场。该阶段手机浏览器的产业价值链比较短，主要包括开发、运营和用户，并未涉及大量的广告和内容。虽然手机浏览器已成为炙手可热的概念，但手机自带浏览器仍占据一半的移动互联网用户市场。用户下载安装的浏览器，依然有很大的发展空间。<br />
+2010-2011年，较具实力的手机浏览器厂商如手机QQ浏览器等纷纷夯实手机浏览器市场的竞争力，而百度、谷歌等厂商也陆续进入手机浏览器市场。手机浏览器市场“预装收取服务费、广告收费、用户使用或增值业务收费”的商业模式将逐步形成。随着手机浏览器用户粘性逐步养成，用户规模将趋于稳定，保守估计，2012年我国第三方手机浏览器活跃用户规模将达3.6亿户。<br />
+展望未来，随着三网融合进程的不断推进，广电网、电信网和互联网的网络融合将使手机发展成为具备看电视、语音通信以及网络服务的全能终端，手机浏览器作为手机端重要网络入口的战略地位将进一步提升。同时，国家层面正积极推动物联网发展，未来将有更多具备上网功能的终端出现，跨媒体网络融合的趋势将使手机浏览器获得更多的发展空间。<br />
+从技术层面来看，当前手机浏览器市场处于优化用户体验、引导用户需求阶段，长远来看，满足个性化的用户需求将最终成为指导应用软件发展的唯一标准。3G/4G网络的发展将大幅度改善数据传输的速度，是移动互联网实现快速发展的条件，也是“云计算”得以实现的前提。而“云计算”的实现将解除手机终端对用户的束缚，手机应用，尤其是个性化应用将出现爆发式增长，手机浏览器将成为沟通用户与“云”端服务器的重要渠道，手机浏览器的战略地位将无可替代。</p>
+<p>市场上移动端手机的使用场景越来越丰富，功能上也正在接近于桌面浏览器。</p>
+<h2 id="12"><a name="user-content-12" href="#12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.2课题的目的和意义</h2>
+<p>移动端浏览器在用户浏览网页时扮演了一个重要角色，由于移动网络访问越来越重要，对于用户来说， 能否在众多浏览器中选择出一个能够给他带来流畅理想体验的浏览器就非常重要。更进一步说， 更好的浏览体验还取决于硬件和软件平台，用户友好的GUI，对新标准的支持和更好的扩展性，从这个角度来说，对于特定的使用场景，不同的浏览器会有不同的结果。</p>
+<p>安卓是一个由Google发起的智能手机平台，开放手持设备联盟发表在2007年11月12号发表了Google Android SDK，在其出现的五年后，安卓目前是移动操作系统的领导者，并在在2010-2011年期间仍有244%的增长。一个由Canalys所作的调查显示在2011年，新出货的智能手机有48.8%采用的是安卓操作系统。<a href="Global%20mobile%20statistics%202012:%20all%20quality%20mobile%20marketing%20research,%20mobile%20Web%20stats,%20ad%20revenue,usage,trends,%20http://mobithinking.com/mobile-marketing-%20tools/latest-mobile-stats%20Last%20accessed%20on%208th%20April%202012">[参考文献]</a></p>
+<p>安卓是开放框架的平台，它又各种不同的开发和调试工具，各种图形处理库，多媒体的支持，当然还有一个强大的浏览器。在安卓中默认浏览器是建立在Webkit引擎之上的，尽管默认的浏览器已经可以满足日常浏览需要，但是如果想要拥有完整的浏览体验，还是有必要去体验其它浏览器的。</p>
+<p>目前在安卓市场上有很多选择，有些是我们很熟悉的PC商店的浏览器，Chrome，Firefox， Opera。尽管看起来好像选择面很广，实际上只有为数不多的浏览器被广泛使用，因此我们只关注在安卓平台流行的几个浏览器上，他们是 Firefox，Chrome，Opera，QQ，UC，Android Browser。我们只是列举了在安卓市场上占有率前几名的浏览器。</p>
+<p>2015年，移动端互联网应用超PC端已是不争事实，作为移动终端上网入口——手机浏览器，成为各大互联网公司争相抢夺的必争之地。在这样的行业背景下，究竟是哪一款浏览器能够给用户带来更好的浏览体验呢?此次将选取此领域的知名主流产品做一系列评估，希望能够成为用户选择手机浏览器时的参考。</p>
+<h2 id="13"><a name="user-content-13" href="#13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3国内外研究现状</h2>
+<p>Yu-Doo Kim 和 Il-Young Moon 在2013年提出了一种在测试智能手机上测试执行速度的方案<a href="Performance%20Analysis%20of%20Web-browsing%20Speed%20in%20Smart%20Mobile%20Devices">[参考文献]</a>。大多数的web站点都是针对与PC机型。针对PC机型的测试可能对移动设备并不是那么有代表性，反而会造成一定的误导。他们的做法是先列出了所有测试浏览器性能的用例， 然后排出专门针对于桌面浏览器的例子。在得到的针对平板电脑，桌面PC和手持移动设别</p>
+<p>PhantomCSS来测试css兼容性(不可靠)</p>
+<h2 id="13_1"><a name="user-content-13_1" href="#13_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1.3本文研究主要内容</h2>
+<p>本人在XX公司实习期间， 曾负责浏览器性能自动化测试的工作。在已有的前端测试用例基础上，经过实践开了适合项目的浏览器自动化测试平台。这个浏览器性能测试平台实现了定时自动测试，测试用例管理，测试用例自动执行和测试结果报告的功能， 为项目组的浏览器自动化测试开发提供了一个可行的工程方案。<br />
+主要研究工作有： 对相关需求文档进行分析，在已有的测试用例基础上，设计合理的浏览器性能评估自动化测试用例。结合目前前端工程实际情况， 进行自动化测试框架选型， 利用尾触发异步流程解决方案实现异步执行流程控制。使用MongoDB进行数据存储，以及国内新颖的Echarts做数据中展示。综合上述工作，实现了一个测试用例驱动的浏览器性能测试框架， 使用基于浏览器API实现了浏览器性能黑盒测试。<br />
+在本篇论文中， 主要目标提出一个浏览器性能评估体系，并且实现一个完整的平台来测试上面提到的几个安卓平台的主流浏览器。浏览器性能评价维度将放在第三章， 测试平台的实现将放在第四章。建立在上面测试案例基础上的测试结果将放在第五章，并给出结果。</p>
+<h1 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第二章 关键技术分析</h1>
+<h2 id="21html5"><a name="user-content-21html5" href="#21html5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1HTML5技术分析与研究</h2>
+<h3 id="211-html5"><a name="user-content-211-html5" href="#211-html5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.1.1 HTML5概述</h3>
+<h2 id="22"><a name="user-content-22" href="#22" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2非关系型数据库</h2>
+<h3 id="221"><a name="user-content-221" href="#221" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.1 关系型数据库面临的问题</h3>
+<p>Web2.0网站的特点就是非常人性化, 用户成为信息的来源, 用户有被动接收互联网到主动创建互联网信息来源, 实现了不同用户之间, 甚至不同网站的信息交互. 如大家所知的QQ空间, 新浪微博等. 然而这些大型网站所用到的关系型数据库之间暴露出很多很多自身难以克服的问题, 主要包括以下几项<br />
+1数据库并发负载高<br />
+2海量数据存储和访问<br />
+3数据库数据越来越大<br />
+4事务管理的负担<br />
+5关系型数据读写实时性的忽略<br />
+6多表关联查询被弱化</p>
+<h3 id="222nosql"><a name="user-content-222nosql" href="#222nosql" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.2.NoSQL</h3>
+<p>既然关系型数据库在越来越多的场景下暴露了这么多难以克服的问题, 为了解决这类问题, NoSQL数据库应运而生.<br />
+NoSQL是菲关系型数据存储广义定义, 此概念在2009 年得到了广泛认同, 也产生了很多个NoSQL了数据库.</p>
+<table>
+<thead>
+<tr>
+<th>存储类型</th>
+<th align="right">NoSQL产品</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文档式存储</td>
+<td align="right">MongoDB</td>
+<td>文档式的存储一般JSON格式来存储数据的, 存储的内容自然也是文档, 这样也就可以对某些字段简历索引, 实现关系数据库的一些功能</td>
+</tr>
+<tr>
+<td>列存储</td>
+<td align="right">HBase Cassandra Hypertable</td>
+<td>按列存储数据,  最大的特点是方便存储结构化的数据, 方便做数据压缩, 针对某一列或者某几列的查询将会有非常大的IO优势</td>
+</tr>
+<tr>
+<td>键值式存储</td>
+<td align="right">Redis Flare</td>
+<td>通过key快速查询到值, 存储不论键的形式, 照单全收</td>
+</tr>
+<tr>
+<td>对象式存储</td>
+<td align="right">db4o Versant</td>
+<td>通过类似对象语言的语法操作数据库  以对象的形式存储数据</td>
+</tr>
+<tr>
+<td>图形式存储</td>
+<td align="right">FlockDB Neo4J</td>
+<td>图形关系的最佳存储形式</td>
+</tr>
+<tr>
+<td>XML式存储</td>
+<td align="right">BakerlyDBXML BaseX</td>
+<td>高效的存储XML数据, 并支持XML的内部查询语法, 如XQuery Xpath</td>
+</tr>
+</tbody>
+</table>
+<p>相比较关系数据库而言, NoSQL的优势如下<br />
+- NoSQL种类繁多, 而且他们都有共同点是, 去掉了关系型数据库的关系特性,  数据库之间没有联系,. 因为面向集合存储, 易于存储对象的型数据, 存储不需要特定表结构, 这样非常容易扩展.<br />
+- NoSQL具有非常良好读写性能, 特别是在大数据的情况下, 读写性能表现的非常优秀, 因为它没有关系,  读写操作比较简单<br />
+- NoSQL不需要为存储数据建立字段, 一个集合中随时可以存储自定义的数据格式, 而在关系型数据库中, 增加和和删除字段是一个件非常麻烦的事情, 特别是数据量非常的表, 而在NoSQL数据库中可以轻易做到<br />
+- NoSQL数据库可以再不影响性能的情况下, 发给长方便的额实现高可用架构, 例如, Cassandra HBase复制模型可以提高可用性</p>
+<h3 id="223-mongodb"><a name="user-content-223-mongodb" href="#223-mongodb" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.2.3 一个应用较为广泛的的非关系型数据库 MongoDB</h3>
+<p>NoSQL发展至今,  出现了很多种数据库, 我选择最有名的MOngoDB来作为我的数据库.<br />
+MongoDB作为NOSQL中的一种, 自然具备NoSQL的特性&mdash; 数据库无关系的特性, 正因为没有关系 , 所以它非常容易扩展,<br />
+下面是一个典型的MongoDB的数据结构<br />
+<img alt="Alt text" src="./1448027196720.png" /><br />
+MongoDB中包含一个或多个集合, 集合是以BSON( Binary Serialized Document Format)数据格式组织起来的文档集合, 例如上图中集合1存储着3个文档对象, 每个文档的数据结格式都不一样 存储不需要固定的表结构, 模式很随意. MongoDB中的集合类似于关系型数据库中的表,一个文档则类似于关系型数据库中的记录.<br />
+MongoDB因为没有关系型,  读写性能非常高. 根据官方文档的说明, 即使在数据量的大佛50GB的时候, MongoDB的数据访问速度仍然是MySQL的10倍以上.<br />
+例如在关系型数据库中, 需要插入一个人员信息, 人员的信息还包括住址的信息, 那么<br />
+我们需要创建两个表,  一个personInfo表,  一个Address表.<br />
+而插入一个人员的信息, 需要先在地址表中插入数据,<br />
+<pre><code class="sql">insert into Address values (1,'house number', 'distrct', 'cityname');
+</code></pre><br />
+接下来插入人员信息<br />
+<pre><code class="sql">insert into personInfo values ('xx', 20, 'male', 1);
+</code></pre><br />
+而查询整个信息, 需要关联两个表<br />
+<pre><code>select a.name, a.age, a.sex, b.house_number, b.district
+from personInfo a, address b
+where a.address_no = b.address_no;
+</code></pre><br />
+ 然而在MongDB数据库中, 如果需要存储上例中的信息, 这么做就可以了<br />
+<pre><code>db.personInfo.insert({
+  &quot;name&quot;:&quot;xx&quot;,
+  &quot;age&quot;: 26,
+  &quot;sex&quot;: &quot;male&quot;,
+  &quot;address&quot;:{
+    &quot;house_number&quot;:1,
+    &quot;district&quot;: &quot;district&quot;,
+    &quot;ctiy&quot;:&quot;cityname&quot;
+  }
+})
+</code></pre><br />
+查询的时候则是这样 <code>db.personInfo.find()</code></p>
+<h2 id="23nodejs"><a name="user-content-23nodejs" href="#23nodejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3NodeJS</h2>
+<h3 id="231-nodejs"><a name="user-content-231-nodejs" href="#231-nodejs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.1 NodeJS与服务器</h3>
+<h3 id="232-nodejsandroid"><a name="user-content-232-nodejsandroid" href="#232-nodejsandroid" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.3.2 NodeJS与Android</h3>
+<h2 id="24"><a name="user-content-24" href="#24" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4前端工程化</h2>
+<h3 id="241"><a name="user-content-241" href="#241" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.1打包工具介绍</h3>
+<h3 id="242"><a name="user-content-242" href="#242" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2.4.2打包工具选择</h3>
+<h1 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第三章 系统需求分析与设计</h1>
+<h2 id="31"><a name="user-content-31" href="#31" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1测试用例设计思想</h2>
+<h3 id="311"><a name="user-content-311" href="#311" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.1浏览器加载资源的过程</h3>
+<p>输入地址<br />
+浏览器查找域名的 IP 地址<br />
+这一步包括 DNS 具体的查找过程，包括：浏览器缓存-&gt;系统缓存-&gt;路由器缓存&hellip;<br />
+浏览器向 web 服务器发送一个 HTTP 请求<br />
+服务器的永久重定向响应（从 <a href="http://example.com">http://example.com</a> 到 <a href="http://www.example.com">http://www.example.com</a>）<br />
+浏览器跟踪重定向地址<br />
+服务器处理请求<br />
+服务器返回一个 HTTP 响应<br />
+浏览器显示 HTML<br />
+浏览器发送请求获取嵌入在 HTML 中的资源（如图片、音频、视频、CSS、JS等等）<br />
+浏览器发送异步请求&rsquo;</p>
+<h3 id="312"><a name="user-content-312" href="#312" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2页面渲染的过程</h3>
+<p>渲染引擎首先通过网络获得所请求文档的内容，通常以8K分块的方式完成。<br />
+下面是渲染引擎在取得内容之后的基本流程：<br />
+解析html以构建dom树-&gt;构建render树-&gt;布局render树-&gt;绘制render树<br />
+<img alt="Alt text" src="./1447984321547.png" /><br />
+渲染引擎开始解析html，并将标签转化为内容树中的dom节点。接着，它解析外部CSS文件及style标签中的样式信息。这些样式信息以及html中的可见性指令将被用来构建另一棵树——render树。<br />
+Render树由一些包含有颜色和大小等属性的矩形组成，它们将被按照正确的顺序显示到屏幕上。<br />
+Render树构建好了之后，将会执行布局过程，它将确定每个节点在屏幕上的确切坐标。再下一步就是绘制，即遍历render树，并使用UI后端层绘制每个节点。<br />
+值得注意的是，这个过程是逐步完成的，为了更好的用户体验，渲染引擎将会尽可能早的将内容呈现到屏幕上，并不会等到所有的html都解析完成之后再去构建和布局render树。它是解析完一部分内容就显示一部分内容，同时，可能还在通过网络下载其余内容。<br />
+<img alt="Alt text" src="./1447984368946.png" /><br />
+<img alt="Alt text" src="./1447984384157.png" /></p>
+<p>从图3和4中可以看出，尽管webkit和Gecko使用的术语稍有不同，他们的主要流程基本相同。Gecko称可见的格式化元素组成的树为frame树，每个元素都是一个frame，webkit则使用render树这个名词来命名由渲染对象组成的树。Webkit中元素的定位称为布局，而Gecko中称为回流。Webkit称利用dom节点及样式信息去构建render树的过程为attachment，Gecko在html和dom树之间附加了一层，这层称为内容接收器，相当制造dom元素的工厂。下面将讨论流程中的各个阶段。</p>
+<h3 id="312_1"><a name="user-content-312_1" href="#312_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2浏览器性能测试角度</h3>
+<h3 id="312_2"><a name="user-content-312_2" href="#312_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.1.2测试用例框架设计</h3>
+<h2 id="32css"><a name="user-content-32css" href="#32css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.2CSS兼容性测试原理</h2>
+<h2 id="33html5"><a name="user-content-33html5" href="#33html5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3HTMl5兼容性测试原理</h2>
+<p>HTML5的测试成绩，代表了您的浏览器对即将推出的HTML5标准规范的支持程度。尽管规范尚未最终敲定，但是所有浏览器制造商都已经为浏览器的未来做好了准备。通过这个测试，可以知道您的浏览器有哪部分已经支持了HTML5。同时您还可以对比其他浏览的测试结果。<br />
+HTML5测试，并不试图去测试所有HTML5提供的新功能，也没有试图测试其检测每个特征的的功能。尽管有这些不足，我们仍希望通过量化的方式，提供给用户和Web开发人员一个平台，让他们知道哪款浏览器的性能是最好的。<br />
+这个分数是通过测试HTML5的众多新的功能计算出来的，每个功能都是很宝贵的。除了使用HTML5规范和其他规范创建W3C HTML工作组，这个测试同时可以为配套的相关草案和规范要点进行打分。这些规范最初是HTML5的一部分，但是现在通过W3C HTML工作组得到了进一步的发展。由于WebGL扩展了HTML5画布元素的一个3D背景，所以没有被W3C开发，但是也是本次测试的一部分。<br />
+请知晓，HTML5规范仍属于开发测试阶段，在官方正式定位前可能会出现更改，未来将会增加新的测试点。虽然在现在你的成绩可以达到0，但是这个成绩随时会改变。因为面对未来的挑战，我们仍会增加规范的内容。</p>
+<h2 id="33"><a name="user-content-33" href="#33" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3异步处理</h2>
+<h3 id="331"><a name="user-content-331" href="#331" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3.1 过多嵌套导致的问题</h3>
+<h3 id="332-promise-a-async"><a name="user-content-332-promise-a-async" href="#332-promise-a-async" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3.2 Promise A+ Async  （两种应用广泛的异步处理方式）</h3>
+<h3 id="333-flow"><a name="user-content-333-flow" href="#333-flow" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.3.3 Flow</h3>
+<h2 id="34"><a name="user-content-34" href="#34" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.4数据库设计</h2>
+<h2 id="35"><a name="user-content-35" href="#35" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5模块化处理</h2>
+<h3 id="351"><a name="user-content-351" href="#351" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.1模块化的优势</h3>
+<h3 id="352amd-cmd"><a name="user-content-352amd-cmd" href="#352amd-cmd" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.5.2AMD 和 CMD  （两种应用广泛的模块化介绍）</h3>
+<h2 id="36"><a name="user-content-36" href="#36" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3.6浏览器选择</h2>
+<p>最有效分类浏览器的做法就是把浏览器分成两大类，传统，全功能的浏览器；另一种就是轻巧的迷你浏览器。完整功能的浏览器倾向于带来更接近于桌面浏览器移动端体验，他们的迷你版本更注重性能和向后的兼容性。本论文主要关注几个全功能移动浏览器和一个迷你浏览器。因此根据下面两个考虑选择了5个安卓平台的浏览器，浏览器的市场占有率和流行程度，这些数据来自于 <a href="Mobile/Tablet%20Browser%20Market%20Share%20http://netmarketshare.com/browser-market-%20share.aspx?qprid=0&amp;qpcustomd=1%20Last%20accessed%20on%2028th%20March%202012">[6]</a>. 因此选择了默认浏览器，Firefox，Chrome， Opera。这些浏览器的版本如下表， 他们均是当前最新版本。</p>
+<h1 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第四章 测试平台实现</h1>
+<h2 id="41"><a name="user-content-41" href="#41" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1详细用例实现</h2>
+<h3 id="411dom"><a name="user-content-411dom" href="#411dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1.1DOM测试用例</h3>
+<h3 id="412cache"><a name="user-content-412cache" href="#412cache" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.1.2Cache测试用例</h3>
+<p>先从HTTP状态分析开始<br />
+请求<br />
+<img alt="Alt text" src="./1447999113751.png" /><br />
+响应<br />
+【说说HTTP的状态码】<br />
+<img alt="Alt text" src="./1447999126152.png" /><br />
+   说到HTTP响应报文，就不得不提到HTTP状态码，及原因短语。相信大家看完这一小节后，就会很清楚404代表着什么了。<br />
+   状态码总共只有三位，第一位表示状态类别，共分五种，我们来依次看一下：<br />
+1xx：是进度通知类状态，意思就是说“请求我已经收到了，或你的请求我正在处理”；<br />
+2xx：表示“你的请求我已经成功处理了”；<br />
+3xx：即重定向，也就是服务器告诉客户端“你要的资源搬家了，你到某某地方再去找他吧”；<br />
+4xx：客户端发来的响应报文里有些错误，比如语法错误或请求的资源不存在等；<br />
+5xx：服务器端有些问题，已经无法处理完成你的请求了。</p>
+<p>其实常用的状态码并不多，我们把常见的列举在此：<br />
+200 OK：客户端请求成功了，客户端要的东西就在响应报文里了；<br />
+301 Moved Permanently：客户端啊，你要请求的资源已经永久的搬家了，我把他的新地址放到了Location头部域中了；<br />
+302 Moved Temporarily：客户端啊，你要请求的资源临时有事去别的地方了，我把他的位置放到了Location头部域中了，你可以先去那里找他，不过他应该是会回到他自己的家的；<br />
+304 Not Modified：客户端啊，你要请求的资源自从上次你请求之后，就再也没有改动过，我想你是应该早就有这个资源了，所以在响应报文的数据部分我也没有再放这个资源。<br />
+400 Bad Request：客户端发来的请求报文里有语法错误，服务器端实在看不懂了；<br />
+401 Unauthorized：客户端发来的请求不是合法来源的请求，也就是这个客户端是没有被授权的；<br />
+403 Forbidden：服务器端顺利收到了客户端的请求，但是因为某些理由，服务器端拒绝为他提供服务；<br />
+404 Not Found：客户端要请求的资源不存在，八成是资源地址写错了；<br />
+500 Internal Server Error：很遗憾，服务器不能给你提供服务了，服务器内部出现了不可预知的问题了；<br />
+502 Bad Gateway：客户端你好，我是请求报文的代理服务器，持有资源的那个服务器在给我发送资源时出问题了；<br />
+503 Server Unavailable：服务器现在可能是太忙了，暂时不能给你这个客户端提供服务了，或许稍后会恢复。</p>
+<p>【HTTP版本有几个】</p>
+<p>最早的HTTP版本是0.9，现在已经很少使用了。<br />
+   而基于0.9版本改进后的是HTTP1.0版本，对应的RFC编号是1945。<br />
+   现在最常用的则是基于1.0版本改进后的HTTP1.1版本，对应的RFC编号是2616，其最大的改进点就是增加了“持久连接”的内容，同时在缓存控制与多级代理方面也有不小的完善。</p>
+<p>【一些高级用法】</p>
+<p>1 HTTP1.1中，我们可以在报文中使用Cache-Control域来控制缓存策略；而在HTTP1.0中则可以使用Pragma域来控制。为了确保达到效果，我们往往会在HTTP报文中同时设置Cache-Control:no-cache和Pragma:no-cache</p>
+<p>2 在请求报文中，我们可以设置Accept头部域来指明客户端希望接受哪些类型的数据，比如Accept:image/gif，则表明客户端希望接收gif图片数据。当然我们可以设置很多种可接受的类型。</p>
+<p>3 在请求报文中，Accept-Charset则是用来设置客户端希望接受的字符集。</p>
+<p>4 在请求报文中，Accept-Encoding则是用来指定客户端希望接受的编码类型。</p>
+<p>5 在请求报文中，Accept-Language是指明客户端希望接受的语言类型，例如Accept-Language:zh-cn，表明客户端希望得到中文的内容</p>
+<p>6 在请求报文中，If-Modified-Since域用作缓存策略。具体的原理是这样的，浏览器本地会缓存一些数据，包括网页、图片等，而且还会同时存储这些缓存数据在服务器端的最后修改时间(Last-Modified)。当浏览器再向服务器端发起这些数据的请求时，会同时把这些数据的最后修改时间通过If-Modified-Since一起传给服务器端，服务器端一旦看到这个头部域，就会先拿这个时间戳和相应资源的最后修改时间比较下，如果相同，就说明这个资源一直以来都没有改动过，于是服务器端就不用再把这个数据重复的传给客户端了，而是直接在响应报文中返回304即可，避免了重复传输带来的带宽消耗。</p>
+<p>7 有些同学会感觉疑惑，为什么Last-Modified和If-Modified-Since域都是存储“最后修改时间”的，有啥区别呢。他俩的区别在于，Last-Modified域是响应报文中使用的，由服务器端发给客户端的；而If-Modified-Since则是用在请求报文中的，由客户端发给服务器端的。这两者都是用绝对时间来表示的，所以存在时间同步的问题。那有没有更好的解决办法呢，请继续往下看：)</p>
+<p>8 为大家隆重推出Etags和If-None-Match这一对兄弟，他俩的关系和“Last-Modified/If-Modified-Since”的关系一样，Etags(Entity Tags)是用于响应报文中的，而If-None-Match是用于请求报文中的。这对兄弟的好处在于，他们不是以绝对时间来判断数据是否被修改过，而是通过数据的某个属性值来判断，例如数据的MD5值，这样就可以很好的避免时间不同步的问题了。(除了If-None-Match外，请求报文的头部域中还可以用If-Match、If-Range来表示希望获取的Etag值)</p>
+<p>9 在响应报文中，可以使用Location头部域来实现重定向，比如更换了域名之后。</p>
+<p>10 在HTTP协议里，除了Etags/if-None-Match，Last-Modified/If-Modified-Since外，还有两对这样的兄弟，其一是Server/User-Agent，Server是服务器端用来亮明身份的，而User-Agent是客户端用来亮明身份的；另一对是Set-Cookie和Cookie，Set-Cookie用于服务器端向客户端设置cookie的，而Cookie则是客户端告诉服务器端自己的cookie的。</p>
+<p>11 在响应报文中，服务器端可以使用Expires域来告诉客户端最多缓存这个数据到什么时间，如果超过这个时间点的话，客户端就不要再缓存这个数据了，而是向服务器端重新发起新的请求。</p>
+<p>12 在响应报文中，服务器端可以使用Set-Cookie头部域向客户端设置cookie。其语法很简单，就是由多个name=value组成的，由分号间隔。例如：</p>
+<p>Set-Cookie: ASPSESSIONIDQAQBQQQB=BEJCDGKADEDJKLKKAJEOIMMH; path=/<br />
+   13 在响应报文中，X-Powered-By头部域表示服务器端使用到的技术名称，例如X-Powered-By: ASP.NET</p>
+<h2 id="42html5"><a name="user-content-42html5" href="#42html5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.2html5兼容性测试实现</h2>
+<h2 id="43css3"><a name="user-content-43css3" href="#43css3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3CSS3测试实现</h2>
+<h2 id="43"><a name="user-content-43" href="#43" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.3异步问题解决</h2>
+<h2 id="44"><a name="user-content-44" href="#44" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.4浏览器嗅探</h2>
+<h2 id="44_1"><a name="user-content-44_1" href="#44_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.4数据库处理</h2>
+<h2 id="45"><a name="user-content-45" href="#45" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.5定时任务</h2>
+<h2 id="46android"><a name="user-content-46android" href="#46android" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.6Android 唤起应用</h2>
+<h2 id="47"><a name="user-content-47" href="#47" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.7移动端前端问题和解决</h2>
+<h2 id="48"><a name="user-content-48" href="#48" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4.8打包工具应用</h2>
+<h1 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第五章 测试结果和分析</h1>
+<h1 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>第六章 总结与展望</h1>
+<h2 id="61"><a name="user-content-61" href="#61" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.1总结</h2>
+<h2 id="62"><a name="user-content-62" href="#62" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6.2展望</h2></article></body></html>
