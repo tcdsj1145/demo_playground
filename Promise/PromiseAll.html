@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  var p1  = new Promise(function(resolve, reject){
+    setTimeout(function(){
+      resolve(12);
+    },100)
+  });
+
+  var p2 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+      resolve(34);
+    },500)
+  });
+  Promise.all([p1, p2]).then(function(){
+    console.log('p1  p2 all done');
+  });
+  var p3 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+      reject('reject');
+    });
+  });
+
+  var p4 = new Promise(function(resolve, reject){
+    setTimeout(function(){
+      resolve(56);
+    },10);
+  });
+  Promise.all([p3,p4]).then(function(){
+    console.log('p3 p4 all done');
+  }, function(){
+    console.log('p3 p4 NOT ALL DONE!!!!!!!');
+  });
+
+</script>
+
+</body>
+</html>

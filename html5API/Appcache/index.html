@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" manifest="demo.appcache">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+var cache = window.applicationCache;
+cache.addEventListener('checking', function(){
+  console.log('checking');
+},false);
+cache.addEventListener('noupdate', function(){
+  console.log('noupdate');
+},false);
+cache.addEventListener('cached', function(){
+  console.log('cached');
+},false);
+
+
+</script>
+</body>
+</html>

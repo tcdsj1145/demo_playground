@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<div class="outer">
+  <div class="inner">
+    <div class="wrappr">
+      <ul>
+        <li>hehe</li>
+        <li>haha</li>
+        <li>xixi</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<script>
+
+//实际上就是节点的深度遍历
+//第二个参数是第一层过滤, NodeFilter.SHOW_ELEMENT表示只允许元素节点
+var nodeIterator = document.createNodeIterator(document.body, NodeFilter.SHOW_ELEMENT);
+var pars = [];
+var currentNode;
+
+while (currentNode = nodeIterator.nextNode()) {
+  // console.log(currentNode);
+  pars.push(currentNode);
+}
+
+
+// createTreeWalker方法返回一个DOM的子树遍历器。它与createNodeIterator方法的区别在于，下面的例子中createTreeWalker 只遍历body的子节点  而Iterator会包括body
+// createTreeWalker方法的第一个参数，是所要遍历的根节点，第二个参数指定所要遍历的节点类型。
+
+var treeWalker = document.createTreeWalker(
+  document.body,
+  NodeFilter.SHOW_ELEMENT
+);
+
+var nodeList = [];
+while(currentNode = treeWalker.nextNode()){
+  // console.log(currentNode);
+  nodeList.push(currentNode);
+}
+
+//
+function test(node){
+  console.log(node);
+  return  NodeFilter.FILTER_ACCEPT;
+}
+//这里的第三个参数是自定义的filter  类似于数组的filter  如果满足条件, 那么返回NodeFilter.FILTER_ACCEPT 如果该节点是需要滤掉的节点 NodeFilter.FILTER_SKIP
+var nodeIterator2 = document.createNodeIterator(document.body, NodeFilter.SHOW_ELEMENT, test, false);
+currentNode = nodeIterator2.nextNode();
+console.log(currentNode == document.body);
+currentNode = nodeIterator2.nextNode();
+console.log(currentNode == document.querySelector('.outer'));
+
+
+
+
+</script>
+</body>
+</html>

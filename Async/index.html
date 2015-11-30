@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="goWithTheFlow.js"></script>
+  <script>
+  // Flow().seq(function(next) {
+  //   setTimeout(function(){
+  //     console.log("first job");
+  //     next('error', 'retValue');
+  //   },500);
+  // }).seq(function(next, error, result) {
+  //   console.log(error, result);
+  //   console.log("second job. run *after* first job");
+  //   next();
+  // });
+
+
+   // Flow().par(function(next){
+   //      setTimeout(function(){
+   //        console.log("job foo");
+   //        next(null, "foo");
+   //      },1000);
+   //  }).par(function(next){
+   //    setTimeout(function(){
+   //      console.log("job bar");
+   //      next(null, "bar");
+   //    },500);
+   //  }).par(function(next){
+   //      setTimeout(function(){
+   //      console.log("job zoo");
+   //      next(null, "zoo");
+   //      },500);
+   //  }).seq(function(next, errors, results){
+   //      console.log("job run *after* the completion of foo and bar");
+   //      console.assert(errors.length == 3 && errors[0] === null && errors[1] == null)
+   //      console.assert(results.length == 3 && results[0] === 'foo' && results[1] == 'bar')
+   //      next();
+   //  })
+
+  var flow = new Flow();
+  flow.seq(function(next){
+    setTimeout(function(){
+      console.log('test');
+      next();
+    }, 500);
+  });
+  flow.seq(function(next){
+    setTimeout(function(){
+      console.log('test222');
+      next();
+    },500);
+  })
+  // flow.seq(function(next){
+  //   next();
+  // })
+
+  </script>
+</body>
+
+</html>
