@@ -12,10 +12,10 @@
   iframe.id = 'cacheFromServerSuite';
   document.body.appendChild(iframe);
   iframe.onload = function() {
-    // iframe.onload = function() {
-    console.log('loaded');
-    // };
-    // document.getElementById('cacheFromServerSuite').contentWindow.window.location.reload();
+    iframe.onload = function() {
+    alert('loaded');
+    };
+    document.getElementById('cacheFromServerSuite').contentWindow.window.location.reload();
   };
   iframe.src = 'localhost:8000/304page?t=' + Math.random()* 1e16;
   </script>

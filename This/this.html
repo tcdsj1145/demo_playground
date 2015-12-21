@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var o ={
+    test: function(){
+      console.log(this);
+      console.log('test');
+      var arr = [1,3,4,5];
+      arr.forEach(function(item){
+        console.log(this);
+      }.bind(this));
+    }
+  }
+  o.test();
+
+  </script>
+</body>
+</html>
