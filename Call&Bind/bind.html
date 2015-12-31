@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  o = {
+    a:1,
+    list:[1,2,3]
+  }
+  o.list.forEach(function(fn) {
+    console.log(this.a);
+  },o);//第二个参数是forEach中回调函数的this
+  //还可以这样
+  console.log('====');
+  o.list.forEach(function(fn) {
+    console.log(this.a);
+  }.bind(o));
+  </script>
+</body>
+
+</html>

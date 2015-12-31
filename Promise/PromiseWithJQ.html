@@ -12,6 +12,7 @@
 <body>
 
     <script>
+    // jQuery中的Promise===========================================
     // jQuery对promise的实现叫做 deferred
     var ajax = $.ajax({
         url: 'http://fanyi.youdao.com/openapi.do',
@@ -46,8 +47,7 @@
     },function(err){
         console.log(err);
     });
-    //和上面效果一样
-    //resolve的值在resolve间
+    //和上面效果一样=====================================
     ajax.promise().then(function(data) {
         console.log(data);
         var rs = $.extend({},data);
@@ -65,8 +65,7 @@
         console.log(data); //字符串
         return JSON.parse(data); //jQ1.7.2 deferred不能传递
     }).then(function(data){
-        console.log(data); //jQ1.7.2 deferred不能传递 也就是说不论前一个then的resolve返回什么值  这里data都是第一个then的data
-        //所以 jQ1.7.2这里得到的值是字符串 而不是parse后的对象
+        console.log(data); //jQ1.7.2 deferred不能传递 不论前一个then的resolve返回什么值  这里data都是第一个then的data 所以 jQ1.7.2这里得到的值是字符串 而不是parse后的对象
     });
 
 
@@ -78,14 +77,23 @@
             return json;
         });
     }).then(function(rs){
-        console.log(rs); // jQ1.7.2 deferr不能嵌套(也就是不能在then里面再返回一个promise)  我这里jQ1.11是可以的
+        console.log(rs); // jQ1.7.2 不能嵌套(也就是不能在then里面再返回一个promise) jQ1.11是可以的
         // rs.then(function(data){});
-        //报错 rs就是数据 不是一个promise
-        //rs 就是上面嵌套的promise的resolve的值
+        //报错 rs就是数据 不是一个promise 不可以再then rs 就是上面嵌套的promise的resolve的值
     });
 
 
-    //使用浏览器的Promsie (Chrome32+)=========================================================================
+    //将jQ的ajax变成标准的Promise ======================================================
+    var fetchData = Promise.resolve($.get('story.txt')); //转化为promise对象  //有的是cast 至少Chrome中的Promise是没有cast这个方法的
+    fetchData.then(function(result) {
+        return JSON.parse(result);
+    }).catch(function(error) {
+        //handle error
+    }).then(function(data){
+        console.log(data);
+    });
+
+    //使用浏览器的Promsie (Chrome32+)==========================
     //将一个非Promise变成Promise
     function get(url) {
         // 返回一个新的 Promise
@@ -116,6 +124,8 @@
             req.send();
         });
     }
+
+    //使JSON.parse这一步更为简便==========================
     story = get('story.json');
     story.then(function(res){
         return JSON.parse(res);
@@ -126,12 +136,12 @@
     story.then(JSON.parse).then(function(obj) {
         console.log(obj);
     });
-    //这是为什么呢  虽然我们看不到JSON.parse的实现(在console中得到的结果是 function parse() { [native code] }  )
+    //虽然看不到JSON.parse的实现(在console中得到的结果是 function parse() { [native code] }  )
     //var xxx = JSON.parse(xxx)  说明这个函数接受一个参数且有返回值  所以可以猜测JSON.parse() 大致是 function(str){... retunn obj} 这个样子
     //和前面的完成写法就是一样的
 
-    //再来一个setTimeout的例子==============================================================================
-    //我把ajax的例子放在前面是因为我觉得 ajax的使用场景会更容易理解
+    //再来一个setTimeout的例子==========================
+    //把ajax的例子放在前面是因为觉得 ajax的使用场景会更容易理解
     var getData = function(){
         var data;
         setTimeout(function(){
@@ -140,7 +150,7 @@
         return data;
     }
     console.log(getData()); //undefined //显然这样是得不到结果的
-    //所以我们必须传入一个回调函数
+    //所以必须传入一个回调函数
     var getData = function(callback){
         var data;
         setTimeout(function(){
@@ -151,8 +161,7 @@
     getData(function(data){
         console.log(data)
     });
-    //复杂了就不好办了
-    // 所以可以这样
+    //复杂了就不好办了 所以可以这样======================================
     var getData = function(){
         var promise = new Promise(function(resolve, reject){
             setTimeout(function(){
@@ -166,11 +175,10 @@
     });
 
 
-
-    //链式操作 ===========================================================================================
-    //Promise的嵌套=======(在then的函数中又返回一个Promise)===============================================
+    //Promise的嵌套(在then的函数中又返回一个Promise)==================
     //https://github.com/bellbind/using-promise-q/
     // If you return a "promise" in then callback, you can catch a resolved value of the promise to the next then callback:
+
     get('story.json').then(function(data){
         return get('story.txt');
     }).then(function(rs){
@@ -187,7 +195,6 @@
         storyPromise = getJSON('story.json');
         return storyPromise.then(function(story) { //story的值是 JSON.parse(story.json)
             return getJSON(story.chapterUrls[i]);
-            //和上面一样 这里虽然又返回了一个新的Promise 但实际上
         });
     }
     function getChapter2(){
@@ -210,17 +217,6 @@
         return getChapter(1);  //就是chapter-2.json
     }).then(function(chapter) {
         console.log(chapter);
-    });
-
-
-    //将jQ的ajax变成标准的Promise ======================================================
-    var fetchData = Promise.resolve($.get('story.txt')); //转化为promise对象  //有的是cast 至少Chrome中的Promise是没有cast这个方法的
-    fetchData.then(function(result) {
-        return JSON.parse(result);
-    }).catch(function(error) {
-        //handle error
-    }).then(function(data){
-        console.log(data);
     });
 
 
@@ -280,7 +276,7 @@
     load('story.json').then(function(data) {
         console.log(data);
     });
-    // 最好使用
+    // 最好应用下面的方式=======================================
     function load(url){
         return Q.Promise(function (resolve, reject) {
             var req = new XMLHttpRequest();
@@ -297,8 +293,7 @@
         console.log(data);
     });
     //关于嵌套=====================================================
-    //比如我需要等意见事情做完了再做另一件事情
-    //最容易想到的
+    //比如需要等一个事情做完了再做另一件事情  最容易想到可能是这样的形式
     get('story.json').then(function(data){
         get('story.txt').then(function(data2){
             get('xxx').then(function(data3){
@@ -307,8 +302,7 @@
         })
     });
     //突然觉得不对  不是说Promise是用来解决嵌套的问题嘛  这看起来还是在嵌套啊
-    //合理的写法
-    //我们需要return一个promise对象  这才是真正解决深层嵌套
+    //合理的写法  需要return一个promise对象  这才是真正解决深层嵌套
     get('story.json').then(function(data){
         return get('story.txt');
     }).then(function(rs){
@@ -327,8 +321,7 @@
     Promise.all([p1, p2, p3]).then(function (results) {
         console.log(results);  // [1, 2, 3]
     });
-    //Promise.all 常用在 forEach 中
-    //比如
+    //Promise.all 常用在 forEach 中   比如
     get('story.json').then(function(story){
         var promiseArr = story.chapters.map(function(chapter){
             return get(chapter.url);

@@ -1,9 +1,16 @@
+myStyle();
 window.addEventListener('load', function() {
-  console.log('LOADLLOADLPOAODL');
-  setInterval(remove,500);
+  myStyle();
+  setInterval(removeAD,500);
 }, false);
 
-function remove() {
+function myStyle(){
+  var sheet = document.createElement('style');
+  sheet.innerHTML = ".result a {color:#333 !important;}";
+  document.body.appendChild(sheet);
+}
+
+function removeAD() {
   var divs = document.querySelectorAll('#content_left>div');
   divsArr = Array.prototype.slice.call(divs, 0);
   for (var i = divs.length - 1; i >= 0; i--) {

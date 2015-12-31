@@ -15,10 +15,10 @@
   var p2 = new Promise(function(resolve, reject){
     setTimeout(function(){
       resolve(34);
-    },500)
+    },1000)
   });
   Promise.all([p1, p2]).then(function(){
-    console.log('p1  p2 all done');
+    console.log('p1  p2 all done');  //只有p1  p2两个promise都完成才会进入到这里
   });
   var p3 = new Promise(function(resolve, reject){
     setTimeout(function(){
@@ -36,6 +36,7 @@
   }, function(){
     console.log('p3 p4 NOT ALL DONE!!!!!!!');
   });
+
 
 </script>
 
