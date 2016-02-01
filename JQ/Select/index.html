@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="../jquery.js"></script>
+  <script src="selector.js"></script>
+  <style>
+html,body{
+  height: 100%;
+}
+.select-wrapper{
+  position: relative;
+}
+.select-wrapper .show-selected {
+  box-sizing: border-box;
+  color: #333;
+  font-size: 16px;
+  width: 200px;
+  height: 30px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  line-height: 30px;
+  padding: 0 20px;
+}
+
+.select-wrapper ul, .select-wrapper li {
+  margin: 0;
+  padding: 0;
+}
+
+.select-wrapper ul {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  width: 200px;
+  box-sizing:border-box;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.select-wrapper ul.fold {
+  display: none;
+}
+
+.select-wrapper .option {
+  height: 30px;
+  line-height: 30px;
+  padding: 0 20px;
+}
+.select-wrapper .option.selected {
+  background-color: #000;
+  color: white;
+}
+.select-wrapper .option:not(:last-child) {
+  border-bottom: 1px solid #000;
+}
+
+  </style>
+</head>
+
+<body>
+  <select id="select2" class="superselect-select">
+    <option value="1">Apple (1)</option>
+    <option value="2">Banana</option>
+    <option value="3">Cherry</option>
+    <option value="4">Date</option>
+    <option value="5">Elephant Apple</option>
+    <option value="6">Fig (6)</option>
+    <option value="7">Grapefruit (7)</option>
+    <option value="8">Honeydew</option>
+    <option value="9">Ice Cream Bean</option>
+    <option value="10">Indian Prune</option>
+    <option value="11">Jackfruit</option>
+  </select>
+  <script>
+  $('#select2').mySelector({});
+  </script>
+</body>
+
+</html>
