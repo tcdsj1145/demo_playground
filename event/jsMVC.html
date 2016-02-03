@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="//cdn.bootcss.com/jquery/2.0.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <select id="list" size="10" style="width: 10rem"></select>
+  <br/>
+  <button id="addBtn"> + </button>
+  <button id="delBtn"> - </button>
+  <script>
+  var doc = document;
+  var PubSub = function(){
+    this.event = [];
+  }
+  PubSub.prototype = {
+    registerEvent: function(fn){
+      this.event.push(fn);
+    },
+    triggerEvent: function(){
+      this.event.forEach(function(fn){
+        fn.call(this);
+      }.bind(this));
+    }
+  }
+  </script>
+  <script>
+    var Model = function(list){
+      this.list = list;
+      this.addEvent = new PubSub();
+      this.delEvent = new PubSub();
+    }
+    Model.prototype = {
+      addItem: function(item){
+        if(item){
+          this.list.push(item);
+        }else{
+          var lastData = self.model.list[self.model.list.length-1];
+          var num = +lastData.match(/item(\d)/)[1];
+          this.list.push('item'+(num+1));
+        }
+      },
+      removeItem: function(index){
+        this.list.splice(index,1);
+      }
+    }
+    var View = function(model,container){
+      var self = this;
+      this.model = model;
+      this.container = container;
+      this.model.addEvent.registerEvent(function(){
+        self.model.addItem();
+        self.refreshDOM();
+      });
+      this.model.delEvent.registerEvent(function(){
+        if(self.container.selectedIndex != -1){
+          self.model.removeItem(self.container.selectedIndex);
+          self.refreshDOM();
+        }
+      });
+      this.refreshDOM = function(){
+        var listData = this.model.list;
+        var selectElem = doc.querySelector('#list');
+        selectElem.innerHTML = '';
+        listData.forEach(function(item){
+          var option = doc.createElement('option');
+          option.value = item;
+          option.innerHTML = item;
+          self.container.appendChild(option);
+        });
+      }
+    }
+    var Controller = function(elements, model){
+      var self = this;
+      this.addButton = elements.addButton;
+      this.delButton = elements.delButton;
+      this.model = model;
+      this.addButton.addEventListener('click', function(){
+        self.model.addEvent.triggerEvent();
+      });
+      this.delButton.addEventListener('click', function(){
+        self.model.delEvent.triggerEvent();
+      })
+    }
+    var model = new Model(['item1','item2']);
+    var view = new View(model, doc.querySelector('#list'));
+    view.refreshDOM();
+    var controller = new Controller({
+      addButton: doc.querySelector('#addBtn'),
+      delButton: doc.querySelector('#delBtn')
+    },model)
+  </script>
+</body>
+
+</html>
