@@ -107,7 +107,7 @@
     }
     addEvent(picsWrapper, 'appear', function(e) {
       var li = e.target;
-      var src = li.getAttribute('data-src');
+      var src = li.dataset.src ||li.getAttribute('data-src');
       var img = li.children[0];
       var imgTemp = document.createElement('img');
       li.appeared = true;
