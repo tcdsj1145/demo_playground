@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  ul,
+  li {
+    margin: 0;
+  }
+
+  #page {
+    height: 100%;
+    overflow: scroll;
+  }
+
+  .tiles-wrap {}
+  </style>
+</head>
+
+<body>
+  <div id="page">
+    <ul class="tiles-wrap animated">
+      <!-- These are our grid blocks -->
+      <li data-src="./images/image_1.jpg"><img src="./images/loading.jpg" width="200" height="283">
+        <p>1</p>
+      </li>
+      <li data-src="./images/image_2.jpg"><img src="./images/loading.jpg" width="200" height="300">
+        <p>2</p>
+      </li>
+      <li data-src="./images/image_3.jpg"><img src="./images/loading.jpg" width="200" height="252">
+        <p>3</p>
+      </li>
+      <li data-src="./images/image_4.jpg"><img src="./images/loading.jpg" width="200" height="158">
+        <p>4</p>
+      </li>
+      <li data-src="./images/image_5.jpg"><img src="./images/loading.jpg" width="200" height="300">
+        <p>5</p>
+      </li>
+      <li data-src="./images/image_6.jpg"><img src="./images/loading.jpg" width="200" height="297">
+        <p>6</p>
+      </li>
+      <li data-src="./images/image_7.jpg"><img src="./images/loading.jpg" width="200" height="200">
+        <p>7</p>
+      </li>
+      <li data-src="./images/image_8.jpg"><img src="./images/loading.jpg" width="200" height="200">
+        <p>8</p>
+      </li>
+      <li data-src="./images/image_9.jpg"><img src="./images/loading.jpg" width="200" height="398">
+        <p>9</p>
+      </li>
+      <li data-src="./images/image_10.jpg"><img src="./images/loading.jpg" width="200" height="267">
+        <p>10</p>
+      </li>
+      <li data-src="./images/image_1.jpg"><img src="./images/loading.jpg" width="200" height="283">
+        <p>11</p>
+      </li>
+      <li data-src="./images/image_2.jpg"><img src="./images/loading.jpg" width="200" height="300">
+        <p>12</p>
+      </li>
+      <li data-src="./images/image_3.jpg"><img src="./images/loading.jpg" width="200" height="252">
+        <p>13</p>
+      </li>
+      <li data-src="./images/image_4.jpg"><img src="./images/loading.jpg" width="200" height="158">
+        <p>14</p>
+      </li>
+      <li data-src="./images/image_5.jpg"><img src="./images/loading.jpg" width="200" height="300">
+        <p>15</p>
+      </li>
+    </ul>
+  </div>
+  <script src="event.js"></script>
+  <script>
+  (function() {
+    var st = null;
+    var page = doc.querySelector('#page');
+    var pageHeight = page.offsetHeight;
+    var picsWrapper = doc.querySelector('.tiles-wrap');
+
+    addEvent(page, 'scroll', throttle(handleScroll))
+
+    function throttle(fn, context) {
+      return function(e) {
+        if (st) clearTimeout(st);
+        st = setTimeout(function() {
+          fn.call(context, e);
+        }, 200);
+      }
+    }
+
+    function handleScroll(e) {
+      console.log(e);
+      var elems = picsWrapper.children;
+      [].forEach.call(elems, function(elem, index) {
+        if (!elem.appeared && page.scrollTop + pageHeight > elem.offsetTop) {
+          console.log('elem' + index, 'appear');
+          fireEvent(elem, 'appear');
+        }
+      });
+    }
+    addEvent(picsWrapper, 'appear', function(e) {
+      var li = e.target;
+      var src = li.getAttribute('data-src');
+      var img = li.children[0];
+      var imgTemp = document.createElement('img');
+      li.appeared = true;
+      imgTemp.addEventListener("load", function() {
+        img.setAttribute("src", src);
+      }, false);
+      imgTemp.addEventListener('error', function() {
+
+      }, false);
+      imgTemp.setAttribute("src", src);
+    });
+    handleScroll();
+  })();
+  </script>
+</body>
+
+</html>

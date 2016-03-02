@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <!-- 避免将数字识别为电话 -->
+  <meta name="format-detection" content="telephone=no" />
+  <style>
+
+  /*去掉连接的暗色背景*/
+  a,button,input,optgroup,select,textarea{
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+
+
+  /*移动端IOS手机下清除输入框内阴影*/
+  /*我发现IOS9即使没有这个配置也不会有阴影*/
+  /*但是可以使Chrome对于input的渲染回到标准的样式*/
+  input,textarea {
+   -webkit-appearance: none;
+  }
+
+  /*需要ontouchstart 为true 才能有active的效果*/
+  .btn{
+    border: 1px solid rgb(192,192,192);
+    width: 100px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
+  }
+  .btn:active{
+    background-color: rgb(192,192,192);
+  }
+  </style>
+</head>
+<body ontouchstart="true">
+  <a href="#">heheheh</a>
+  <p>
+    <input type="text">
+  </p>
+  <div class="btn">
+    a button
+  </div>
+</body>
+</html>

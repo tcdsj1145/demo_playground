@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  ul li{
+    display: block;
+    height: 40px;
+    border: 1px solid black;
+    line-height: 40px;
+    margin: 5px 0;
+  }
+  </style>
+</head>
+<body>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+  <li>4</li>
+  <li>5</li>
+</ul>
+<script>
+var doc = document;
+var list = doc.querySelectorAll('ul li');
+// for (var i = list.length - 1; i >= 0; i--) {
+//   list[i].addEventListener('click', function(){
+//     var index = i; //并不能起到作用
+//     console.log(index);
+//   }, false);
+// };
+
+// 原因是绑定事件的时候每次触发的函数是
+// var index = i;
+// function(){
+//   console.log(index);
+// }
+// 触发这个函数的时候 i的值已经是-1了  再怎么变花样都得不到预想的值
+
+// 所以应该想办法使得每个li绑定的事件函数不一样
+// 比如第一个li绑定的函数为  function(){console.log(1);}
+// 第二个li绑定的函数为 function(){console.log(2);}
+
+//很容易想到的是根据特定的i  返回特定的函数
+for (var i = list.length - 1; i >= 0; i--) {
+  list[i].addEventListener('click', (function(index){
+    return function(){
+      console.log(index+1);
+    }
+  })(i), false);
+};
+
+// 既然主要问题是这个i引起的  那么用另外一种循环方式  用forEach来遍历DOM元素不是更好嘛
+
+[].forEach.call(list, function(ele, index){
+  ele.addEventListener('click', function(){
+    console.log(index);
+  }, false);
+});
+
+
+</script>
+</body>
+</html>

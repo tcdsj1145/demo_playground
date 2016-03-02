@@ -6,15 +6,28 @@
 </head>
 <body>
     <script>
-    var i =0;
-    var timer = setTimeout(function(){
-        console.log('xxx');
-        i++;
-        if(i == 10){
-            clearTimeout(timer);
+    // var i =0;
+    // var timer = setTimeout(function(){
+    //     console.log('xxx');
+    //     i++;
+    //     if(i == 10){
+    //         clearTimeout(timer);
+    //     }
+    //     timer();
+    // })
+
+
+    function resize(){
+        console.log('resize');
+    }
+    var timeout;
+    //下面保证在不断的resize过程中 最后只会触发一次resize()函数
+    window.addEventListener('resize', function(){
+        if(timeout){
+            clearTimeout(timeout);
         }
-        timer();
-    })
+        timeout = setTimeout(resize, 300);
+    }, false);
 
     </script>
 </body>

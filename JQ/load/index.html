@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script src='../jquery.js'></script>
+<img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="hehheda">
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    console.log('DOM loaded');
+  }, false);
+
+
+  (function($){
+
+    $(function(){
+      console.log('ready');
+    });
+
+
+  })(jQuery);
+  //只有在图片等资源都加载之后才会触发
+  window.addEventListener('load', function(){
+    console.log('load');
+  }, false);
+</script>
+</body>
+</html>

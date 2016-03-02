@@ -16,6 +16,14 @@
 <body>
     <script>
     //throttle 基本思想
+    function throttleBasic(cb, context){
+        var st = null;
+        if(st) clearTimeout(st);
+        st = setTimeout(function(){
+
+        },200);
+    }
+
     function throttleMe(cb){
         console.log('move');
         var start = +new Date();

@@ -108,7 +108,8 @@ i {
 .wrapper.Final i,
 .wrapper.Final span,
 .wrapper.Final img,
-.wrapper.Final a {
+.wrapper.Final a,
+.wrapper.Final .divs{
     display: inline-block;
     width: 50px;
     background-color: pink;
