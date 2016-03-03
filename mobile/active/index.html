@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .btn {
+    width: 80%;
+    height: 100px;
+    border: 1px solid grey;
+  }
+
+  .btn:active,
+  label:active {
+    background: grey;
+    /*    -webkit-transform:scale(0.9);
+    -moz-transform:scale(0.9);
+    -ms-transform:scale(0.9);
+    -o-transform:scale(0.9);
+    transform:scale(0.9);
+    -webkit-box-shadow:0px 0px 20px #FFF;
+    -moz-box-shadow:0px 0px 20px #FFF;
+    -o-box-shadow:0px 0px 20px #FFF;
+    box-shadow:0px 0px 20px #FFF; */
+  }
+
+  .test {
+    display: block;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #aaa;
+    -webkit-user-select: none;
+  }
+
+  .demo1 {
+    -webkit-tap-highlight-color: red;
+  }
+
+  .demo2 {
+    /*仅仅在IOS上有效  毕竟属性的本意是点击一个link时的背景色*/
+    /*active的优先级高于tap hightlight*/
+    -webkit-tap-highlight-color: red;
+  }
+  </style>
+</head>
+
+<body>
+  <!-- <body ontouchstart=""> -->
+  <script>
+  document.body.addEventListener('touchstart', function() {
+
+  }, true);
+  </script>
+  <div class="btn">
+    heheda
+  </div>
+  <a href="#" class="test demo1">请在移动设备上查看本例</a> 使用label既可以嵌套也可以用for
+  <label class="test demo2">
+    <input type="checkbox" />请在移动设备上查看本例
+  </label>
+  <label class="test demo2" for="cb1">请在移动设备上查看本例</label>
+  <input type="checkbox" id="cb1" />
+</body>
+
+</html>

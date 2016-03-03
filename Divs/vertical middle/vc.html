@@ -2,123 +2,127 @@
 <html lang="en">
 
 <head>
-    <meta name="description" content="center!!">
-    <meta charset="UTF-8">
-    <title>垂直居中</title>
-    <link rel="stylesheet" href="vc.css">
+  <meta name="description" content="center!!">
+  <meta charset="UTF-8">
+  <title>垂直居中</title>
+  <link rel="stylesheet" href="vc.css">
 </head>
 
 <body>
-    <h1>inline && inline-block</h1>
-    <p>最简单的文字&&行内元素居中 wrapper设置height和line-height 且height=line-height</p>
-    <p>当某个元素文字有多行时 仅第一行文字居中 第二行则已经超出wrapper范围(因为多行时 每一行的高度都是父元素的高度)</p>
-    <div>
-        <div class="wrapper inline">
-            text
-            <span>spantest</span>
-            <span>spansdvknj </span>
-        </div>
-        <p>高度自适应版 也是终极方案的原理 子元素middle且inlineblock 待居中元素middle</p>
-        <div class="wrapper inline1">
-            wet
-            <span>你是是</span>
-            <i></i>
-        </div>
+  <h1>inline && inline-block</h1>
+  <p>最简单的文字&&行内元素居中 wrapper设置height和line-height 且height=line-height</p>
+  <p>当某个元素文字有多行时 仅第一行文字居中 第二行则已经超出wrapper范围(因为多行时 每一行的高度都是父元素的高度)</p>
+  <div>
+    <div class="wrapper inline">
+      text
+      <span>spantest</span>
+      <span>spansdvknj </span>
     </div>
-    <h1>文字和行内元素居中改进型</h1>
-    <p>子元素高度可为auto 且支持多行(但是使用br p之类的多行不行 这样会和第一种情况一样 第二行会超出父元素)</p>
-    <p>父元素设置 height=line-height 待居中子元素都是 inline-block 且line-height变回normal 这样就可以多行</p>
-    <p>多行的关键在于 inline-block 改成inline的话就又是第一种情况的样子</p>
-    <div>
-        <div class="wrapper InlineBlock">
-            text PS: 因为font-size: 0 所以看不见
-            <i>iiii</i>
-            <span>span
+    <p>高度自适应版 也是终极方案的原理 子元素middle且inlineblock 待居中元素middle</p>
+    <div class="wrapper inline1">
+      wet
+      <span>你是是</span>
+      <i></i>
+    </div>
+  </div>
+  <h1>文字和行内元素居中改进型</h1>
+  <p>子元素高度可为auto 且支持多行(但是使用br p之类的多行不行 这样会和第一种情况一样 第二行会超出父元素)</p>
+  <p>父元素设置 height=line-height 待居中子元素都是 inline-block 且line-height变回normal 这样就可以多行</p>
+  <p>多行的关键在于 inline-block 改成inline的话就又是第一种情况的样子</p>
+  <div>
+    <div class="wrapper InlineBlock">
+      text PS: 因为font-size: 0 所以看不见
+      <i>iiii</i>
+      <span>span
                 <p>span</p> span</span>
-            <span>大家好大
+      <span>大家好大
                 <br>家好大家好</span>
-            <a href="xxx">aaaaa</a>
-            <img src="" alt="" height="50px" width="20px" />
-            <img src="" alt="" height="30px" width="20px" />
-        </div>
+      <a href="xxx">aaaaa</a>
+      <img src="" alt="" height="50px" width="20px" />
+      <img src="" alt="" height="30px" width="20px" />
     </div>
-    <h1>inline block 终极版</h1>
-    <p>终极版实际上是 方案1行高自适应版的改进以支持多行</p>
-    <p>上面的已经很好了 但是需要知道父元素高度 这一版可以用于父元素告诉不固定的情况</p>
-    <p>关键在于 创建middle且100%高度的子元素 待居中元素middle且inline-block</p>
-    <div class="wrapper Final">
-        <i>这是一个终极实现的水平垂直居中实例</i>
-        text
-        <i>iiii</i>
-        <span>span
+  </div>
+  <h1>inline block 终极版</h1>
+  <p>终极版实际上是 方案1行高自适应版的改进以支持多行</p>
+  <p>上面的已经很好了 但是需要知道父元素高度 这一版可以用于父元素告诉不固定的情况</p>
+  <p>关键在于 创建middle且100%高度的子元素 待居中元素middle且inline-block</p>
+  <div class="wrapper Final">
+    <i>这是一个终极实现的水平垂直居中实例</i> text
+    <i>iiii</i>
+    <span>span
             <p>span</p> span</span>
-        <span>大家好大
+    <span>大家好大
             <br>家好大家好
         </span>
-        <div class='divs'>大家好大
-            <br>家好大家好
-        </div>
-        <a href="xxx">aaaaa</a>
-        <img src="" alt="" height="50px" width="20px" />
-        <img src="" alt="" height="30px" width="20px" />
-        <!--[if lt IE 8]><span></span><![endif]-->
+    <div class='divs'>大家好大
+      <br>家好大家好
     </div>
-    <p>font-size 0不仅仅是消除间隔 vertical-align:middle的定义是：元素的中垂点与父元素的基线加1/2父元素中字母x的高度对齐。因此在font-size>0时，元素(指 span i这种 纯文本不算)将会在baseline上出现一定的偏移</p>
-    <p>没有设置fontsize时</p>
-    <div class="wrapper font1">
-        <i></i>
-    </div>
-    <p></p>
-    <div class="wrapper font0">
-        <i></i>
-    </div>
-    <p>var f1 = document.querySelector('.wrapper.font1 i') ; f1.offSetTop来取值</p>
-    <p>待居中的子元素需为什么要再次应用middle呢 方案1自适应版仅仅是父元素用了middle 那是因为没有子元素 text应该只算文本节点</p>
-    <p>不信你去掉上面例子i元素的vertical-align试试</p>
-    <h1>子元素绝对定位</h1>
-    <p>2种 一种是top50%再负数margin 另一种是top0 bottom0 那么子元素需要设置高度</p>
-    <p>第一种高度固定 子元素若改了高度还需要更改margin-left margin-top值才能保持居中 需计算</p>
-    <div class="wrapper Absolute">
-        <i class="ab1">XXXX</i>
-    </div>
-    <p>无需计算 top0 bottom0 margin auto 原理 ‘top’ + ‘margin-top’ + ‘border-top’ + ‘padding-top’ + ‘height’ + ‘padding-bottom’ + ‘border-bottom’ + ‘margin-bottom’ + ‘bottom’ = 包含块的高度</p>
-    <p>最后你会发现 浏览器自动计算了 margin的值 </p>
-    <div class="wrapper Absolute">
-        <i class="ab2">XXXX</i>
-    </div>
-    <p>想要垂直 水平都居中的话</p>
-    <div class="wrapper Absolute">
-        <i class="ab22">XXXX</i>
-    </div>
-    <p>针对第一种的改进 使用CSS3的transition 无需计算 且子元素高度可以是auto </p>
-    <div class="wrapper Absolute">
-        <i class="ab3">ab3a b3ab 3ab3 </i>
-    </div>
-    <h1>Table cell 容器设置vertical-align 待居中元素可以是inline-block和block</h1>
-    <p>子元素高度auto</p>
-    <p>若子元素高于父元素 居中失效 即使父元素设置overflow也木有用 父元素会被撑开</p>
-    <div class="wrapper TableCell">
-        <i class="sub">XXXX XXXX XXXX XXXX</i>
-    </div>
-    <h1>父子元素高度均不固定 可使用父元素等padding 或 子元素等margin</h1>
-    <div class="wrapper padding">
-        <i>
+    <a href="xxx">aaaaa</a>
+    <img src="" alt="" height="50px" width="20px" />
+    <img src="" alt="" height="30px" width="20px" />
+    <!--[if lt IE 8]><span></span><![endif]-->
+  </div>
+  <p>font-size 0不仅仅是消除间隔 vertical-align:middle的定义是：元素的中垂点与父元素的基线加1/2父元素中字母x的高度对齐。因此在font-size>0时，元素(指 span i这种 纯文本不算)将会在baseline上出现一定的偏移</p>
+  <p>没有设置fontsize时</p>
+  <div class="wrapper font1">
+    <i></i>
+  </div>
+  <p></p>
+  <div class="wrapper font0">
+    <i></i>
+  </div>
+  <p>var f1 = document.querySelector('.wrapper.font1 i') ; f1.offSetTop来取值</p>
+  <p>待居中的子元素需为什么要再次应用middle呢 方案1自适应版仅仅是父元素用了middle 那是因为没有子元素 text应该只算文本节点</p>
+  <p>不信你去掉上面例子i元素的vertical-align试试</p>
+  <h1>子元素绝对定位</h1>
+  <p>2种 一种是top50%再负数margin 另一种是top0 bottom0 那么子元素需要设置高度</p>
+  <p>第一种高度固定 子元素若改了高度还需要更改margin-left margin-top值才能保持居中 需计算</p>
+  <div class="wrapper Absolute">
+    <i class="ab1">XXXX</i>
+  </div>
+  <p>无需计算 top0 bottom0 margin auto 原理 ‘top’ + ‘margin-top’ + ‘border-top’ + ‘padding-top’ + ‘height’ + ‘padding-bottom’ + ‘border-bottom’ + ‘margin-bottom’ + ‘bottom’ = 包含块的高度</p>
+  <p>最后你会发现 浏览器自动计算了 margin的值 </p>
+  <div class="wrapper Absolute">
+    <i class="ab2">XXXX</i>
+  </div>
+  <p>想要垂直 水平都居中的话</p>
+  <div class="wrapper Absolute">
+    <i class="ab22">XXXX</i>
+  </div>
+  <p>针对第一种的改进 使用CSS3的transition 无需计算 且子元素高度可以是auto </p>
+  <div class="wrapper Absolute">
+    <i class="ab3">ab3a b3ab 3ab3 </i>
+  </div>
+  <!-- =========================-=======-=====-===-=-=-=-=-================ -->
+  <hr>
+  <h1>Table cell 容器设置vertical-align 待居中元素也设置middle 且待居中元素可以是inline-block和block</h1>
+  <p>子元素高度auto</p>
+  <p>若子元素高于父元素 居中失效 即使父元素设置overflow也木有用 父元素会被撑开</p>
+  <div class="wrapper TableCell">
+    <i>XXXX XXXX XXXX XXXX</i>
+    <i>iiii</i>
+    <div>hehe</div>
+    <div>hehe <br> heheda </div>
+    <a href="xxx">aaaaa</a>
+  </div>
+  <h1>父子元素高度均不固定 可使用父元素等padding 或 子元素等margin</h1>
+  <div class="wrapper padding">
+    <i>
             <p>XXXX XXXX XX</p>
         </i>
-    </div>
-    <p></p>
-    <div class="wrapper margin">
-        <i>
+  </div>
+  <p></p>
+  <div class="wrapper margin">
+    <i>
             <p>XXXX aa cbbb</p>
         </i>
-    </div>
-    <p>PS</p>
-    <p>* 父容器上下等padding时，父容器定高时，子容器溢出padding-edge的部分会被截断。</p>
-    <p>* 子容器上下等margin时，父容器自适应于内部，父容器只会被撑高(即使设置height也无用)，永远无法被截断。</p>
-    <h1>背景图片居中 (仅适合于图片比容器小的时候)</h1>
-    <div class="middlepic">
-    </div>
+  </div>
+  <p>PS</p>
+  <p>* 父容器上下等padding时，父容器定高时，子容器溢出padding-edge的部分会被截断。</p>
+  <p>* 子容器上下等margin时，父容器自适应于内部，父容器只会被撑高(即使设置height也无用)，永远无法被截断。</p>
+  <h1>背景图片居中 (仅适合于图片比容器小的时候)</h1>
+  <div class="middlepic">
+  </div>
 </body>
 
 </html>
-

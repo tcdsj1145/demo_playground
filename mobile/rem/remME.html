@@ -1,128 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" /> -->
-    <title>Document</title>
-    <script src="remME.js"></script>
-    <style>
-    html,body{
-        height: 100%;
-        font-family: 'STHeiti';
-        margin: 0;
-    }
-    div,p{
-        margin: 0;
-        padding: 0;
-        font-size: 1rem;
-    }
-    #wrapper{
+  <meta charset="UTF-8">
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" /> -->
+  <title>Document</title>
+  <script src="remME.js"></script>
+  <style>
+/*  html,
+  body,
+  form,
+  fieldset,
+  p,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    -webkit-text-size-adjust: none;
+  }*/
+  </style>
+  <style>
+  html,
+  body {
+    height: 100%;
+    font-family: 'STHeiti';
+    margin: 0;
+  }
 
-    }
-    p{
-        background: url('');
-    }
-    .text{
-        font-size: 1rem;
-        width:20rem;
-    }
-    .block{
-        height: 1rem;
-        width: 1rem;
-        float: left;
-        font-size: 1rem;
-        line-height: 1rem;
-    }
-    .block:nth-child(odd){
-        background: pink;
-    }
-    .block:nth-child(even){
-        background: wheat;
-    }
-    .block2{
-        height: 1rem;
-        width: 2rem;
-        float: left;
-    }
-    .block10{
-        height: 2rem;
-        width: 10rem;
-        float: left;
-    }
-    .block20{
-        height: 2rem;
-        width: 20rem;
-        float: left;
-    }
-    .clearfix:after{
-        content: ' ';
-        display: table;
-        clear: both;
-    }
-    </style>
+  div,
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  #wrapper {}
+
+  p {
+    background: url('');
+  }
+
+  .text {
+    font-size: 1rem;
+    width: 20rem;
+  }
+
+  .text1 {
+    font-size: 1rem;
+  }
+
+  .text2 {
+    font-size: 2rem;
+  }
+
+  .block {
+    height: 1rem;
+    width: 1rem;
+    float: left;
+    font-size: 1rem;
+    line-height: 1rem;
+  }
+
+  .block:nth-child(odd) {
+    background: pink;
+  }
+
+  .block:nth-child(even) {
+    background: wheat;
+  }
+
+  .block2 {
+    height: 1rem;
+    width: 2rem;
+    float: left;
+  }
+
+  .block10 {
+    height: 2rem;
+    width: 10rem;
+    float: left;
+  }
+
+  .block20 {
+    height: 2rem;
+    width: 20rem;
+    float: left;
+  }
+
+  .clearfix:after {
+    content: ' ';
+    display: table;
+    clear: both;
+  }
+  </style>
 </head>
-<body>
-    <div id="wrapper">
-        <!-- content text -->
-        <p>
-        一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
-        </p>
-        <div style="height:1rem; width: 1rem; background:wheat;">
-        </div>
-        <p>
-        <div class="text">一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十</div>
-        <div class="clearfix">
-            <div class="block">一</div>
-            <div class="block">二</div>
-            <div class="block">三</div>
-            <div class="block">四</div>
-            <div class="block">五</div>
-            <div class="block">六</div>
-            <div class="block">七</div>
-            <div class="block">八</div>
-            <div class="block">九</div>
-            <div class="block">十</div>
-            <div class="block">一</div>
-            <div class="block">二</div>
-            <div class="block">三</div>
-            <div class="block">四</div>
-            <div class="block">五</div>
-            <div class="block">六</div>
-            <div class="block">七</div>
-            <div class="block">八</div>
-            <div class="block">九</div>
-            <div class="block">十</div>
 
-        </div>
-        <div class="clearfix">
-            <div class="block2">一二</div>
-            <div class="block2">三四</div>
-            <div class="block2">五六</div>
-            <div class="block2">七八</div>
-            <div class="block2">九十</div>
-            <div class="block2">一二</div>
-            <div class="block2">三四</div>
-            <div class="block2">五六</div>
-            <div class="block2">七八</div>
-            <div class="block2">九十</div>
-        </div>
-        <div class="clearfix">
-            <div class="block10">一二三四五六七八九十</div>
-            <div class="block10">一二三四五六七八九十</div>
-            <div class="block20">一二三四五六七八九十一二三四五六七八九十</div>
-        </div>
-        <!-- icon -->
-        <img src="up.png" alt="向上" style="position:fixed;
+<body>
+  <div id="wrapper">
+    <!-- content text -->
+    理论上这里一行应该显示两个1~10 但是在PC上渲染有问题   手机端无问题
+    <p class="text1">
+      一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+    </p>
+    <div class="text2">一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十一二三四五六七八九十
+    </div>
+    <div style="height:1rem; width: 1rem; background:wheat;">
+    </div>
+    <h1>block</h1>
+    <div class="clearfix">
+      <div class="block">一</div>
+      <div class="block">二</div>
+      <div class="block">三</div>
+      <div class="block">四</div>
+      <div class="block">五</div>
+      <div class="block">六</div>
+      <div class="block">七</div>
+      <div class="block">八</div>
+      <div class="block">九</div>
+      <div class="block">十</div>
+      <div class="block">一</div>
+      <div class="block">二</div>
+      <div class="block">三</div>
+      <div class="block">四</div>
+      <div class="block">五</div>
+      <div class="block">六</div>
+      <div class="block">七</div>
+      <div class="block">八</div>
+      <div class="block">九</div>
+      <div class="block">十</div>
+    </div>
+    <h1>block2</h1>
+    <div class="clearfix">
+      <div class="block2">一二</div>
+      <div class="block2">三四</div>
+      <div class="block2">五六</div>
+      <div class="block2">七八</div>
+      <div class="block2">九十</div>
+      <div class="block2">一二</div>
+      <div class="block2">三四</div>
+      <div class="block2">五六</div>
+      <div class="block2">七八</div>
+      <div class="block2">九十</div>
+    </div>
+    <h1>block10</h1>
+    <div class="clearfix">
+      <div class="block10">一二三四五六七八九十</div>
+      <div class="block10">一二三四五六七八九十</div>
+      <div class="block20">一二三四五六七八九十一二三四五六七八九十</div>
+    </div>
+    <!-- icon -->
+    <img src="up.png" alt="向上" style="position:fixed;
             bottom:0.625rem;right:0.625rem;width:3rem;height:3rem;
             /*通过 bottom:10px;right:10px;width:48px;height:48px; 各除以16计算出来  这里是以iphone5为例子 iphone5的fontsize是16px*/
         ">
-
-        <!-- photo -->
-        <img src="p1.jpg" alt="向上" style="margin:0 auto;display:block;
+    <!-- photo -->
+    <img src="p1.jpg" alt="向上" style="margin:0 auto;display:block;
             width:18.75rem;height:12.5rem;
             /*通过 width:300px;height:200px; 各除以16计算出来*/
         ">
-
-    </div>
+  </div>
 </body>
+
 </html>

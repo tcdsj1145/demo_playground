@@ -12,6 +12,9 @@
         overflow: hidden;
         margin: 0;
         padding: 0;
+
+        /*针对IOS机型 没有这个属性  里面的内容滑动就木有减速度的感觉*/
+        -webkit-overflow-scrolling:touch;
     }
 
     .page {
@@ -27,7 +30,7 @@
     #div1 {
         height: 100%;
         background: #ccc;
-        -webkit-overflow-scrolling:touch;
+
     }
 
     .fix {
@@ -102,6 +105,8 @@
         </div>
         <div class="fix"></div>
     </div>
-</body>
+    <script>
 
-</html>scroll
+    </script>
+</body>
+</html>

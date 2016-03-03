@@ -152,14 +152,14 @@ i {
     /*vertical-align应该和table-cell元素在一起*/
 }
 
-.wrapper.TableCell .sub {
-    width: 30px;
-    background-color: pink;
-}
 
-.wrapper.TableCell i.sub {
+.wrapper.TableCell i,
+.wrapper.TableCell div {
+    width: 50px;
+    vertical-align: middle;
+    background-color: pink;
     display: inline-block;
-    display: block;
+    /*display: block;*/
     /*2种都行*/
 }
 /*方案4 绝对定位====================*/

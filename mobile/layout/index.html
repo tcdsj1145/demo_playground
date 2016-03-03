@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <style>
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    /*针对IOS机型 没有这个属性  里面的内容滑动就木有减速度的感觉*/
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .container {
+    display: flex;
+    display: -webkit-box;
+    height: 10rem;
+  }
+  .container .item{
+     flex: 1 1 auto;
+    -webkit-box-flex: 1;
+  }
+  </style>
+</head>
+
+<body>
+  flex的三个版本，flex有三个版本，分别对应于display: box、display: flexbox、display: flex，对于android和ios而言，使用flex这种
+  <div class="container">
+    <div class="item">AAAA</div>
+    <div class="item">BBB</div>
+    <div class="item">XCCC</div>
+  </div>
+</body>
+
+</html>

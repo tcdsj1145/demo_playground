@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+  }
+  #prt1,#prt2,#prt3{
+    margin: 50px;
+  }
+  #prt1 {
+    height: 20%;
+    border: 1px solid black;
+    top: 50%;
+    left: 0%;
+    animation: prt1 2s infinite;
+    -webkit-animation: prt1 2s;
+    /* display:none; */
+    /*animation-iteration-count: infinite;*/
+    /*动画次数*/
+  }
+
+  @keyframes prt1 {
+    0% {
+      background-anicolor: white;
+    }
+    33% {
+      background-color: black;
+    }
+    66% {
+      background-color: white;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+
+  @-webkit-keyframes prt1 {
+    0% {
+      background-color: white;
+    }
+    33% {
+      background-color: black;
+    }
+    66% {
+      background-color: white;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+
+  #prt2 {
+    height: 30%;
+    border: 1px solid black;
+    left: 0%;
+    top: 50%;
+    animation: prt2 2s infinite;
+    -webkit-animation: prt2 2s infinite;
+    /* display:none; */
+  }
+
+  @keyframes prt2 {
+    0% {
+      background-color: white;
+    }
+    33% {
+      background-color: white;
+    }
+    66% {
+      background-color: black;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+
+  @-webkit-keyframes prt2 {
+    0% {
+      background-color: white;
+    }
+    33% {
+      background-color: white;
+    }
+    66% {
+      background-color: black;
+    }
+    100% {
+      background-color: white;
+    }
+  }
+
+  #prt3 {
+    height: 49%;
+    border: 1px solid black;
+    left: 0%;
+    top: 50%;
+    animation: prt3 2s infinite;
+    -webkit-animation: prt3 2s infinite;
+    /* display:none; */
+  }
+
+  @keyframes prt3 {
+    0% {
+      background-color: white;
+    }
+    33% {
+      background-color: white;
+    }
+    66% {
+      background-color: white;
+    }
+    100% {
+      background-color: black;
+    }
+  }
+
+  @-webkit-keyframes prt3 {
+    0% {
+      background-color: white;
+    }
+    33% {
+      background-color: white;
+    }
+    66% {
+      background-color: white;
+    }
+    100% {
+      background-color: black;
+    }
+  }
+  </style>
+</head>
+
+<body>
+  <div id="prt1"></div>
+  <div id="prt2"></div>
+  <div id="prt3"></div>
+</body>
+
+</html>

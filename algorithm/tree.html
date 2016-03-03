@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  //先构造一个完全二叉树
+  function Node(value){
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+
+  var root;
+  //构造树  这里是4层的树
+  (function(){
+    var nodeList = [];
+    var floor = 1;
+    var nodeValue = 0;
+    while(floor <=4){
+      var count = Math.pow(2, floor-1);
+      for (var i = count; i >= 1; i--) {
+        var newNode = new Node(++nodeValue);
+        if(nodeValue == 1){
+          root = newNode;
+        }
+        if(floor > 1){
+          var parentNode = nodeList[~~(nodeValue/2)-1];
+          if(nodeValue%2 == 0){
+            parentNode.left = newNode;
+          }else{
+            parentNode.right = newNode;
+          }
+        }
+        nodeList.push(newNode);
+      };
+      floor++;
+    }
+  })();
+  //回朔
+  function walk(node){
+    if(!node) return;
+    console.log(node.value);
+    if(node.left){
+      node.left.parent = node;
+      walk(node.left);
+    }
+    if(node.right){
+      node.right.parent = node;
+      walk(node.right);
+    }
+    if(!node.right && !node.left){
+      return;
+    }
+  }
+  walk(root);
+
+  debugger
+
+  // var node2 = new Node(2);
+  // var node3 = new Node(3);
+  // root.left = node2;
+  // root.right = node3;
+
+
+
+</script>
+</body>
+</html>
