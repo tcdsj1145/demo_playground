@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+  <style>
+  #msg {
+    height: 10rem;
+  }
+  </style>
+</head>
+
+<body>
+  <p>http://stackoverflow.com/questions/24046/the-safari-back-button-problem
+  </p>
+  据说IOS在返回页面时 js不会执行 但是我这里不是 而且还保持着离开页面的变量状态
+  <p>
+    <a href="page2.html">page22222222</a>
+  </p>
+  <div id="msg"></div>
+  <script>
+  window.onload = function() {
+    var i = 1;
+    setTimeout(function foo() {
+      msg.innerHTML = i;
+      i++;
+      setTimeout(foo, 1000);
+    }, 1000);
+  }
+  </script>
+</body>
+
+</html>

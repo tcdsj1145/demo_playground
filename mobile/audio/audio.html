@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+</head>
+
+<body>
+  <audio src="./audio.mp3"></audio>
+  <script>
+  //必须要摸一下屏幕才能播放
+  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('touchstart', function() {
+      console.log('touch');
+      document.getElementsByTagName('audio')[0].play();
+      document.getElementsByTagName('audio')[0].pause();
+      setTimeout(function() {
+        document.getElementsByTagName('audio')[0].play();
+      }, 0);
+    });
+  }, false);
+  </script>
+  <script>
+  //方式2
+  //仅在PC中可以
+  // var ifr=document.createElement("iframe");
+  // ifr.setAttribute('src', "./audio.mp3");
+  // ifr.setAttribute('width', '1px');
+  // ifr.setAttribute('height', '1px');
+  // ifr.setAttribute('scrolling', 'no');
+  // ifr.style.border="0px";
+  // document.body.appendChild(ifr);
+  </script>
+</body>
+
+</html>

@@ -51,9 +51,6 @@
       node.right.parent = node;
       walk(node.right);
     }
-    if(!node.right && !node.left){
-      return;
-    }
   }
   walk(root);
 

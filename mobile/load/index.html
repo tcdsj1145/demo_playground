@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <style>
+  .bg{
+    height: 10rem;
+    width: 100%;
+    background: url('https://ss3.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/super/crop%3D0%2C433%2C2000%2C1244/sign=4265c250860a19d8df4cde450ecaaebf/730e0cf3d7ca7bcb849c5cceb8096b63f724a868.jpg');
+  }
+  </style>
+</head>
+<body>
+<div class="bg"></div>
+<div id="msg"></div>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    msg.innerHTML += ' DOM Loaded ';
+  },false);
+  window.addEventListener('load', function(){
+    msg.innerHTML += 'load';
+  },false);
+  window.onPageFinished = function(){
+    msg.innerHTML += 'finished';
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0">
+  <style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+  }
+
+  .title {
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+  }
+
+  .sticky {
+    /*position: -webkit-sticky;
+    position: sticky;
+    top: 0px;*/
+    /*仅在IOS上可以用  但仍然效果不好*/
+
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background: yellow;
+  }
+  .hide{
+    display: none;
+  }
+  .sticky.fixed {
+    position: fixed;
+    top: 0;
+  }
+
+  .content .item {
+    margin: 2rem;
+    min-height: 20rem;
+  }
+  </style>
+</head>
+
+<body>
+  <div>
+    参考http://codepen.io/SitePoint/pen/xJcFz
+  </div>
+  <div class="title">
+    wahahha
+  </div>
+  <div class="sticky">
+    sticky
+  </div>
+  <div class="content">
+    <div class="item">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent luctus urna sit amet sollicitudin venenatis. Aenean odio tortor, varius vitae molestie eu, ultricies vel lacus. Nam viverra fermentum dapibus. Nulla at semper diam. Phasellus sit amet hendrerit sapien, non semper felis. Morbi augue leo, mattis nec leo sed, malesuada porta dui. Maecenas pretium eros quis lorem luctus gravida.
+    </div>
+    <div class="item">
+      Sed gravida quam odio, euismod accumsan mauris ornare quis. Duis sed condimentum justo. Phasellus ac dui eget velit bibendum viverra. Aenean porttitor commodo diam, quis interdum mi sagittis lobortis. Donec id ipsum dignissim, pharetra nunc sit amet, porttitor elit. Donec iaculis elit et enim interdum, ac laoreet lorem consequat. Sed eu elit ut quam pellentesque cursus. Integer sed condimentum est. Integer tempor placerat bibendum. Sed ut semper arcu, at porttitor nibh. Fusce vulputate pharetra tellus a laoreet. Cras imperdiet enim sed turpis adipiscing placerat. Vestibulum ut rhoncus mauris. In egestas ullamcorper dolor vitae suscipit. Curabitur non orci rutrum, iaculis ligula quis, sollicitudin neque. Aliquam dapibus dignissim tincidunt.
+    </div>
+    <div class="item">
+      Suspendisse at urna mauris. Vivamus eu lectus et quam viverra accumsan quis nec ligula. Aliquam sed mi sit amet arcu convallis bibendum id eu lorem. Sed pretium eget nibh egestas consectetur. Sed adipiscing, libero sed molestie laoreet, arcu tortor elementum ligula, nec commodo ipsum augue ut tellus. Morbi nibh mauris, facilisis vel bibendum vehicula, dignissim in tortor. Suspendisse augue urna, vestibulum at orci nec, scelerisque cursus mi. Proin congue eget justo et mattis.
+    </div>
+    <div class="item">
+      Suspendisse suscipit in lectus at aliquet. Integer non sem enim. Vestibulum aliquam imperdiet laoreet. In malesuada sodales augue, ut aliquam elit tempus id. Suspendisse sed hendrerit nibh. Curabitur molestie in libero nec vulputate. Cras ut scelerisque lacus, vitae cursus dui. Fusce ultricies lectus tincidunt, congue elit interdum, pellentesque nunc.
+    </div>
+    <div class="item">
+      Donec quis diam dapibus, accumsan ipsum vitae, porta turpis. Pellentesque vel ligula suscipit, scelerisque justo sit amet, vestibulum enim. Morbi eget sapien blandit, mattis enim sed, tincidunt eros. Nullam urna lectus, pretium id ultrices non, convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus pellentesque, enim feugiat tempus venenatis, arcu quam molestie eros, quis bibendum nulla metus vitae nisi. Integer at lectus at metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit amet, ornare at risus. Proin a lacus id felis aliquet fringilla.
+    </div>
+    <div class="item">
+      Donec quis diam dapibus, accumsan ipsum vitae, porta turpis. Pellentesque vel ligula suscipit, scelerisque justo sit amet, vestibulum enim. Morbi eget sapien blandit, mattis enim sed, tincidunt eros. Nullam urna lectus, pretium id ultrices non, convallis vitae arcu. Fusce vel justo in nulla pulvinar interdum id sed sem. Ut quis ullamcorper dolor, a bibendum quam. Vivamus pellentesque, enim feugiat tempus venenatis, arcu quam molestie eros, quis bibendum nulla metus vitae nisi. Integer at lectus at metus eleifend molestie. Nulla sit amet pharetra est. Sed commodo ac leo ac volutpat. Vivamus enim sapien, sodales vel cursus sit amet, ornare at risus. Proin a lacus id felis aliquet fringilla.
+    </div>
+  </div>
+  <script>
+  //使用js需要注意的一点是
+  //在某一个时刻 也就是sticky由普通的占位子的position突然变成 fixed的时候
+  //变成突然不占位子的了  那么下面的内容就会出现抖动
+  //所以要用一个placeholder占据空间
+  var doc = document;
+  var sticky = doc.querySelector('.sticky');
+  var thresholdTop = sticky.getBoundingClientRect().top;
+  var placeholder = doc.createElement('div');
+  placeholder.style.width = sticky.offsetWidth + 'px';
+  placeholder.style.height = sticky.offsetHeight + 'px';
+  placeholder.classList.add('hide');
+  sticky.parentElement.insertBefore(placeholder, sticky);
+  var hasFixed = false;
+  window.addEventListener('scroll', function() {
+    if (!hasFixed && window.scrollY > thresholdTop) {
+      // // 既然这个操作并不是那么频繁  操作DOM也不会带来代打的压力
+      // sticky.parentElement.insertBefore(placeholder, sticky);
+      placeholder.classList.remove('hide');
+      sticky.classList.add('fixed');
+      hasFixed = 1;
+    }
+    if (hasFixed && window.scrollY < thresholdTop) {
+      sticky.classList.remove('fixed');
+      placeholder.classList.add('hide');
+      // placeholder.remove();
+      hasFixed = 0;
+    }
+  }, false);
+  </script>
+</body>
+
+</html>
