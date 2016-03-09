@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var someObj = {
+    num: 123,
+    str: "someString",
+    bool: true,
+    func: function() {},
+    obj: {
+      arr: [1, 2, {
+        num: 1
+      }]
+    },
+    arr: [1, 2, "string"]
+  };
+  var arr2 = [{
+    num: 123,
+    str: "someString",
+    bool: true,
+    func: function() {},
+    obj: {
+      arr: [1, 2, {
+        num: 1
+      }]
+    },
+    arr: [1, 2, "string"]
+  }, 23];
+  Object.prototype.deepClone = function() {
+    var isArray = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object Array]";
+    };
+    var isObj = function(obj) {
+      return Object.prototype.toString.call(obj) === "[object Object]";
+    };
+    var deepClone = Object.prototype.deepClone;
+    var obj = this.isArray ? [] : {};
+    for (var prop in this) {
+
+      if (isObj(this[prop])) {
+        this[prop].deepClone();
+      }
+      obj[prop] = this[prop];
+    }
+    return obj;
+  };
+
+  function deepClone(obj) {
+    var rs;
+    var isArray = function() {
+      return Object.prototype.toString.call(obj) == '[object Array]';
+    };
+    var isObject = function() {
+      return Object.prototype.toString.call(obj) == '[object Object]';
+    };
+    rs = isArray() ? [] : {};
+    if (isArray() || isObject()) {
+      for (var i in obj) {
+        if (obj.hasOwnProperty(i)) {
+          rs[i] = deepClone(obj[i]);
+        }
+      }
+    } else {
+      rs = obj;
+    }
+    return rs;
+  }
+  var rs = deepClone(arr2);
+  console.log(arr2);
+  </script>
+</body>
+
+</html>

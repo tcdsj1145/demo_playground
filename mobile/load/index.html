@@ -19,9 +19,13 @@
   document.addEventListener('DOMContentLoaded', function(){
     msg.innerHTML += ' DOM Loaded ';
   },false);
+  document.onReady = function(){
+    msg.innerHTML +='ready';
+  }
   window.addEventListener('load', function(){
     msg.innerHTML += 'load';
   },false);
+  //WebView中才可以用
   window.onPageFinished = function(){
     msg.innerHTML += 'finished';
   }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+
+var arr = [2, 1, 5, 3, 6, 4, 8, 9, 7];
+function lis(arr){
+  var tmp = [];
+  var maxLis = [];
+  for(var i=0; i< arr.length; i++){
+    tmp.push(arr[i]);
+    tmp.forEach(function(item, idx){
+      if(item > arr[i]){
+        tmp.splice(idx,1);
+      }
+    });
+    if(tmp.length > maxLis.length){
+      maxLis = tmp;
+    }
+  }
+  console.log(maxLis);
+}
+lis(arr);
+</script>
+</body>
+</html>

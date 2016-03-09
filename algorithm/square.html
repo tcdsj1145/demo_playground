@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  对角线输出
+  <script>
+  var size = 5;
+  var square = [];
+  generateSquare();
+
+  function generateSquare() {
+    var i, j;
+    for (i = 0; i < size; i++) {
+      var line = [];
+      for (j = 1; j <= size; j++) {
+        line.push(i * size + j);
+      }
+      square.push(line);
+    }
+  }
+  //得到
+  // square = [
+  //     [1, 2, 3, 4],
+  //     [5, 6, 7, 8],
+  //     [9, 10, 11, 12],
+  //     [13, 14, 15, 16]
+  // ];
+
+  output();
+
+  function output() {
+    var i, j;
+    var time = (size - 1) * 2 + 1;
+    var tmp = [];
+    var length = 0;
+    i = 1;
+    j = size;
+    var i0, j0;
+    //i 从1 开始
+    while (j >= 1) {
+      i0 = i;
+      j0 = j;
+      console.group();
+      while (j0 <= size) {
+        console.log(getValByCordinate(i0, j0));
+        i0++;
+        j0++;
+      }
+      console.groupEnd();
+      j--;
+    }
+    //j从1开始
+    i = i + 1;
+    j = 1;
+    for (; i <= size; i++) {
+      i0 = i;
+      j0 = j;
+      console.group();
+      while (i0 <= size) {
+        console.log(getValByCordinate(i0, j0));
+        i0++;
+        j0++;
+      }
+      console.groupEnd();
+    }
+  }
+
+  function getValByCordinate(i, j) {
+    return square[i - 1][j - 1];
+  }
+  </script>
+</body>
+
+</html>

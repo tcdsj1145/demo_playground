@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+全排列
+<script>
+var arr = [1, 2, 3, 4];
+var head = [];
+
+function fullAZ(arr) {
+    if(arr.length < 2) return;
+    if (arr.length == 2) {
+        console.log(head + '-' + arr[0] + '-' + arr[1]);
+        console.log(head + '-' + arr[1] + '-' + arr[0]);
+    } else if(arr.length > 2){
+        var i;
+        for (i = 0; i < arr.length; i++) {
+            var lastArr = arr.slice(); //数组复制  否则对lastArr上的操作直接作用到arr
+            head.push(arr[i]);
+            lastArr.splice(i, 1);
+            fullAZ(lastArr);
+            head.pop();
+        }
+    }
+}
+fullAZ(arr);
+
+</script>
+</body>
+</html>

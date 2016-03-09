@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var arr = [1, 4, 6, 12, 17, 19, 44, 66, 71];
+
+  function bisearch(arr, low, high, val) {
+    var mid = parseInt((low + high) / 2);
+    if (low <= high) {
+      if (arr[mid] == val) {
+        return mid;
+      } else {
+        if (arr[mid] < val) {
+          //这里是需要有return 的
+          //因为题目要求有返回值
+          //值要一层一层的返回出去
+          return bisearch(arr, mid + 1, high, val);
+        } else {
+          return bisearch(arr, low, mid - 1, val);
+        }
+      }
+    } else {
+      return low;
+    }
+  }
+  console.log(bisearch(arr, 0, arr.length - 1, 44));
+  console.log(bisearch(arr, 0, arr.length - 1, 55));
+  </script>
+</body>
+
+</html>

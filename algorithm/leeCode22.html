@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  /**
+   * @param {number} n
+   * @return {string[]}
+   */
+
+  var generateParenthesis = function(n) {
+    var rs = [];
+    function foo(item, left, right, pushed) {
+      var pushed = [].concat(pushed);
+      if (item == '(') {
+        left++;
+      }
+      if (item == ')') {
+        right++;
+      }
+      pushed.push(item);
+      if (left == right && left == n) {
+        // console.log(pushed.join(''));
+        rs.push(pushed.join(''));
+        return;
+      }
+      if (left < n) {
+        foo('(', left, right, pushed);
+      }
+      if (right < n && left > right) {
+        foo(')', left, right, pushed);
+      }
+    }
+    foo('(', 0, 0, []);
+    console.log(rs);
+    return rs;
+  };
+  generateParenthesis(3);
+  </script>
+</body>
+
+</html>

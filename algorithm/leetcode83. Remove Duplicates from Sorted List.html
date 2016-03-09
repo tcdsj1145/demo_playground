@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  Given 1->1->2, return 1->2. Given 1->1->2->3->3, return 1->2->3.
+  <script>
+  function ListNode(val) {
+    this.val = val;
+    this.next = null;
+  }
+  var head = new ListNode(1);
+  (function init(){
+    var values = [].slice.apply(arguments);
+    var currNode = head;
+    var val;
+    while( val = values.shift()){
+      currNode.next = new ListNode(val);
+      currNode = currNode.next
+    }
+  })(1,1,1);
+
+  var deleteDuplicates = function(head) {
+    var currNode = head;
+    var preNode = null;
+    while (currNode) {
+      if(preNode && currNode.val == preNode.val){
+        preNode.next = currNode.next;
+      }else{
+        preNode = currNode;
+      }
+      currNode = currNode.next;
+    }
+    return head;
+  };
+  deleteDuplicates(head);
+
+  </script>
+</body>
+
+</html>

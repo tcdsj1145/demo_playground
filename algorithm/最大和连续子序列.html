@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="[求和最大的连续子序列]">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+var arr = [2, 8,-2, 3, 5, -3, 2];
+
+
+//传统方法 O(n^2)
+function fun1(arr){
+  var maxSum =arr[0];
+  var maxSumArr = [];
+  for(var i=0; i< arr.length; i++){
+    var sum = arr[i];
+    var sumArr = [arr[i]];
+    for(j=i+1; j<arr.length; j++){
+      sum = sum + arr[j];
+      sumArr.push(arr[j]);
+      if(sum > maxSum){
+        maxSum = sum;
+        maxSumArr = [].concat(sumArr);
+      }
+    }
+  }
+  console.log(maxSum);
+  console.log(maxSumArr);
+}
+fun1(arr);
+fun2(arr);
+//复杂度是O(n)的方法
+//一开始会觉得奇怪  怎么可能有复杂度是O(N)的方法呢
+//仔细想  如果所有的数字都是正数  那么和最大的连续子序列就是数组本身
+//所以我们就是要控制sum<0 的情况
+
+function fun2(arr){
+  var sum = arr[0];
+  var maxSum = arr[0];
+  var sumArr = [];
+  var maxSumArr =[];
+  for(var i =0; i< arr.length; i++ ){
+    if(sum < 0 && arr[i]>0){
+      sum = arr[i];
+      sumArr = [arr[i]];
+    }else{
+      sum += arr[i];
+      sumArr.push(arr[i]);
+      if(sum > maxSum){
+        maxSum = sum;
+        maxSumArr = [].concat(sumArr);
+      }
+    }
+  }
+  console.log(maxSum);
+  console.log(maxSumArr);
+}
+  </script>
+</body>
+</html>

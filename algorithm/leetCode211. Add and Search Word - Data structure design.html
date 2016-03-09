@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  /**
+   * @constructor
+   */
+  var WordDictionary = function() {
+    this.words = [];
+  };
+
+  /**
+   * @param {string} word
+   * @return {void}
+   * Adds a word into the data structure.
+   */
+  WordDictionary.prototype.addWord = function(word) {
+    this.words.push(word);
+  };
+
+  /**
+   * @param {string} word
+   * @return {boolean}
+   * Returns if the word is in the data structure. A word could
+   * contain the dot character '.' to represent any one letter.
+   */
+  WordDictionary.prototype.search = function(word) {
+    var rs = this.words.some(function(item) {
+      return new RegExp('^' + word + '$').test(item)
+    });
+    return rs;
+  };
+
+  /**
+   * Your WordDictionary object will be instantiated and called as such: */
+  var wordDictionary = new WordDictionary();
+  wordDictionary.addWord("word");
+  wordDictionary.search("pattern");
+  </script>
+</body>
+
+</html>

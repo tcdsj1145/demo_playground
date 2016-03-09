@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  For example, given [0,1,2,4,5,7,9], return ["0->2","4->5","7","9"].
+  <script>
+  var summaryRanges = function(nums) {
+    var rs = [];
+    var text = [];
+    nums.forEach(function(item, idx) {
+      if (idx == 0) {
+        text.push(item);
+      } else {
+        if (nums[idx] - nums[idx - 1] == 1) {
+          if (text.length != 1) {
+            text.pop();
+          }
+          text.push(item);
+        } else {
+          if (text.length != 1) {
+            rs.push(text[0] + '->' + text[1]);
+          } else {
+            rs.push(text + '');
+          }
+          //开始新的统计
+          text = [item];
+        }
+      }
+
+      if (idx == nums.length - 1) {
+        //之前text放入rs的时机都是根据后面出现了不连续的数字才放入
+        //最后的一次text
+        if (text.length != 1) {
+          rs.push(text[0] + '->' + text[1]);
+        } else {
+          rs.push(text + '');
+        }
+      }
+
+
+    });
+
+    console.log(rs);
+    return rs;
+  };
+  summaryRanges([-1,0,2,3,5,9]);
+  </script>
+</body>
+
+</html>

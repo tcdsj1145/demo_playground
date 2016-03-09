@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  var multiply = function(num1, num2) {
+    var rs = [];
+    num1 = num1 +'';
+    num2 = num2 +'';
+    for (var i = num1.length - 1; i >= 0; i--) {
+      var digit1 = num1[i];
+      for (var j = num2.length - 1; j >= 0; j--) {
+        var digit2 = num2[j];
+        var multiRs = digit2 * digit1;
+        var addZero = 0;
+        while (addZero < Math.abs(i - num1.length + 1) + Math.abs(j - num2.length + 1)) {
+          multiRs = multiRs + '0';
+          addZero ++;
+        }
+        rs.push(multiRs+'');
+      };
+    };
+    rs = addNum(rs);
+    return rs;
+  };
+
+  var addNum = function(nums) {
+    var lenArray = nums.map(function(num) {
+      return num.length;
+    });
+    var len = Math.max.apply(this, lenArray);
+    nums = nums.map(function(num) {
+      while (num.length < len) {
+        num = '0' + num;
+      }
+      return num;
+    });
+    var rs = [];
+    //idx表示位数  个位  十位 百位等
+    var idx = len-1;
+
+    //nums已经转为等长的字符串
+    while (idx >= 0) {
+      for (var i = nums.length - 1; i >= 0; i--) {
+        var result = (rs[idx] || 0) + (+nums[i][idx]);
+        //进位
+        if (result >= 10) {
+          rs[idx] = result % 10;
+          if (idx > 0) {
+            rs[idx - 1] = ~~(result / 10);
+          } else {
+            rs.unshift(~~(result / 10));
+          }
+        }else{
+          rs[idx] = result;
+        }
+      };
+      idx--;
+    }
+    console.log(rs);
+    return rs;
+  }
+
+  multiply(992,67);
+  </script>
+</body>
+
+</html>
