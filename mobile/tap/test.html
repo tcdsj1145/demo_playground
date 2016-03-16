@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    height: 100%;
+  }
+
+  .center {
+    margin: auto 10px;
+    position: absolute;
+    width: 94%;
+    top: 0;
+    bottom: 0;
+    height: 400px;
+  }
+
+  textarea {
+    height: 100%;
+    width: 100%;
+  }
+
+  .input {
+    height: 100%;
+    border: 1px solid #666;
+  }
+
+  .dialog {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 300px;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 20px;
+  }
+
+  .title {
+    height: 40px;
+    text-align: center;
+    border-bottom: 1px solid;
+  }
+  </style>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="center">
+    <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+    <div class="input" contenteditable="true"></div>
+  </div>
+  <div class="dialog">
+    <div class="title">
+      X
+    </div>
+  </div>
+  <div class="msg"></div>
+</body>
+<script src="zepto.js"></script>
+<script>
+// 在IOS中 single的触发在click 之前
+$(function() {
+  var msg = $('.msg');
+  // $('.title').singleTap(function(){
+  //   msg[0].innerHTML += (' single '+ +new Date);
+  // });
+  $('.title').tap(function() {
+    msg.html(+new Date)
+      $('.dialog').remove();
+  });
+  // $('.title').click(function(){
+  //   msg.html(msg.html() + '  click '+ +new Date)
+  // });
+  $('.input').click(function() {
+    $('.input').text('clicked');
+  })
+});
+</script>
+
+</html>

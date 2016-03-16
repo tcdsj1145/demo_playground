@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val) {
+   *     this.val = val;
+   *     this.next = null;
+   * }
+   */
+  /**
+   * @param {ListNode} head
+   * @return {ListNode}
+   */
+
+  function ListNode(val) {
+    this.val = val;
+    this.next = null;
+  }
+  var head = (function() {
+    var values = [].slice.apply(arguments);
+    var val;
+    var node;
+    var preNode;
+    var head;
+    while (val = values.shift()) {
+      node = new ListNode(val);
+      if (preNode) {
+        preNode.next = node;
+      } else {
+        head = node;
+      }
+      preNode = node;
+    }
+    return head;
+  })(9, 5, 4, 6, 8, 7);
+
+  var sortList = function(head) {
+    if(!head) return [];
+    var flag = 1;
+    while (flag) {
+      var curr = head;
+      var next = null;
+      var pre = null;
+      flag = 0;
+      while (curr.next) {
+        next = curr.next;
+        if (curr.next.val < curr.val) {
+          flag = 1;
+          curr.next = next.next;
+          next.next = curr;
+          if(pre){
+            pre.next = next;
+          }else{
+            head = next;
+          }
+          pre = next;
+        }else{
+          pre = curr;
+          curr = next;
+        }
+      }
+      if(!flag) break;
+    }
+    return head;
+  };
+
+  head = sortList(head);
+  console.log(head);
+  </script>
+</body>
+
+</html>

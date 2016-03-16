@@ -1,0 +1,6 @@
+    Scanner sc = new Scanner(System.in);
+    String firstLine = sc.nextLine();
+    String secLine = sc.nextLine();
+
+
+    parseInt -------> Integer.parseInt
