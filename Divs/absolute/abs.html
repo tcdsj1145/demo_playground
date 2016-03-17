@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #demo{
+    width: 100px;
+    height: 100px;
+    border: 20px solid yellow;
+    padding:20px;
+    position: relative;
+  }
+  .inner{
+    background: pink;
+    height: 100%;
+    width: 100%;
+  }
+  .triangle{
+    position: absolute;
+    left: 100%; /*相对于clientWidth  而不是offsetWidth*/
+    height: 10px;
+    width: 10px;
+    background: white;
+
+  }
+
+  </style>
+</head>
+<body>
+  <div id="demo">
+    <div class="inner"></div>
+    <div class="triangle">
+
+    </div>
+  </div>
+</body>
+</html>

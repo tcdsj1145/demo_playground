@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #demo {
+    margin: 30px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid #97972A;
+    padding: 20px;
+    position: relative;
+  }
+
+  .triangle-white {
+    position: absolute;
+    box-sizing: border-box;
+    left: 100%;
+    /*相对于clientWidth  而不是offsetWidth*/
+    top: 20px;
+    height: 20px;
+    width: 10px;
+    border-style: solid;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+    z-index: 20;
+  }
+
+  .triangle-border {
+    position: absolute;
+    box-sizing: border-box;
+    left: 100%;
+    /*相对于clientWidth  而不是offsetWidth*/
+    top: 18px;
+    height: 24px;
+    width: 12px;
+    border-style: solid;
+    border-color: transparent transparent transparent #97972A;
+    border-width: 12px 0 12px 12px;
+    z-index: 10;
+  }
+
+  #demo2 {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #000;
+    position: relative;
+  }
+
+  #demo2:after {
+    content: '';
+    display: block;
+    width: 14.1421px;
+    height: 14.1421px;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    position: absolute;
+    right: -10px;
+    top: 20px;
+    transform: rotate(45deg);
+    background-color: #fff;
+  }
+  /* 
+解题思路：
+将三角形用一个正方形来实现
+设置其上border,右border的宽度
+设置其背景颜色为白色以覆盖掉父元素的border
+使用transform: rotate 来让该正方形旋转
+使用top,left来对其定位
+*/
+  </style>
+</head>
+
+<body>
+  <script>
+  //document.write  应该在load之前使用  在load后使用整个文档就是write中的内容了
+  // setTimeout(function(){
+  //   document.write('hehe')
+  // })
+  // window.onload = function(){
+  //   document.write('heh')
+  // }
+  </script>
+  <div id="demo">
+    <div class="inner"></div>
+    <div class="triangle-white">
+    </div>
+    <div class="triangle-border"></div>
+  </div>
+  <div class="" id="demo2"></div>
+</body>
+
+</html>

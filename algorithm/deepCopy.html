@@ -50,6 +50,47 @@
         }
         return obj;
     };
+  function deepClone(origin) {
+    var isObj = function(o) {
+      return Object.prototype.toString.call(o) == '[object Object]';
+    }
+    var isArr = function(o) {
+      // return [].toString.call(o) == '[object Array]';// 数组的toString本身就被Array改写了
+      return Object.prototype.toString.call(o) == '[object Array]'
+    }
+
+    //这样是不对的
+    //如果某一层传入的origin本身就是一个[]  但是rs却是一个{}  返回的还是{}  类型不对
+    // function clone(origin){
+    //   var rs = {};
+    //   for(key in origin){
+    //     if(isObj(origin[key]) ||  isArr(origin[key])){
+    //       rs[key] = clone(origin[key]);
+    //     }else{
+    //       rs[key] = origin[key];
+    //     }
+    //   }
+    //   return rs;
+    // }
+    function clone(origin) {
+      var rs = isArr(origin) ? [] : {};
+      for (key in origin) {
+        if (isObj(origin[key]) || isArr(origin[key])) {
+          rs[key] = clone(origin[key]);
+        } else {
+          if (origin.hasOwnProperty(key)) {
+            rs[key] = origin[key];
+          }
+        }
+      }
+      return rs;
+    }
+
+
+    return clone(origin);
+  }
+
+
 
     function deepClone(obj) {
         var rs;
