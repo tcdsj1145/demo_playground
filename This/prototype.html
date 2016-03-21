@@ -8,16 +8,31 @@
 
 <body>
   <script>
-  // var Father = function(name) {
+  //--------------糟糕的Copy继承--------------------------
+  // var Father = function(name, age) {
+  //   console.log('father constructor');
   //   this.name = name;
+  //   this.age = age;
   // }
   // Father.prototype.a = function() {
-  //   console.log(this.name)
+  //   console.log(this.name + ' ' +this.age)
   // }
-  // var Child = function(name) {
-  //   this.name = name;
+  // Father.prototype.obj = {b:1};
+  // var Child = function(name, age, hehe) {
+  //   Father.apply(this, arguments);
+  //   this.hehe = hehe;
   // }
+  // Child.prototype = Father.prototype;
+  // Child.constructor = Child;
+  // var man = new Child('huhu',22,'hehe');
+  // Child.prototype.a = function(){
+  //   console.log(this.name + ' ' +this.age + ' '+ this.hehe);
+  // }
+  // new Father('hehe', 44).a(); //hehe 44 undefined //父类的a方法被改了
+  // //Child.prototype = Father.prototype; 导致任何对Child原型上的改动都会影响到Father
 
+
+  //经典的原型式继承-----------------------------------
   // var Father = function(name, age) {
   //   console.log('fu');
   //   this.name = name;
@@ -25,6 +40,40 @@
   // }
   // Father.prototype.a = function() {
   //   console.log(this.name + ' ' +this.age)
+  // }
+  // Father.prototype.obj = {b:1}
+  // var Child = function(name) {
+  //   this.name = name;
+  // }
+  // var Child = function(name, age, hehe) {
+  //   Father.apply(this, arguments);
+  //   this.hehe = hehe;
+  // }
+
+  // Child.prototype = new Father();
+  // var man = new Child('huhu',22,'hehe');
+  // man.a();
+  // console.log(man.hehe);
+  // man.a = function(){
+  //   console.log(this.name + ' ' +this.age + ' '+ this.hehe);
+  // }
+  // man.a();
+  // man.obj = {b: 2}; console.log(new Father().obj.b); //仍然是1
+  // man.obj.b = 2; //console.log(new Father().obj.b); //被改了
+
+
+  // --------借用构造函数-----------------------
+  // var Father = function(name, age) {
+  //   console.log('fu');
+  //   this.name = name;
+  //   this.age = age;
+  // }
+  // Father.prototype.a = function() {
+  //   console.log(this.name + ' ' +this.age)
+  // }
+  // Father.prototype.obj = {b:1}
+  // var Child = function(name) {
+  //   this.name = name;
   // }
   // var Child = function(name, age, hehe) {
   //   Father.apply(this, arguments);
@@ -36,8 +85,14 @@
   // var man = new Child('huhu',22,'hehe');
   // man.a();
   // console.log(man.hehe);
+  // man.a = function(){
+  //   console.log(this.name + ' ' +this.age + ' '+ this.hehe);
+  // }
+  // man.a();
+  // man.obj.b = 2;
+  // console.log(new Father().obj.b);//2  被改了
 
-  //-------------------------------------------
+  //-------临时构造函数-----------避免父类构造函数被调用两次-------------
   // var Father = function(name, age) {
   //   this.name = name;
   //   this.age = age;
@@ -45,57 +100,118 @@
   // Father.prototype.a = function() {
   //   console.log(this.name + ' ' +this.age)
   // }
+  // Father.prototype.obj = {v:1};
   // var Child = function(name, age, hehe) {
   //   Father.apply(this, arguments);
   //   this.hehe = hehe;
   // }
   // var Temp = function(){}
   // Temp.prototype = Father.prototype;
-  // Child.prototype = new Temp();
+  // var t = new Temp();
+  // Child.prototype = t//new Temp();
   // var man = new Child('huhu',22,'hehe');
+  // //测试Prototype的完整性
+  // Child.prototype.a = function(){console.log('changed')};
+  // new Father('heh',44).a();
+  // man.a()
+  // man.obj.v = 2;// new Father().obj.v 也被改为2 了
+  // man.obj = {v:2}; // new Father().obj.v 还是1
+
+  //-------或者使用Object.create()   也可以避免父类函数被多次调用----------------
+  //Object.create(proto)  它的作用是返回一个具有执行原型的对象
+  var Father = function(name, age) {
+    // console.log('father constructor');
+    this.name = name;
+    this.age = age;
+  }
+  Father.prototype.a = function() {
+    console.log(this.name + ' ' +this.age)
+  }
+  Father.prototype.obj = {b:1};
+  var Child = function(name, age, hehe) {
+    Father.apply(this, arguments);
+    this.hehe = hehe;
+  }
+  Child.prototype = Object.create(Father.prototype);
+  Child.constructor = Child;
+  var man = new Child('huhu',22,'hehe');
+
+  //这样是肯定不会影响到父类原型的  不论是不是糟糕的原型直接赋值都不会
+  //因为下面的做法不过是给man对象增加了一个a属性
+  // man.a = function(){
+  //   console.log(this.name + ' ' +this.age + ' '+ this.hehe);
+  // }
   // man.a();
 
-
-  //----------------------------------------
-  function deepClone(origin) {
-    var isObj = function(o) {
-      return Object.prototype.toString.call(o) == '[object Object]';
-    }
-    var isArr = function(o) {
-      // return [].toString.call(o) == '[object Array]';// 数组的toString本身就被Array改写了
-      return Object.prototype.toString.call(o) == '[object Array]'
-    }
-
-    //这样是不对的
-    //如果某一层传入的origin本身就是一个[]  但是rs却是一个{}  返回的还是{}  类型不对
-    // function clone(origin){
-    //   var rs = {};
-    //   for(key in origin){
-    //     if(isObj(origin[key]) ||  isArr(origin[key])){
-    //       rs[key] = clone(origin[key]);
-    //     }else{
-    //       rs[key] = origin[key];
-    //     }
-    //   }
-    //   return rs;
-    // }
-    function clone(origin) {
-      var rs = isArr(origin) ? [] : {};
-      for (key in origin) {
-        if (isObj(origin[key]) || isArr(origin[key])) {
-          rs[key] = clone(origin[key]);
-        } else {
-          if (origin.hasOwnProperty(key)) {
-            rs[key] = origin[key];
-          }
-        }
-      }
-      return rs;
-    }
-
-
-    return clone(origin);
+  //这种当然也不会影响
+  Child.prototype.a = function(){
+    console.log(this.name + ' ' +this.age + ' '+ this.hehe);
   }
+  man.a();
+  new Father('hehe',55).a();
+
+  // 这种也不会  因为等于给man对象增加一个属性
+  // 你也可以认为man的obj这个指针指向了另一个值
+  // man.obj = {b:2}; console.log(new Father().obj.b);//1
+
+
+  // 影响到父类的原型   因为obj指向的就是 父类原型中的obj对象  我试图修改了这个obj中的值
+  // man.obj.b = 2;
+  // console.log(new Father().obj.b);//2  被改了
+
+  Child.prototype.obj.b = 2;
+  console.log(new Father().obj.b);//2  被改了
+
+
+
+
+  //---------------完美的Copy继承-------------------------
+  // var Father = function(name, age) {
+  //   this.name = name;
+  //   this.age = age;
+  // }
+  // Father.prototype.a = function() {
+  //   console.log(this.name + ' ' +this.age)
+  // }
+  // Father.prototype.obj = {b:1};
+  // var Child = function(name, age, hehe) {
+  //   Father.apply(this, arguments);
+  //   this.hehe = hehe;
+  // }
+  // var Temp = function(){}
+  // Child.prototype = deepClone(Father.prototype);
+  // var f = new Father('heh',55);
+  // var man = new Child('huhu',22,'hehe');
+  // man.a = function(){
+  //   console.log(this.name + ' ' +this.age + ' '+ this.hehe);
+  // }
+  // f.a();
+  // man.a();
+  // man.obj.b = 2; console.log(new Father().obj.b);// 仍是1
+
+  // function deepClone(origin) {
+  //   var isObj = function(o) {
+  //     return Object.prototype.toString.call(o) == '[object Object]';
+  //   }
+  //   var isArr = function(o) {
+  //     // return [].toString.call(o) == '[object Array]';// 数组的toString本身就被Array改写了
+  //     return Object.prototype.toString.call(o) == '[object Array]'
+  //   }
+  //   function clone(origin) {
+  //     var rs = isArr(origin) ? [] : {};
+  //     for (key in origin) {
+  //       if (isObj(origin[key]) || isArr(origin[key])) {
+  //         rs[key] = clone(origin[key]);
+  //       } else {
+  //         if (origin.hasOwnProperty(key)) {
+  //           rs[key] = origin[key];
+  //         }
+  //       }
+  //     }
+  //     return rs;
+  //   }
+  //   return clone(origin);
+  // }
   </script>
 </body>
 

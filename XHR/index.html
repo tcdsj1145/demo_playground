@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Document</title>
 </head>
+
 <body>
-index
+  <script>
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function() {
+    console.log(xhr.responseText);
+  }
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      if(xhr.status == 200){
+        console.log(xhr.responseText);
+      }
+    }
+  }
+  xhr.open('post', '/post', true);
+  xhr.send();
+  </script>
 </body>
+
 </html>

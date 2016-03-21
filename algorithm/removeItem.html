@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  //移除奇数位置的数字
+  var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (var i = 0; i < arr.length; i++) {
+    if (i % 2 == 0) {
+      arr.splice(i, 1);
+    }
+  };
+  console.log(arr);
+  //你真天真的以为这样就可以做到吗!!!
+  //得到的结果是[1, 2, 4, 5, 7, 8]
+  var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  for (var i = 0; i < arr.length; i++) {
+    if (i % 2 == 0) {
+      arr.splice(i, 1);
+      // console.log(i, arr.length, arr);
+    }
+  };
+  //细看这个输出
+  // 0 9 [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  // 23 2 8 [1, 2, 4, 5, 6, 7, 8, 9]
+  // 23 4 7 [1, 2, 4, 5, 7, 8, 9]
+  // 23 6 6 [1, 2, 4, 5, 7, 8]
+  //arr的length值不断在变化
+  //当删除了数字0后  接下来要删除的数字的下标是2  但是删除0之后数组变成 123456789了  此时下标为2的数字是3
+
+  //也就是说  每删除一次后面的元素马上就补充了空位
+  console.clear();
+  var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var k = 0;
+  var len = arr.length;
+
+  //需要注意的是for (var i = 0; i < arr.length; i++) {
+  //上面那样是不行的  因为我们希望i遍历完整个数组(未改动前的整个数组)  arr.length是随着遍历不断变化的
+  for (var i = 0; i < len; i++) {
+    if (i % 2 == 0) {
+      arr.splice(k, 1);
+      k++; //很巧妙哟
+      console.log(i, arr.length, arr);
+    }
+  };
+  console.log(arr);
+
+
+  //假如删除位置整除3(从1开始数)
+  console.clear();
+  arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  len = arr.length;
+  k = 0;
+  for (var i = 0; i < len; i++) {
+    if (i % 3 == 0) {
+      arr.splice(k, 1);
+      k = k + 2; //很巧妙哟
+      console.log(k, i, arr.length, arr);
+    }
+  };
+  console.log(arr);
+
+  //假如还是删除奇数位置的数字  不断重复  直到只剩一个数字
+  console.clear();
+  arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  k = 0;
+  len = arr.length;
+  while (arr.length > 1) {
+    for (var i = 0; i < len; i++) {
+      if (i % 2 == 0) {
+        arr.splice(k, 1);
+        k = k + 1; //很巧妙哟
+        console.log(k, i, arr.length, arr);
+      }
+    }
+    len = arr.length;
+    k = 0;
+  }
+  console.log(arr);
+  </script>
+</body>
+
+</html>
