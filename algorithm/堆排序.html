@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  //大顶堆
+  function sift(arr, low, high) {
+    var i = low;
+    var j = 2 * i;
+    var temp = arr[low];
+
+    while (j <= high) {
+      //j指向较大的孩子
+      if (arr[j] < arr[j + 1]) {
+        j = j + 1;
+      }
+      //存在 根节点小于孩子节点的情况
+      if (arr[i] < arr[j]) {
+        //交换
+        temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        i = j;
+        j = j * 2;
+      } else {
+        break;
+      }
+    }
+  }
+
+  function heapSort() {
+    var arr = [49, 38, 65, 97, 76, 13, 27, 49];
+    arr.unshift(0);
+    //构造堆
+    // ~~4.5 = 4 向下取整数
+    for (var i = Math.floor(arr.length / 2); i >= 1; i--) {
+      sift(arr, i, arr.length - 1);
+    };
+    // console.log(arr);
+    //开始排序
+    var temp;
+    for (var i = arr.length - 1; i >= 2; i--) {
+      sift(arr, 1, i - 1);
+      temp = arr[i];
+      arr[i] = arr[1];
+      arr[1] = temp;
+    };
+    console.log(arr);
+  }
+  heapSort();
+  </script>
+</body>
+
+</html>

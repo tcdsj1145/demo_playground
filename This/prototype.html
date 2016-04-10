@@ -212,6 +212,10 @@
   //   }
   //   return clone(origin);
   // }
+
+  var prot = {a:1};
+  var a = Object.create(prot);
+  console.log(a.__proto__);//ok
   </script>
 </body>
 

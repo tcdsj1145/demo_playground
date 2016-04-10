@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  var arr = [1,2,2,2,2,3,4,5,5,4,5,6,76,5,6,7,7,7,7,7,7,8,8,9,9,9,9];
+  var len = arr.length;
+  for (var i = 0; i < len; i++) {
+    if(arr.indexOf(arr[i])!= i){
+      arr.splice(i,1);
+    }
+  };
+  console.log(arr);
+  //上面的方案是不行的  很容易就有漏网之鱼
+  //之前也说道了  一旦删除一个  马上这个位置后面的元素都向前挪了一位补全
+
+  arr = [1,2,2,2,2,3,4,5,5,4,5,6,76,5,6,7,7,7,7,7,7,8,8,9,9,9,9];
+  var min = Math.min.apply(this, arr);
+  min = min- 1;
+  for (var i = 0; i < len; i++) {
+     if(arr.indexOf(arr[i])!=i){
+        arr[i] = min;
+     }
+   };
+   console.log(arr);
+  for (var i = 0; i < len; ) {
+    if(arr[i] == min){
+      arr.splice(i,1);
+    }else{
+      i++;
+    }
+  };
+  console.log(arr);
+  //好像逻辑有点重复
+
+  //通过while
+  arr = [1,2,2,2,2,3,4,5,5,4,5,6,76,5,6,7,7,7,7,7,7,8,8,9,9,9,9];
+  var idx = 0;
+  while(idx <= len-1 && idx < arr.length){
+    if(arr.indexOf(arr[idx]) != idx){
+      arr.splice(idx ,1);
+    }else{
+      idx++;
+    }
+  }
+  console.log(arr);
+</script>
+</body>
+</html>

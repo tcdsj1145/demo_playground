@@ -2,111 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-    <title>Document</title>
-    <style>
-    html,
-    body {
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>Document</title>
+  <style>
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    /*针对IOS机型 没有这个属性  里面的内容滑动就木有减速度的感觉*/
+    -webkit-overflow-scrolling: touch;
+  }
 
-        /*针对IOS机型 没有这个属性  里面的内容滑动就木有减速度的感觉*/
-        -webkit-overflow-scrolling:touch;
-    }
+  .page {
+    height: 100%;
+    position: relative;
+    /*-webkit-overflow-scrolling:touch;*/
+  }
 
-    .page {
-        height: 100%;
-        position: relative;
-    }
+  ul,
+  li {
+    margin: 0;
+  }
 
-    ul,
-    li {
-        margin: 0;
-    }
+  #div1 {
+    height: 100%;
+    background: #ccc;
+  }
 
-    #div1 {
-        height: 100%;
-        background: #ccc;
+  .fix {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    background: wheat;
+  }
 
-    }
+  #div1 ul {
+    overflow: auto;
+    height: 100%
+  }
 
-    .fix {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 15vh;
-        background: wheat;
-    }
+  li {
+    display: block;
+    height: 20vh;
+  }
 
-    #div1 ul {
-        overflow: auto;
-        height: 100%
-    }
-
-    li {
-        display: block;
-        height: 20vh;
-    }
-
-    ul::-webkit-scrollbar {
-        display: none;
-    }
-    </style>
+  ul::-webkit-scrollbar {
+    display: none;
+  }
+  </style>
 </head>
 
-<body>
-    <div class="page">
-        <div id="div1">
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>1</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>1</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>1</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>1</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-                <li>2</li>
-            </ul>
-        </div>
-        <div class="fix"></div>
+<body >
+  <div class="page">
+    <div id="div1">
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>1</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+        <li>2</li>
+      </ul>
     </div>
-    <script>
-
-    </script>
+    <div class="fix"></div>
+  </div>
+  <script>
+  //禁止body滚动
+  // document.body.ontouchmove = function(e) {
+  //   e.preventDefault();
+  // }
+  //锁定ViewPort?
+  // document.ontouchmove = function(e) {
+  //   event.preventDefault();
+  // }
+  </script>
 </body>
+
 </html>
