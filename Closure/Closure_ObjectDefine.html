@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  function A(params) {
+    for (var key in params) {
+      Object.defineProperty(this, key, {
+        get: function() {
+          return params[key];
+        },
+        enumerable: false
+      })
+    }
+  }
+
+  a = new A({
+    'x': 'X',
+    'y': 'Y',
+    'z': 'Z'
+  })
+  for (var key in a) {
+    console.log(key);
+  }
+  console.log(a.x, a.y, a.z);
+  //修正方案
+  function AA(params) {
+    for (var key in params) {
+      (function(i) {
+        Object.defineProperty(this, i, {
+          get: function() {
+            return params[i];
+          },
+          enumerable: false
+        })
+      }.bind(this))(key)
+    }
+  }
+  aa = new AA({
+    x:'X',
+    y:'Y',
+    z:'Z'
+  })
+  console.log(aa.x, aa.y, aa.z);
+  </script>
+</body>
+
+</html>

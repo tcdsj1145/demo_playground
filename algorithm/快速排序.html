@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+  function quick(arr, start, end) {
+    if (start < end) {
+      var l = start;
+      var r = end;
+      var tmp = arr[l];
+      while (l < r) {
+        //找到右边第一个小于基准值的元素
+        //凡是符合大于条件的都越过
+        while (l < r && tmp < arr[r]) r--;
+        if (l < r) {
+          arr[l] = arr[r];
+          l++; //l这个坑已经填好了  那么下次从左边数应该从这个坑后面的位置开始 //所以是l++ 而不是 r--
+        }
+        console.log('r' + arr);
+
+        //找到左边第一个大于基准值的元素
+        while (l < r && arr[l] < tmp) l++;
+        if (l < r) {
+          arr[r] = arr[l];
+          r--;
+        }
+        console.log('l' + arr);
+      }
+      arr[l] = tmp;
+      console.log(arr);
+      quick(arr, start, l - 1);
+      quick(arr, l + 1, end);
+    }
+  }
+
+  arr = [23, 12, 54, 67, 34, 88];
+  quick(arr, 0, arr.length - 1);
+  console.log();
+  </script>
+  <script>
+  function qs(arr, low, high) {
+    if (low > high) {
+      return
+    } else {
+      var i = low;
+      var j = high;
+      var temp = arr[i];
+      while (i < j) {
+        while (temp < arr[j]) j--;
+        arr[i] = arr[j];
+        j--;
+        while (arr[i] < temp) i++;
+        arr[j] = arr[i];
+        i++;
+      }
+      arr[j] = temp;
+    }
+    qs(arr, low, l-1);
+    qs(arr, l+1, high);
+  }
+  qs(arr, 0, arr.length-1);
+  </script>
+</body>
+
+</html>
