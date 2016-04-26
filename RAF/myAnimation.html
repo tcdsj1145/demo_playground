@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .cube {
+        background-color: red;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="cube"></div>
+</body>
+<script src='myAnimation.js'></script>
+<script>
+    
+var cube = document.querySelector('.cube')
+cube.style.top = '200px';
+util.animate(cube, {
+    top: 500
+}, 1000, 'Linear');
+</script>
+</html>

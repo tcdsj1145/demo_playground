@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .ani{
+        background-color: red;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="ani"></div>
+    <script src='jquery.js'></script>
+    <script>
+    var ani = $('.ani');
+
+    //jQ的函数可以链式调用
+    ani.animate({
+        "left": 220,
+        "top": 0
+    }, 400, "linear", function() {
+        console.log('OK')
+    }).animate({
+        "top": 220
+    },400, 'linear', function(){
+        //.....        
+    });
+    </script>
+</body>
+
+</html>

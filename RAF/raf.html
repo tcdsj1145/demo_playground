@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    .cube {
+        background-color: red;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="cube"></div>
+</body>
+<script src='Tween.js'></script>
+<script>
+var cube = document.querySelector('.cube')
+
+
+
+
+function timeoutMove() {
+    var pos = 0;
+    var t1 = +new Date;
+    var b = 50, //开始值
+        c = 100, //结束值/
+        d = 100, //运算次数 虽然很多文章这里说时间  但这不是时间 不过这个值决定了执行时间  约1677ms
+        t = 0;
+
+    function run() {
+        pos = Math.ceil(Tween.Quad.easeOut(t, b, c, d));
+        cube.style.top = pos + 'px';
+        t++;
+        timer = setTimeout(run, 1000 / 60);
+        if (t >= d) {
+            clearTimeout(timer);
+            console.log(+new Date - t1);
+        }
+    }
+    run();
+}
+// timeoutMove();
+
+
+function funHmove() {
+    var move = 0,
+        t = 0,
+        end = 50,
+        t1 = +new Date;
+
+    function run() {
+        t++;
+        move = Tween.Sine.easeInOut(t, 0, 500, end)
+        cube.style.left = move + 'px';
+
+        //因为是使用的RAF  不能精确的得到执行结束时间
+        //大约执行结束时间是 50*16.7 ＝ 835ms  肯定会比这个时间长
+        //16.7 是根据一秒60桢来计算的
+        if (t <= end) {
+            requestAnimationFrame(run)
+        } else {
+            console.log(+new Date - t1)
+        }
+    }
+    run();
+}
+// funHmove();
+
+
+var funFall = function() {
+        var start = 0,
+            during = 100;
+        var t1 = +new Date
+
+        function _run() {
+            start++;
+            // var top = Tween.Bounce.easeOut(start, cube.top, 500 - cube.top, during);
+
+            //第二个参数是运算开始值
+            //第三个参数是运算结束值
+            var top = Tween.Bounce.easeOut(start, 0, 600, during);
+            console.log(top);
+            cube.style.top = top + 'px';
+            if (start < during) {
+                requestAnimationFrame(_run);
+            } else {
+                console.log(+new Date - t1)
+            }
+        };
+        _run();
+    }
+    // funFall();
+</script>
+
+</html>
