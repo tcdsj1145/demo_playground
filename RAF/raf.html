@@ -34,13 +34,18 @@ function timeoutMove() {
     var pos = 0;
     var t1 = +new Date;
     var b = 50, //开始值
-        c = 100, //结束值/
+        c = 100, //结束值
         d = 100, //运算次数 虽然很多文章这里说时间  但这不是时间 不过这个值决定了执行时间  约1677ms
         t = 0;
 
     function run() {
+
+        //t =0时 运算结果是 b值
+        //t =d时  运算结果是d值 
         pos = Math.ceil(Tween.Quad.easeOut(t, b, c, d));
         cube.style.top = pos + 'px';
+        console.log('t= ',t,'pos=',pos);
+
         t++;
         timer = setTimeout(run, 1000 / 60);
         if (t >= d) {
@@ -60,9 +65,12 @@ function funHmove() {
         t1 = +new Date;
 
     function run() {
-        t++;
         move = Tween.Sine.easeInOut(t, 0, 500, end)
         cube.style.left = move + 'px';
+        console.log('t= ',t,'move=',move);
+
+        t++;
+
 
         //因为是使用的RAF  不能精确的得到执行结束时间
         //大约执行结束时间是 50*16.7 ＝ 835ms  肯定会比这个时间长
@@ -84,14 +92,15 @@ var funFall = function() {
         var t1 = +new Date
 
         function _run() {
-            start++;
             // var top = Tween.Bounce.easeOut(start, cube.top, 500 - cube.top, during);
 
             //第二个参数是运算开始值
             //第三个参数是运算结束值
-            var top = Tween.Bounce.easeOut(start, 0, 600, during);
-            console.log(top);
+            var top = Math.ceil(Tween.Bounce.easeOut(start, 0, 600, during));
             cube.style.top = top + 'px';
+            console.log('t= ',start,'top=',top);
+            start++;
+       
             if (start < during) {
                 requestAnimationFrame(_run);
             } else {
@@ -100,7 +109,7 @@ var funFall = function() {
         };
         _run();
     }
-    // funFall();
+    funFall();
 </script>
 
 </html>
