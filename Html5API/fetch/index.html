@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+'use strict';
+var p = fetch('/~lumixraku', {
+  method: 'get'
+}).then(function(res){
+  return res;
+}).catch(function(err) {
+  // Error :(
+});
+console.log(p);
+
+
+p.then(function(data){
+  console.log('data', data);
+});
+
+
+
+
+// fetch('/~lumixraku', {
+//   method: 'get'
+// }).then(function (res) {
+//   return console.log(res);
+// }).catch(function (err) {
+//   // Error :(
+// });
+  </script>
+</body>
+
+</html>
