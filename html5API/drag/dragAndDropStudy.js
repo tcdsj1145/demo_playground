@@ -23,9 +23,9 @@ function handleDragLeave(e) {
 }
 function handleDrop(e) {
     // this e.target is current target element.
-    if (e.stopPropagation) {
-        e.stopPropagation(); // stops the browser from redirecting.
-    }
+    // if (e.stopPropagation) {
+    //     e.stopPropagation(); // stops the browser from redirecting.
+    // }
     // See the section on the DataTransfer object.
     // console.log(e.target); //拖放结束时目标DIV
     if (dragSrcEl != this) {
@@ -42,6 +42,8 @@ function handleDragEnd(e) {
     this.classList.remove('over');
     this.style.opacity = 1; // this / e.target is the source node.
 }
+
+//html5 rockets demo============================================
 var cols = document.querySelectorAll('#columns .column');
 //类数组元素 想要使用 forEach 的话可以这么做
 [].forEach.call(cols, function(col) {
@@ -93,6 +95,9 @@ function ajax(formData) {
     }
     xhr.send(formData);
 }
+
+
+// Drag into demo ========================================
 // list container ===================================
 var items = document.querySelectorAll('.items .item');
 [].forEach.call(items, function(item) {
@@ -122,6 +127,7 @@ container.addEventListener('dargStart', function(e){
     }
 }, false);
 
+//从container拖回items
 var itemlist = document.querySelector('.items');
 itemlist.addEventListener('dragenter', handleDragEnter, false);
 itemlist.addEventListener('dragover', handleDragOver, false); //必须 有这个才允许drop
