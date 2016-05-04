@@ -1,0 +1,17 @@
+; Summary: Proxy Switchy! Exported Rule List
+; Date: 5/4/2016
+; Website: http://bit.ly/proxyswitchy
+
+#BEGIN
+
+[wildcard]
+
+
+[regexp]
+http:\/\/ad\.toutiao\.com\/adv_site\/*
+https?:\/\/ad\.toutiao\.com\/adver\/*
+https?:\/\/ad\.toutiao\.com\/ad\/*
+http:\/\/ad\.toutiao\.com\/static\/*
+http:\/\/ad\.toutiao\.com\/tetris\/*
+
+#END
