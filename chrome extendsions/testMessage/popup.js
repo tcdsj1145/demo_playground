@@ -2,9 +2,9 @@ window.onload = function() {
 
 
   var btnCss = document.getElementById('applyCss');
+  //传消息到content
   btnCss.addEventListener('click', function() {
     // document.querySelector('#resultsRequest').innerHTML += 'running';
-    //传消息到content?  yes============================================
     var csstext = document.querySelector('.csstext').value;
     chrome.tabs.query({
       active: true,
@@ -12,6 +12,9 @@ window.onload = function() {
     }, function(tabs) {
       var tab = tabs[0];
       console.log(tab);
+      //chrome.tabs.sendMessage(integer tabId, any message, object options, function responseCallback)
+
+      //向某一个tab插入css
       chrome.tabs.insertCSS(tab.id,{'code':csstext},function(){
         document.querySelector('#applyCssMsg').innerHTML = response;
       });
