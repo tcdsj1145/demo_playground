@@ -52,13 +52,8 @@
             var now = +new Date();
             if(now - start > wait){
                 start =  +new Date();
-
-
                 // clearTimeout(timer);
                 // timer = null;
-
-
-                console.log('<<<<<<<<<<<<');
                 rs = cb();
             }else { // 间隔太短 还不够执行的时候
                 if(!timer){

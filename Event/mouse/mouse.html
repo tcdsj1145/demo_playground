@@ -38,6 +38,7 @@
 </head>
 
 <body>
+    实现chrome inspect的hover效果
     <div class="outer">
         <div class="center">
             <div class="inner">
@@ -54,18 +55,20 @@
     </div>
     <script src="jquery.js"></script>
     <script>
-    //not working ?
-    $('div').on('hover', function(e) {
-        var target = e.target;
-        $(target).css({
-            'background-color': 'pink'
-        })
-    }, function(e) {
-        var target = e.target;
-        $(target).css({
-            'background-color': ''
-        })
-    });
+    //不合理
+    //进入子元素  也算hover在本元素上  因此进入子元素后 本元素仍有背景色
+    //
+    // $('div').hover(function(e) {
+    //     var target = e.target;
+    //     $(target).css({
+    //         'background-color': 'pink'
+    //     })
+    // }, function(e) {
+    //     var target = e.target;
+    //     $(target).css({
+    //         'background-color': ''
+    //     })
+    // });
 
     //mouseenter  mouseleave 是不冒泡的
     //这样肯定是不满足要求的
@@ -89,6 +92,7 @@
             'background-color': 'pink'
         })
     });
+    //当鼠标进入其他元素(虽然木有离开本元素  也会触发out)
     $('div').on('mouseout', function(e){
         e.stopPropagation();
         var target = e.target;
