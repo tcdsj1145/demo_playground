@@ -25,11 +25,17 @@
 </body>
 <script src='myAnimation.js'></script>
 <script>
-    
+
 var cube = document.querySelector('.cube')
 cube.style.top = '200px';
+// util.animate0(cube, {
+//     top: 500
+// }, 1000, 'Linear');
+//
 util.animate(cube, {
-    top: 500
-}, 1000, 'Linear');
+    top: 500,
+    left:100,
+    opacity: 0.1
+}, 1000, 'easeInOut');
 </script>
 </html>

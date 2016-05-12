@@ -41,8 +41,8 @@ function timeoutMove() {
     function run() {
 
         //t =0时 运算结果是 b值
-        //t =d时  运算结果是d值 
-        pos = Math.ceil(Tween.Quad.easeOut(t, b, c, d));
+        //t =d时  运算结果是d值
+        pos = Math.ceil(Tween.Quad.easeOut(t, b, c - b, d));
         cube.style.top = pos + 'px';
         console.log('t= ',t,'pos=',pos);
 
@@ -55,10 +55,10 @@ function timeoutMove() {
     }
     run();
 }
-// timeoutMove();
+timeoutMove();
 
 
-function funHmove() {
+function raqMove() {
     var move = 0,
         t = 0,
         end = 50,
@@ -83,7 +83,7 @@ function funHmove() {
     }
     run();
 }
-// funHmove();
+// raqMove();
 
 
 var funFall = function() {
@@ -100,7 +100,7 @@ var funFall = function() {
             cube.style.top = top + 'px';
             console.log('t= ',start,'top=',top);
             start++;
-       
+
             if (start < during) {
                 requestAnimationFrame(_run);
             } else {
@@ -109,7 +109,7 @@ var funFall = function() {
         };
         _run();
     }
-    funFall();
+    // funFall();
 </script>
 
 </html>
