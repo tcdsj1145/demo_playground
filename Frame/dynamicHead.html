@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var doc = document;
+        var ifr = doc.createElement('iframe');
+        doc.body.appendChild(ifr);
+        ifr.onload = function(){
+            console.log('load');
+            console.log($);
+        }
+
+        //下面的方式并不能触发onload
+
+
+        var headhtml = '<script src=\"http://cdn.bootcss.com/underscore.js/1.8.3/underscore-min.js"><\/script>';
+        ifr.contentDocument.head.innerHTML = headhtml;
+
+        //上一种似乎不能加载script
+        var headscript = doc.createElement('script');
+        headscript.src = 'https://code.jquery.com/jquery-1.11.1.min.js';
+        ifr.contentDocument.head.appendChild(headscript);
+        headscript.onload = function(){
+
+        var headscript2 = doc.createElement('script');
+        headscript2.src = 'testForChangeSrc.js';
+        ifr.contentDocument.head.appendChild(headscript2);
+        }
+
+    </script>
+</body>
+</html>
