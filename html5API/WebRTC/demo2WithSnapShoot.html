@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    button {
+        background-color: #d84a38;
+        border: none;
+        border-radius: 2px;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.8em;
+        margin: 0 0 1em 0;
+        padding: 0.5em 0.7em 0.6em 0.7em;
+    }
+    </style>
+</head>
+
+<body>
+
+    Video 要设置为autoplay
+    否则只播放第一帧
+    <video src="" id="video" autoplay></video>
+    <canvas id="canvas"></canvas>
+    <button>Capture</button>
+</body>
+<script>
+
+var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+// Put variables in global scope to make them available to the browser console.
+var video = document.querySelector('video');
+var canvas = window.canvas = document.querySelector('canvas');
+canvas.width = 480;
+canvas.height = 360;
+
+var button = document.querySelector('button');
+button.onclick = function() {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').
+    drawImage(video, 0, 0, canvas.width, canvas.height);
+};
+
+var constraints = {
+    audio: false,
+    video: true
+};
+
+
+
+function successCallback(stream) {
+    window.stream = stream; // make stream available to browser console
+    // video.srcObject = stream;
+    video.src = window.URL.createObjectURL(stream);
+}
+
+function errorCallback(error) {
+    console.log('navigator.getUserMedia error: ', error);
+}
+
+getUserMedia.call(navigator, constraints, function(localMediaStream){
+    successCallback(localMediaStream)
+}, function(e){
+    errorCallback(e);
+});
+
+</script>
+
+</html>
