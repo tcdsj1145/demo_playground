@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>GetUserMedia实例</title>
+</head>
+<body>
+    <video id="video" autoplay></video>
+</body>
+
+
+<script type="text/javascript">
+    var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+
+    // getUserMedia.call(navigator, {
+    //     video: true,
+    //     audio: true
+    // }, function(localMediaStream) {
+    //     var video = document.getElementById('video');
+    //     video.src = window.URL.createObjectURL(localMediaStream);
+    //     video.onloadedmetadata = function(e) {
+    //         console.log("Label: " + localMediaStream.label);
+    //         console.log("AudioTracks" , localMediaStream.getAudioTracks());
+    //         console.log("VideoTracks" , localMediaStream.getVideoTracks());
+    //     };
+    // }, function(e) {
+    //     console.log('Reeeejected!', e);
+    // });
+
+
+    //首先观察上面的实现
+    //getUserMedia的第二个参数是成功的函数  且该函数是浏览器调用的
+    //而且API设计成这样  是因为getUserMedia是异步的执行
+    //上面是使用 传入callback的方式
+
+
+
+    navigator.getUserMedia = getUserMedia;
+    var getUserMediaPromise = function(opt){
+        return new Promise(function(resolve, reject){
+            navigator.getUserMedia(opt, resolve, reject);
+        });
+    }
+    //你可能会觉得奇怪 既然getUserMedia的成功函数是浏览器调用的
+    //那么我自定义的success函数在哪里执行呢
+    //上面提到getUserMedia是异步的  且成功函数是浏览器调用的
+    //所以在某一个时刻 浏览器会调用resolve
+    //那么自定义的success可以放在then中
+
+
+    getUserMediaPromise({
+        video: true,
+        audio: true
+    }).then(function(localMediaStream){
+        var video = document.getElementById('video');
+        video.src = window.URL.createObjectURL(localMediaStream);
+        video.onloadedmetadata = function(e) {
+            console.log("Label: " + localMediaStream.label);
+            console.log("AudioTracks" , localMediaStream.getAudioTracks());
+            console.log("VideoTracks" , localMediaStream.getVideoTracks());
+        };
+    }, function(){
+    })
+
+</script>
+
+
+</html>
