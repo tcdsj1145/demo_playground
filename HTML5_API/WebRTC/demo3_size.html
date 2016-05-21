@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <video id="video2" autoplay></video>
+
+    <script>
+        var getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+        var video = document.getElementById('video2');
+        video.onloadedmetadata = function(){
+            console.log(video.videoWidth);
+        }
+        getUserMedia.call(navigator, {
+            video: {
+                width: {
+                    exact: 1280
+                },
+                height: {
+                    exact: 720
+                }
+            }
+        }, function(stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.height = 720;
+            video.width = 1280;
+            // video.srcObject = stream;
+
+        }, function(e) {
+
+        })
+    </script>
+</body>
+
+</html>
