@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Full Screen</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui">
+    <style>
+    html,
+    body {
+        height: 100%;
+        width: 100%;
+    }
+
+    video {
+        margin: auto;
+        display: block;
+        left: 0;
+        right: 0;
+        width: 80%;
+        height: auto;
+    }
+    </style>
+</head>
+
+<body>
+    <video id="video" src="test.mp4" poster="http://p3.pstatp.com/origin/71c00033ba292881e7c"></video>
+    <script>
+    //全屏必须是由用户发出的事件   不能放在事件之外
+    video = document.querySelector('#video');
+    video.addEventListener('click', function() {
+        video.webkitRequestFullscreen();
+        video.play();
+    }, false);
+    </script>
+</body>
+
+</html>

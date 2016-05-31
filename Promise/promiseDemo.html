@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    var arr = [];
+    var arr = [1, 2, 3, 4, 5];
+    var p1 = new Promise(function(resolve, reject) {
+
+        if (arr.length) {
+
+            setTimeout(function() {
+                resolve(12);
+            }, 100)
+        }else{
+            resolve(0);
+        }
+    });
+    p1.then(function(data){
+      console.log(data);
+    });
+
+
+    </script>
+</body>
+
+</html>
