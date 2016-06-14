@@ -1,16 +1,17 @@
 ; Summary: Proxy Switchy! Exported Rule List
-; Date: 5/4/2016
+; Date: 6/14/2016
 ; Website: http://bit.ly/proxyswitchy
 
 #BEGIN
 
 [wildcard]
-
+http://s2.pstatp.com/adstatic/essay_ad_wap/static/*
+http://s0.pstatp.com/adstatic/essay_ad_wap/static/*
 
 [regexp]
 http:\/\/ad\.toutiao\.com\/adv_site\/*
-https?:\/\/ad\.toutiao\.com\/adver\/*
-https?:\/\/ad\.toutiao\.com\/ad\/*
+http:\/\/ad\.toutiao\.com\/adver\/*
+http:\/\/ad\.toutiao\.com\/ad\/*
 http:\/\/ad\.toutiao\.com\/static\/*
 http:\/\/ad\.toutiao\.com\/tetris\/*
 
