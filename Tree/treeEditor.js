@@ -35,27 +35,32 @@ $(function() {
             }
 
             var $ul = $li.children('ul');
-            if ($ul && $ul.length) {
+            if ($ul && $ul.length) { //有子节点 增加一个
                 $ul.append(_createLi(addControls));
-
-            } else {
-                $ul = $('<ul>');
-                $ul.append(_createLi(addControls));
-                $li.append($ul);
+            } else {   //没有子节点  创建ul再加
+                $li.append(_createUlWithLi(addControls));
             }
         }else if($target.hasClass('fa-minus')){
             $li.remove();
         }
-
     });
-    function _createLi(controls){
-        var $li = $('<li><div class="text-wrapper"><div class="text"><input type="text"></div></li>');
-        if(controls){
-            $li.children('.text-wrapper').append('<div class="action"><span class="fa fa-plus fa-fw"></span><span class="fa fa-minus fa-fw"></span></div>');
-        }
-        return $li;
-    }
 });
+
+/*addControls 必须   控制是否增加action */
+/* text 则是创建有text的元素 */
+function _createUlWithLi(addControls, text){
+    $ul = $('<ul>');
+    $ul.append(_createLi(addControls, text));
+    return $ul;
+}
+function _createLi(controls, text){
+    text = text || '';
+    var $li = $('<li><div class="text-wrapper"><div class="text"><input type="text" value="'+  text+'"></div></li>');
+    if(controls){
+        $li.children('.text-wrapper').append('<div class="action"><span class="fa fa-plus fa-fw"></span><span class="fa fa-minus fa-fw"></span></div>');
+    }
+    return $li;
+}
 
 function html2json($treeElem){
     var tree = {};
@@ -74,4 +79,37 @@ function html2json($treeElem){
     }
     return _htmlToJson(tree, li);
 }
-console.log(html2json($('.tree')));
+
+
+function json2html(obj){
+    var $tree = $('.tree');
+    var $treeUl = $tree.children('ul');
+    var layer = 0;
+
+    $treeUl.html(_json2html(obj));
+
+    //创建li
+    function _json2html(obj){
+        layer++;
+        var $li = _createLi(layer == 4 ? 0: 1, obj.text); //加上根节点 最多4层
+        if(obj.children && obj.children.length){
+            var $ul = $('<ul>');
+            obj.children.forEach(function(item){
+                $ul.append(_json2html(item));
+            });
+            $li.append($ul);
+        }
+        layer--;
+        return $li;
+    }
+    console.log($treeUl.html());
+    return $treeUl;
+}
+//{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b"},{"text":"c"}]}
+// {"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b","children":[{"text":"ba","children":[{"text":"baa"}]},{"text":"bb","children":[{"text":"bba"}]}]},{"text":"c","children":[{"text":"ca"}]}]}
+// json2html(JSON.parse('{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b"},{"text":"c"}]}'));
+json2html(JSON.parse('{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b","children":[{"text":"ba","children":[{"text":"baa"}]},{"text":"bb","children":[{"text":"bba"}]}]},{"text":"c","children":[{"text":"ca"}]}]}'))
+
+
+
+// console.log(html2json($('.tree')));
