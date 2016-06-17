@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="treeEditor.css">
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="tree">
+            <ul>
+                <li>
+                    <div class="text-wrapper">
+                        <div class="text"><input type="text" value="Root" /></div>
+                        <div class="action">
+                            <span class='fa fa-plus fa-fw'></span>
+                            <span class='fa fa-minus fa-fw'></span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div class="text-wrapper">
+                                <div class="text"><input type="text"/></div>
+                                <div class="action">
+                                    <span class='fa fa-plus fa-fw'></span>
+                                    <span class='fa fa-minus fa-fw'></span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="treeEditor.js"></script>
+
+</html>

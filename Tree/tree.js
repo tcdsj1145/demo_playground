@@ -1,6 +1,6 @@
 $(function() {
   $(".tree span").append($("<i class='fa fa-plus fa-fw'></i>"));
-  $(".tree>ul ul").hide();
+  // $(".tree>ul ul").hide();
   $(".tree span").click(function(event) {
     var $this = $(this);
     var $ul = $this.parent().children("ul");
