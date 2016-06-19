@@ -80,6 +80,25 @@ function html2json($treeElem){
     return _htmlToJson(tree, li);
 }
 
+//使用id  pid的的一维数组来表现树
+function tree2Array(obj){
+    var array = [];
+    var id = 0;
+    function _tree2Array(obj, pid, id){
+        array.push({
+            text: obj.text,
+            pid: pid,
+            id: id
+        });
+        if(!obj.children) return;
+        obj.children.forEach(function(item, idx){
+            _tree2Array(item, id, id + '' + (idx+1));
+        });
+    }
+    _tree2Array(obj, 0, 0);
+    console.log(array);
+}
+
 
 function json2html(obj){
     var $tree = $('.tree');
@@ -108,8 +127,8 @@ function json2html(obj){
 //{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b"},{"text":"c"}]}
 // {"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b","children":[{"text":"ba","children":[{"text":"baa"}]},{"text":"bb","children":[{"text":"bba"}]}]},{"text":"c","children":[{"text":"ca"}]}]}
 // json2html(JSON.parse('{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b"},{"text":"c"}]}'));
-json2html(JSON.parse('{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b","children":[{"text":"ba","children":[{"text":"baa"}]},{"text":"bb","children":[{"text":"bba"}]}]},{"text":"c","children":[{"text":"ca"}]}]}'))
+json2html(JSON.parse('{"text":"Root","children":[{"text":"a","children":[{"text":"aa"}]},{"text":"b","children":[{"text":"ba","children":[{"text":"baa"}]},{"text":"bb","children":[{"text":"bba"}]}]},{"text":"c","children":[{"text":"ca"}]}]}'));
 
-
+tree2Array(html2json($('.tree')));
 
 // console.log(html2json($('.tree')));
