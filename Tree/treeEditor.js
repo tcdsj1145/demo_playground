@@ -1,38 +1,40 @@
-// $(function() {
-//     $(".tree .text-wrapper").append($("<i class='fa fa-plus fa-fw'></i>"));
-//     $(".tree>ul ul").hide();
-//     $(".tree .text-wrapper i").click(function(event) {
-//         var $this = $(this);
-//         var $ul = $this.closest('li').children("ul");
-//
-//         if ($ul.length > 0) {
-//             if ($ul.is(":visible")) {
-//                 $ul.slideUp();
-//                 $this.removeClass("fa-minus").addClass("fa-plus");
-//             } else {
-//                 $ul.slideDown();
-//                 $this.removeClass("fa-plus").addClass("fa-minus");
-//             }
-//         }
-//     });
-// });
+$(function() {
+    $(".tree .text-wrapper").prepend($("<i class='visbh fa fa-fw fa-chevron-up'></i>"));
+    // $(".tree>ul ul").hide();
+    $(".tree .text-wrapper i").click(function(event) {
+        var $this = $(this);
+        var $ul = $this.closest('li').children("ul");
+
+        if ($ul.length > 0) {
+            if ($ul.is(":visible")) {
+                $ul.slideUp();
+                $this.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+            } else {
+                $ul.slideDown();
+                $this.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+            }
+        }
+    });
+});
 
 
 
 $(function() {
-    $('.tree').click(function(e) {
+    $('.tree').click(function(e){
+        //只针对 + 和 - 事件
         var target = e.target;
         if (target.tagName.toLowerCase() == 'i') return;
         var $target = $(target);
         var $li = $target.closest('li');
         var $parentsUl = $li.parents('ul');
+        var $pUl = $li.parent();
         var addControls = 1;
         if ($target.hasClass('fa-plus')) {
 
             //层级判断
-            // if($parentsUl.length >= 3) {
-            //     addControls = 0;
-            // }
+            if($parentsUl.length >= 3) {
+                addControls = 0;
+            }
 
             var $ul = $li.children('ul');
             if ($ul && $ul.length) { //有子节点 增加一个
@@ -40,8 +42,12 @@ $(function() {
             } else { //没有子节点  创建ul再加
                 $li.append(_createUlWithLi(addControls));
             }
+            $li.children('.text-wrapper').children('i').removeClass('visbh');
         } else if ($target.hasClass('fa-minus')) {
             $li.remove();
+            if($pUl && $pUl.children().length === 0) {
+                $pUl.parent().children('.text-wrapper').find('i').addClass('visbh');
+            }
         }
     });
 });
@@ -56,9 +62,11 @@ function _createUlWithLi(addControls, text) {
 
 function _createLi(controls, text) {
     text = text || '';
-    var $li = $('<li><div class="text-wrapper"><div class="text"><input type="text" value="' + text + '"></div></li>');
+    var $li = $('<li><div class="text-wrapper"><i class="visbh fa fa-fw fa-chevron-up"></i><div class="text"><input type="text" value="' + text + '"></div></li>');
     if (controls) {
         $li.children('.text-wrapper').append('<div class="action"><span class="fa fa-plus fa-fw"></span><span class="fa fa-minus fa-fw"></span></div>');
+    }else{
+        $li.children('.text-wrapper').append('<div class="action"><span class="fa fa-minus fa-fw"></span></div>');
     }
     return $li;
 }
