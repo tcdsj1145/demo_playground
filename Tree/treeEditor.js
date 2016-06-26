@@ -1,17 +1,18 @@
 $(function() {
     $(".tree .text-wrapper").prepend($("<i class='visbh fa fa-fw fa-chevron-up'></i>"));
     // $(".tree>ul ul").hide();
-    $(".tree .text-wrapper i").click(function(event) {
-        var $this = $(this);
-        var $ul = $this.closest('li').children("ul");
-
-        if ($ul.length > 0) {
-            if ($ul.is(":visible")) {
-                $ul.slideUp();
-                $this.removeClass("fa-chevron-up").addClass("fa-chevron-down");
-            } else {
-                $ul.slideDown();
-                $this.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+    $(".tree").click(function(event) {
+        var $this = $(event.target);
+        if(event.target.tagName.toLowerCase() === 'i'){
+            var $ul = $this.closest('li').children("ul");
+            if ($ul.length > 0) {
+                if ($ul.is(":visible")) {
+                    $ul.slideUp();
+                    $this.removeClass("fa-chevron-up").addClass("fa-chevron-down");
+                } else {
+                    $ul.slideDown();
+                    $this.removeClass("fa-chevron-down").addClass("fa-chevron-up");
+                }
             }
         }
     });
