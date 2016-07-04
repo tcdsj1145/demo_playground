@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+  <title>Document</title>
+  <style>
+  html{
+    font-size: 16px;
+  }
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    /*针对IOS机型 没有这个属性  里面的内容滑动就木有减速度的感觉*/
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .page {
+    height: 100%;
+    position: relative;
+  }
+
+  ul,
+  li {
+    margin: 0;
+  }
+
+  #div1 {
+    height: 100%;
+    background: #ccc;
+    overflow: scroll;
+  }
+
+  form input{
+    -webkit-appearance:none;
+  }
+
+  .fix {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 15vh;
+    background: wheat;
+  }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div id="div1">
+      <form action="">
+        <fieldset>
+          <input type="search">
+        </fieldset>
+        <fieldset>
+          <input type="text">
+        </fieldset>
+        <fieldset>
+            <input type="password">
+        </fieldset>
+        <fieldset>
+          <input type="radio">A
+          <input type="radio">B
+        </fieldset>
+        <fieldset>
+          <input type="checkbox">A
+          <input type="checkbox">B
+          <input type="checkbox">C
+        </fieldset>
+        <fieldset>
+          <label for="date">date</label>
+          <!-- type为date类型  placeholder不起作用 -->
+          <!-- <input id="date" type="date" placeholder="Date" style="width:8rem; height:1rem"> -->
+
+          <!-- 于江水的方案 -->
+          <!-- http://am-team.github.io/amg/dev-exp-doc.html#input类型为date情况下不支持placeholder（来自于江水） -->
+          <!-- 下面只是思路  实际上不能跑通 -->
+          <input placeholder="Date" class="textbox-n" type="text" onfocus="(this.type='date')"  id="date" style="width:8rem; height:1rem">
+        </fieldset>
+
+        <fieldset>
+          <!-- 不建议使用  在IOS上样式很诡异 -->
+          <label for="range">range</label>
+          <input id="range" type="range">
+        </fieldset>
+      </form>
+    </div>
+    <div class="fix"></div>
+  </div>
+</body>
+<script>
+  document.getElementsByTagName('body')[0].addEventListener('touchstart', function(e) {e.preventDefault();}, false)
+</script>
+</html>

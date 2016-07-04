@@ -74,26 +74,26 @@ Promise.all = function(promises){
 }
 
 
-// var p = new Promise(function(resolve) {
-//     setTimeout(function() {
-//       resolve('ok')
-//     }, 1200);
-//   }).then(function(data) {
-//     console.log(data);
-//     // return 555;
-//     return new Promise(function(resolve){
-//       setTimeout(function(){
-//         resolve('wahaha');
-//       }, 2200);
-//     })
-//   })
-//   .then(function(data) {
-//     console.log('2nd then', data);
-//     return 666;
-//   })
-//   .then(function(data) {
-//     console.log('3rd then', data);
-//   });
+var p = new Promise(function(resolve) {
+    setTimeout(function() {
+      resolve('ok')
+    }, 1200);
+  }).then(function(data) {
+    console.log(data);
+    // return 555;
+    return new Promise(function(resolve){
+      setTimeout(function(){
+        resolve('wahaha');
+      }, 2200);
+    })
+  })
+  .then(function(data) {
+    console.log('2nd then', data);
+    // return 666;
+  })
+  .then(function(data) {
+    console.log('3rd then', data);
+  });
 
 
 // Promise.resolve(999)
